@@ -5,7 +5,7 @@ import htmlPlugin from 'html-webpack-plugin'
 import jadePlugin from './plugins/jade_plugin'
 
 module.exports = {
-  entry: './app.js',
+  entry: { main: './app.js' },
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'

@@ -1,13 +1,13 @@
 {
   "name": "roots-mini",
-  "version": "0.0.0",
   "description": "a little roots-y experiment",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
+  "version": "0.0.0",
   "author": "Jeff Escalante",
-  "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015-node5"
+    ]
+  },
   "dependencies": {
     "autoprefixer": "^6.1.0",
     "babel-core": "^6.1.2",
@@ -30,7 +30,14 @@
   "devDependencies": {
     "babel-preset-es2015-node5": "^1.0.0"
   },
-  "babel": {
-    "presets": ["es2015-node5"]
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/carrot/roots-mini.git"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "./node_modules/.bin/webpack-dev-server"
   }
 }

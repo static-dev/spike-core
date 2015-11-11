@@ -1,10 +1,9 @@
 import path from 'path'
 import autoprefixer from 'autoprefixer'
 import precss from 'precss'
-import jadePlugin from './plugins/jade_plugin'
 
 module.exports = {
-  entry: { main: './app.js' },
+  entry: { main: path.join(__dirname, '/main.js') },
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
@@ -16,10 +15,7 @@ module.exports = {
       { test: /\.jade$/, exclude: /node_modules/, loader: 'jade-loader' }
     ]
   },
-  postcss: function(){
-    return [autoprefixer, precss];
-  },
-  plugins: [
-    new jadePlugin()
-  ]
+  postcss: function () {
+    return [autoprefixer, precss]
+  }
 }

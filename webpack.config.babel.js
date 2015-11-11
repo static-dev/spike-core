@@ -1,7 +1,6 @@
 import path from 'path'
 import autoprefixer from 'autoprefixer'
 import precss from 'precss'
-import htmlPlugin from 'html-webpack-plugin'
 import jadePlugin from './plugins/jade_plugin'
 
 module.exports = {
@@ -21,7 +20,6 @@ module.exports = {
     return [autoprefixer, precss];
   },
   plugins: [
-    new htmlPlugin({ title: 'Roots Mini' }),
     new jadePlugin()
   ]
 }

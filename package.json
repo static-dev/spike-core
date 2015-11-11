@@ -1,0 +1,36 @@
+{
+  "name": "roots-mini",
+  "version": "0.0.0",
+  "description": "a little roots-y experiment",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Jeff Escalante",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^6.1.0",
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-runtime": "^6.0.14",
+    "css-loader": "^0.22.0",
+    "html-webpack-plugin": "^1.6.2",
+    "jade": "^1.11.0",
+    "jade-html-loader": "0.0.3",
+    "jade-loader": "^0.8.0",
+    "postcss-cssstats": "^1.0.0",
+    "postcss-loader": "^0.7.0",
+    "precss": "^1.3.0",
+    "rucksack": "^0.1.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-node5": "^1.0.0"
+  },
+  "babel": {
+    "presets": ["es2015-node5"]
+  }
+}

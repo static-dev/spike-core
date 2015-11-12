@@ -16,12 +16,11 @@ describe('jade', function () {
     jadePath = path.join(fixturesPath, 'jade')
   })
 
-  it('runs a dry test', function () {
-    let config = require(path.join(jadePath, 'app.js'))
+  it.skip('runs a dry test', function () {
+    require(path.join(jadePath, 'app.js'))
   })
 
-  it.skip('compiles the jade to a static file', function (done) {
-    // change this to old.app.js if you want to see if generate public/bundle.js
+  it('compiles the jade to a static file', function (done) {
     let config = require(path.join(jadePath, 'app.js'))
     webpack(config, function (err, stats) {
       if (err) return done(err)
@@ -31,6 +30,7 @@ describe('jade', function () {
       let indexFile = path.join(config.output.path, 'index.html')
 
       bundleFile.should.be.a.file()
+      // will fail until /lib/plugins/jade_plugin.js is working
       indexFile.should.be.a.file()
       done()
     })

@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import evaluate from 'eval'
+import glob from 'glob'
 
 export default class JadeWebpackPlugin {
 
@@ -10,20 +10,36 @@ export default class JadeWebpackPlugin {
   apply(compiler) {
     var self = this;
 
+    //
+    // Step 1: read file tree and get all jade files
+    //
+
+    glob("${compiler.options.context}/views/**.jade", (err, files) => {
+      console.log(files);
+    });
+
+    //
+    // Step 2: inject jade files into webpack's pipeline
+    //
+    compiler.plugin('make', (compilation) => {
+      // second param needs to be a webpack `Dependency`
+      compilation.addEntry(compiler.options.context, 'views/index.jade', 'testing', (err) => { console.error(err) })
+    });
+
+    //
+    // Step 3: after they have compiled, get the source, maps, deps, etc.
+    //
+
+    //
+    // Step 4: have webpack export them
+    //
     compiler.plugin('emit', (compilation, done) => {
-      // grab compilation stats
-      let stats = compilation.getStats();
-      let statsJson = stats.toJson();
+      let contents = "testing testing 123"
 
-      // find bundle source
-      let outputFilename = compiler.options.output.filename;
-      let asset = compilation.assets[outputFilename];
-
-      let source = asset.source();
-
-      // get jade files
-      let jadeFiles = extractJadeFiles(compiler.records.modules.byIdentifier);
-      console.log(jadeFiles);
+      compilation.assets['output_file.html'] = {
+        source: () => { return contents },
+        size: () => { return contents.length }
+      }
 
       done();
     });

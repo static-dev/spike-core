@@ -4,7 +4,7 @@ import precss from 'precss'
 import JadePlugin from './plugins/jade_plugin'
 
 module.exports = {
-  entry: { main: './app.js' },
+  entry: { main: ['./app.js'] },
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'

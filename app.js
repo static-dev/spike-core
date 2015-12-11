@@ -1,6 +1,5 @@
-var css = require('./assets/css/main.css');
-var index = require('./views/index.jade');
-var about = require('./views/about.jade');
+var css = require('./assets/css/main.css')
+require('./views/index.jade')
+require('./views/about.jade')
 
-console.log(css);
-console.log(tpl);
+console.log(css)

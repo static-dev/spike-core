@@ -1,4 +1,5 @@
 import glob from 'glob'
+import SingleEntryDependency from 'webpack/lib/dependencies/SingleEntryDependency'
 
 export default class JadeWebpackPlugin {
 
@@ -7,30 +8,23 @@ export default class JadeWebpackPlugin {
   }
 
   apply (compiler) {
-    //
-    // Step 1: read file tree and get all jade files
-    //
+    // read file tree and get all jade files
+    let files = glob.sync(`${compiler.options.context}/views/**.jade`)
 
-    glob(`${compiler.options.context}/views/**.jade`, (err, files) => {
-      if (err) { throw err }
-      console.log(files)
+    // inject jade files into webpack's pipeline
+    compiler.plugin('make', (compilation, cb) => {
+      files.forEach(f => {
+        let name = f.match(/\/(\w+).jade/)[1]
+        let relativePath = f.replace(compiler.options.context, '.')
+        let dep = new SingleEntryDependency(relativePath)
+
+        compilation.addEntry(compiler.options.context, dep, name, cb)
+      })
     })
 
-    //
-    // Step 2: inject jade files into webpack's pipeline
-    //
-    compiler.plugin('make', (compilation) => {
-      // second param needs to be a webpack `Dependency`
-      compilation.addEntry(compiler.options.context, 'views/index.jade', 'testing', (err) => { console.error(err) })
-    })
+    // after they have compiled, get the source, maps, deps, etc.
 
-    //
-    // Step 3: after they have compiled, get the source, maps, deps, etc.
-    //
-
-    //
-    // Step 4: have webpack export them
-    //
+    // have webpack export them
     compiler.plugin('emit', (compilation, done) => {
       let contents = 'testing testing 123'
 

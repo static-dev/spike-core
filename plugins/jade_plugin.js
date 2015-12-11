@@ -13,7 +13,6 @@ export default class JadeWebpackPlugin {
     let files = glob.sync(`${compiler.options.context}/views/**.jade`)
 
     // inject jade files into webpack's pipeline
-    // NOTE: make sure we are handling ignored files here
     compiler.plugin('make', (compilation, done) => {
       let tasks = []
 
@@ -29,20 +28,22 @@ export default class JadeWebpackPlugin {
         }))
       })
 
-      Promise.all(tasks).then(done)
+      Promise.all(tasks).then((res) => { done() })
     })
 
-    // after they have compiled, get the source, maps, deps, etc.
-
-    // have webpack export them
+    // grab the sources and dependencies and export them into the right files
+    // have webpack export them into their own files
+    // NOTE: make sure to handle ignored files
     compiler.plugin('emit', (compilation, done) => {
-      let contents = '<p>test output</p>'
-
       files.forEach(f => {
+        let dep = compilation.modules.find((el) => {
+          if (el.userRequest === f) { return el }
+        })
+        let src = dep._source._value
         let outputPath = this._getOutputPath(compiler, f)
         compilation.assets[outputPath] = {
-          source: () => { return contents },
-          size: () => { return contents.length }
+          source: () => { return src },
+          size: () => { return src.length }
         }
       })
 

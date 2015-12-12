@@ -39,7 +39,10 @@ export default class JadeWebpackPlugin {
         let dep = compilation.modules.find((el) => {
           if (el.userRequest === f) { return el }
         })
-        let src = dep._source._value
+        let srcFn = dep._source._value
+        let locals = this.opts.locals || {}
+        let src = eval(srcFn)(locals)
+
         let outputPath = this._getOutputPath(compiler, f)
         compilation.assets[outputPath] = {
           source: () => { return src },

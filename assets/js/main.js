@@ -1,1 +1,1 @@
-export default "hello es6"
+export default 'hello es6'

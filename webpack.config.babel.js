@@ -23,6 +23,6 @@ module.exports = {
     presets: ['es2015-node5']
   },
   plugins: [
-    new JadePlugin()
+    new JadePlugin({ locals: { foo: 'bar' } })
   ]
 }

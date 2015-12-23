@@ -11,6 +11,7 @@ export default class JadeWebpackPlugin {
   apply (compiler) {
     // read file tree and get all jade files
     let files = glob.sync(`${compiler.options.context}/views/**.jade`)
+                    .filter(this._removeIgnores.bind(this))
 
     // inject jade files into webpack's pipeline
     compiler.plugin('make', (compilation, done) => {
@@ -33,7 +34,6 @@ export default class JadeWebpackPlugin {
 
     // grab the sources and dependencies and export them into the right files
     // have webpack export them into their own files
-    // NOTE: make sure to handle ignored files
     compiler.plugin('emit', (compilation, done) => {
       files.forEach(f => {
         let dep = compilation.modules.find((el) => {
@@ -66,6 +66,13 @@ export default class JadeWebpackPlugin {
     })
 
     return res.substring(1).replace(/\.jade$/, '.html')
+  }
+
+  _removeIgnores (f) {
+    for (let ignore of this.opts.ignore) {
+      if (f.match(ignore)) { return false }
+    }
+    return true
   }
 
 }

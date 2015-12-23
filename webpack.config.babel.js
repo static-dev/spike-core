@@ -13,7 +13,7 @@ module.exports = {
     loaders: [
       { test: /\.css$/, exclude: /node_modules/, loader: 'style!css!postcss' },
       { text: /\.js$/, exclude: /node_modules, plugins/, loader: 'babel' },
-      { test: /\.jade$/, exclude: /node_modules/, loader: 'jade' }
+      { test: /\.jade$/, exclude: /node_modules/, loader: 'jade?pretty=true' }
     ]
   },
   postcss: function () {
@@ -23,6 +23,6 @@ module.exports = {
     presets: ['es2015-node5']
   },
   plugins: [
-    new JadePlugin({ locals: { foo: 'bar' } })
+    new JadePlugin({ locals: { foo: 'bar' }, ignore: [/layout\.jade/] })
   ]
 }

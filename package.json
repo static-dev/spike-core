@@ -6,9 +6,6 @@
   "bugs": {
     "url": "https://github.com/carrot/roots-mini/issues"
   },
-  "standard": {
-    "parser": "babel-eslint"
-  },
   "dependencies": {
     "autoprefixer": "^6.1.2",
     "glob": "^6.0.1",
@@ -45,10 +42,13 @@
     "url": "git://github.com/carrot/roots-mini.git"
   },
   "scripts": {
-    "precommit": "npm run lint -s",
-    "start": "webpack",
     "lint": "standard --verbose | snazzy",
+    "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
+    "start": "webpack",
     "test": "ava"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

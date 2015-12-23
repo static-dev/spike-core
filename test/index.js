@@ -1,6 +1,7 @@
 import 'babel-core/register'
 import path from 'path'
 import fs from 'fs'
+// import rimraf from 'rimraf'
 import test from 'ava'
 import helpers from './_helpers'
 import Roots from '..'

@@ -17,3 +17,15 @@ test('dump dirs', (t) => {
     t.is(fs.readFileSync(indexPath, 'utf8'), '\n<p>hello world!</p>')
   })
 })
+
+test('ignores', (t) => {
+  return helpers.compileFixture(t, 'ignores').then((res) => {
+    let indexPath = path.join(t.context.publicPath, 'index.html')
+    let aboutPath = path.join(t.context.publicPath, 'about.html')
+    let layoutPath = path.join(t.context.publicPath, 'layout.html')
+
+    t.ok(fs.existsSync(indexPath))
+    t.ok(fs.existsSync(aboutPath))
+    t.notOk(fs.existsSync(layoutPath))
+  })
+})

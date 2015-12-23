@@ -6,10 +6,12 @@ const fixtures = path.join(__dirname, 'fixtures')
 
 export default {
   compileFixture: (t, name) => {
-    let testPath = t.context.testPath = path.join(fixtures, name)
-    let project = t.context.project = new Roots({ root: testPath })
-    t.context.publicPath = path.join(testPath, 'public')
+    let testPath = path.join(fixtures, name)
+    let project = new Roots({ root: testPath })
+    let publicPath = path.join(testPath, 'public')
 
-    return project.compile()
+    return project.compile().then((res) => {
+      return { res: res, publicPath: publicPath }
+    })
   }
 }

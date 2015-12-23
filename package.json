@@ -53,6 +53,6 @@
     "lint": "standard --verbose | snazzy",
     "pretest": "npm run lint -s",
     "test": "ava",
-    "coverage": "./node_modules/.bin/nyc --reporter=html ./node_modules/.bin/ava --serial && open coverage/index.html"
+    "coverage": "./node_modules/.bin/nyc --reporter=html ./node_modules/.bin/ava && open coverage/index.html"
   }
 }

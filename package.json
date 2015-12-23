@@ -3,28 +3,26 @@
   "description": "a little roots-y experiment",
   "version": "0.0.0",
   "author": "Jeff Escalante",
-  "babel": {
-    "presets": [
-      "es2015-node5"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/carrot/roots-mini/issues"
   },
   "dependencies": {
     "autoprefixer": "^6.1.2",
-    "babel-core": "^6.1.2",
     "glob": "^6.0.1",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
     "postcss": "^5.0.12",
     "postcss-loader": "^0.8.0",
     "precss": "^1.3.0",
-    "webpack": "^1.12.3"
+    "webpack": "^1.12.9"
   },
   "devDependencies": {
-    "babel-preset-es2015-node5": "^1.0.0",
-    "chalkline": "0.0.x"
+    "ava": "sindresorhus/ava",
+    "babel-core": "^6.3.26",
+    "babel-preset-es2015-node5": "^1.1.1",
+    "babel-preset-stage-0": "^6.3.13",
+    "rimraf": "^2.4.5",
+    "standard": "^5.4.1"
   },
   "homepage": "https://github.com/carrot/roots-mini",
   "keywords": [
@@ -33,12 +31,13 @@
     "webpack"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib",
   "repository": {
     "type": "git",
     "url": "git://github.com/carrot/roots-mini.git"
   },
   "scripts": {
-    "start": "./node_modules/.bin/webpack"
+    "start": "./node_modules/.bin/webpack",
+    "test": "./node_modules/.bin/standard && ./node_modules/.bin/ava"
   }
 }

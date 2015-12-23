@@ -27,6 +27,7 @@
     "babel-eslint": "^4.1.6",
     "babel-preset-es2015-node5": "^1.1.1",
     "babel-preset-stage-0": "^6.3.13",
+    "husky": "^0.10.2",
     "rimraf": "^2.4.5",
     "snazzy": "^2.0.1",
     "standard": "^5.4.1"
@@ -44,6 +45,7 @@
     "url": "git://github.com/carrot/roots-mini.git"
   },
   "scripts": {
+    "precommit": "npm run lint -s",
     "start": "webpack",
     "lint": "standard --verbose | snazzy",
     "pretest": "npm run lint -s",

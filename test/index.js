@@ -11,7 +11,7 @@ let promisedFs = helpers.promisifyAll(fs)
 //   rimraf(t.context.publicPath, t.end)
 // })
 
-test.skip('dump dirs', async (t) => {
+test('dump dirs', async (t) => {
   let { publicPath } = await helpers.compileFixture(t, 'dump_dirs')
   let indexPath = path.join(publicPath, 'index.html')
   let indexPathExists = await promisedFs::helpers.exists(indexPath)

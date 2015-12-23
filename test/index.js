@@ -9,35 +9,39 @@ import Roots from '..'
 
 // const fixtures = path.join(__dirname, 'fixtures')
 
+let promisedFs = helpers.promisifyAll(fs)
+
 // test.afterEach.cb((t) => {
 //   rimraf(t.context.publicPath, t.end)
 // })
 
-test('dump dirs', t => {
-  return helpers.compileFixture(t, 'dump_dirs').then((res) => {
-    let indexPath = path.join(res.publicPath, 'index.html')
-    t.ok(fs.existsSync(indexPath))
-    t.is(fs.readFileSync(indexPath, 'utf8'), '\n<p>hello world!</p>')
-  })
+test.skip('dump dirs', async (t) => {
+  let { publicPath } = await helpers.compileFixture(t, 'dump_dirs')
+  let indexPath = path.join(publicPath, 'index.html')
+  let indexPathExists = await promisedFs::helpers.exists(indexPath)
+  let indexPathContents = await promisedFs.readFile(indexPath, 'utf8')
+  t.ok(indexPathExists)
+  t.is(indexPathContents, '\n<p>hello world!</p>')
 })
 
-test('ignores', t => {
-  return helpers.compileFixture(t, 'ignores').then((res, publicPath) => {
-    let indexPath = path.join(res.publicPath, 'index.html')
-    let aboutPath = path.join(res.publicPath, 'about.html')
-    let layoutPath = path.join(res.publicPath, 'layout.html')
-
-    t.ok(fs.existsSync(indexPath))
-    t.ok(fs.existsSync(aboutPath))
-    t.notOk(fs.existsSync(layoutPath))
-  })
+test('ignores', async (t) => {
+  let { publicPath } = await helpers.compileFixture(t, 'ignores')
+  let indexPath = path.join(publicPath, 'index.html')
+  let aboutPath = path.join(publicPath, 'about.html')
+  let layoutPath = path.join(publicPath, 'layout.html')
+  let indexPathExists = await promisedFs::helpers.exists(indexPath)
+  let aboutPathExists = await promisedFs::helpers.exists(aboutPath)
+  let layoutPathExists = await promisedFs::helpers.exists(layoutPath)
+  t.ok(indexPathExists)
+  t.ok(aboutPathExists)
+  t.notOk(layoutPathExists)
 })
 
-test('locals', t => {
-  return helpers.compileFixture(t, 'locals').then((res, publicPath) => {
-    let indexPath = path.join(res.publicPath, 'index.html')
-    t.is(fs.readFileSync(indexPath, 'utf8'), 'bar')
-  })
+test('locals', async (t) => {
+  let { publicPath } = await helpers.compileFixture(t, 'locals')
+  let indexPath = path.join(publicPath, 'index.html')
+  let indexPathContents = await promisedFs.readFile(indexPath, 'utf8')
+  t.is(indexPathContents, 'bar')
 })
 
 test('config errors', t => {

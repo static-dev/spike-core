@@ -6,6 +6,9 @@
   "bugs": {
     "url": "https://github.com/carrot/roots-mini/issues"
   },
+  "standard": {
+    "parser": "babel-eslint"
+  },
   "dependencies": {
     "autoprefixer": "^6.1.2",
     "glob": "^6.0.1",
@@ -21,9 +24,11 @@
   "devDependencies": {
     "ava": "sindresorhus/ava",
     "babel-core": "^6.3.26",
+    "babel-eslint": "^4.1.6",
     "babel-preset-es2015-node5": "^1.1.1",
     "babel-preset-stage-0": "^6.3.13",
     "rimraf": "^2.4.5",
+    "snazzy": "^2.0.1",
     "standard": "^5.4.1"
   },
   "homepage": "https://github.com/carrot/roots-mini",
@@ -39,7 +44,9 @@
     "url": "git://github.com/carrot/roots-mini.git"
   },
   "scripts": {
-    "start": "./node_modules/.bin/webpack",
-    "test": "./node_modules/.bin/standard && ./node_modules/.bin/ava"
+    "start": "webpack",
+    "lint": "standard --verbose | snazzy",
+    "pretest": "npm run lint -s",
+    "test": "ava"
   }
 }

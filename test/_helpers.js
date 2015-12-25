@@ -1,7 +1,33 @@
-import path from 'path'
+import node_fs from 'fs'
+import node_path from 'path'
+import ava from 'ava'
 import Roots from '..'
 
-const fixtures = path.join(__dirname, 'fixtures')
+// export references to required modules and/or paths
+export const fixtures_path = node_path.join(__dirname, 'fixtures')
+export const fs = promisifyAll(node_fs)
+export const test = ava
+export const path = node_path
+
+/**
+ * asynchronous wrapper around fs.stat that
+ * detects if a file found at `path` exists or not
+ * @this   {Object} - promisified `fs` module
+ * @param  {String} path - the path to the file
+ * @return {Promise} - resolves to true if file exists
+ *                     else resolves to false
+ * @example
+ * let fs = promisifyAll(require('fs'))
+ * fs::exists(file).then(...)
+ */
+export async function exists (path) {
+  try {
+    await this.stat(path)
+    return true
+  } catch (e) {
+    return false
+  }
+}
 
 /**
  * compiles a fixture into it's `public/` directory
@@ -11,7 +37,7 @@ const fixtures = path.join(__dirname, 'fixtures')
  *                     it's `public/` directory
  */
 export async function compileFixture (t, name) {
-  let testPath = path.join(fixtures, name)
+  let testPath = path.join(fixtures_path, name)
   let project = new Roots({ root: testPath })
   let publicPath = path.join(testPath, 'public')
   let res = await project.compile()
@@ -60,21 +86,12 @@ export function promisifyAll (target) {
 }
 
 /**
- * asynchronous wrapper around fs.stat that
- * detects if a file found at `path` exists or not
- * @this   {Object} - promisified `fs` module
- * @param  {String} path - the path to the file
- * @return {Promise} - resolves to true if file exists
- *                     else resolves to false
- * @example
- * let fs = promisifyAll(require('fs'))
- * fs::exists(file).then(...)
+ * Transforms an array of promises or values
+ * concurrently and resolves to the transformed results
+ * @param  {Array} arr - the array to transform
+ * @param  {Function} fn - the transform function
+ * @return {Promise} - a promise for the transformed results
  */
-export async function exists (path) {
-  try {
-    await this.stat(path)
-    return true
-  } catch (e) {
-    return false
-  }
+export async function map (arr, fn) {
+  return this.all(arr.map(fn))
 }

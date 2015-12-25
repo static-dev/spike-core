@@ -16,9 +16,9 @@ const fs = promisifyAll(require('fs'))
 test('dump dirs', async (t) => {
   let { publicPath } = await compileFixture(t, 'dump_dirs')
   let index = path.join(publicPath, 'index.html')
-  let exists = await fs::exists(index)
+  let fileExists = await fs::exists(index)
   let contents = await fs.readFile(index, 'utf8')
-  t.ok(exists)
+  t.ok(fileExists)
   t.is(contents, '\n<p>hello world!</p>')
 })
 

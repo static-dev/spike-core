@@ -1,36 +1,32 @@
 import 'babel-core/register'
 import path from 'path'
-import fs from 'fs'
 // import rimraf from 'rimraf'
 import test from 'ava'
 import helpers from './_helpers'
 import Roots from '..'
-// import rimraf from 'rimraf'
 
-// const fixtures = path.join(__dirname, 'fixtures')
+import { promisifyAll, compileFixture, exists } from './_helpers'
 
-let promisedFs = helpers.promisifyAll(fs)
+const fs = promisifyAll(require('fs'))
 
 // test.afterEach.cb((t) => {
 //   rimraf(t.context.publicPath, t.end)
 // })
 
 test('dump dirs', async (t) => {
-  let { publicPath } = await helpers.compileFixture(t, 'dump_dirs')
-  let indexPath = path.join(publicPath, 'index.html')
-  let indexPathExists = await promisedFs::helpers.exists(indexPath)
-  let indexPathContents = await promisedFs.readFile(indexPath, 'utf8')
-  t.ok(indexPathExists)
-  t.is(indexPathContents, '\n<p>hello world!</p>')
+  let { publicPath } = await compileFixture(t, 'dump_dirs')
+  let index = path.join(publicPath, 'index.html')
+  let exists = await fs::exists(index)
+  let contents = await fs.readFile(index, 'utf8')
+  t.ok(exists)
+  t.is(contents, '\n<p>hello world!</p>')
 })
 
 test('ignores', async (t) => {
-  let { publicPath } = await helpers.compileFixture(t, 'ignores')
+  let { publicPath } = await compileFixture(t, 'ignores')
   let [index, about, layout] = await Promise.all(
     ['index', 'about', 'layout'].map(name => (
-      promisedFs::helpers.exists(
-        path.join(publicPath, `${name}.html`)
-      )
+      fs::exists(path.join(publicPath, `${name}.html`))
     ))
   )
   t.ok(index)
@@ -39,10 +35,9 @@ test('ignores', async (t) => {
 })
 
 test('locals', async (t) => {
-  let { publicPath } = await helpers.compileFixture(t, 'locals')
-  let indexPath = path.join(publicPath, 'index.html')
-  let indexPathContents = await promisedFs.readFile(indexPath, 'utf8')
-  t.is(indexPathContents, 'bar')
+  let { publicPath } = await compileFixture(t, 'locals')
+  let contents = await fs.readFile(path.join(publicPath, 'index.html'), 'utf8')
+  t.is(contents, 'bar')
 })
 
 test('config errors', t => {

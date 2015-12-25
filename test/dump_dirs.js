@@ -1,10 +1,12 @@
-import 'babel-core/register'
-import path from 'path'
-import test from 'ava'
-import { promisifyAll, compileFixture, exists } from './_helpers'
-const fs = promisifyAll(require('fs'))
+import {
+  test,
+  compileFixture,
+  fs,
+  path,
+  exists
+} from './_helpers'
 
-test('discards directories, but keeps the directories files', async (t) => {
+test('discards directories, but keeps the directory\'s files', async (t) => {
   let { publicPath } = await compileFixture(t, 'dump_dirs')
   let index = path.join(publicPath, 'index.html')
   let fileExists = await fs::exists(index)

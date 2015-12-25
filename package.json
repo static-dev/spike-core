@@ -46,7 +46,7 @@
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
     "start": "webpack",
-    "test": "ava"
+    "test": "ava --require babel-core/register"
   },
   "standard": {
     "parser": "babel-eslint"

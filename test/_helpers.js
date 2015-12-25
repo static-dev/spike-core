@@ -10,7 +10,7 @@ const fixtures = path.join(__dirname, 'fixtures')
  * @return {Promise} - a promise for the compiled fixture and the path to
  *                     it's `public/` directory
  */
-async function compileFixture (t, name) {
+export async function compileFixture (t, name) {
   let testPath = path.join(fixtures, name)
   let project = new Roots({ root: testPath })
   let publicPath = path.join(testPath, 'public')
@@ -27,7 +27,7 @@ async function compileFixture (t, name) {
  * let readFile = promisify(fs.readFile)
  * readFile(file).then(...)
  */
-function promisify (original) {
+export function promisify (original) {
   return (...args) => {
     return new Promise((resolve, reject) => {
       args.push((...args) => {
@@ -49,7 +49,7 @@ function promisify (original) {
  * let fs = promisifyAll(require('fs'))
  * fs.readFile(file).then(...)
  */
-function promisifyAll (target) {
+export function promisifyAll (target) {
   return Object.keys(target).reduce((promisified, key) => {
     const method = target[key]
     promisified[key] = typeof method === 'function'
@@ -70,18 +70,11 @@ function promisifyAll (target) {
  * let fs = promisifyAll(require('fs'))
  * fs::exists(file).then(...)
  */
-async function exists (path) {
+export async function exists (path) {
   try {
     await this.stat(path)
     return true
   } catch (e) {
     return false
   }
-}
-
-export default {
-  compileFixture,
-  promisify,
-  promisifyAll,
-  exists
 }

@@ -1,4 +1,3 @@
-import 'babel-core/register'
 import path from 'path'
 import Roots from '..'
 

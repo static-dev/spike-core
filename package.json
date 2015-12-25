@@ -19,7 +19,7 @@
     "webpack": "^1.12.9"
   },
   "devDependencies": {
-    "ava": "sindresorhus/ava",
+    "ava": "sindresorhus/ava#65ae07c",
     "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.6",
     "babel-preset-es2015-node5": "^1.1.1",

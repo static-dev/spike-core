@@ -22,15 +22,16 @@ test('dump dirs', async (t) => {
 
 test('ignores', async (t) => {
   let { publicPath } = await helpers.compileFixture(t, 'ignores')
-  let indexPath = path.join(publicPath, 'index.html')
-  let aboutPath = path.join(publicPath, 'about.html')
-  let layoutPath = path.join(publicPath, 'layout.html')
-  let indexPathExists = await promisedFs::helpers.exists(indexPath)
-  let aboutPathExists = await promisedFs::helpers.exists(aboutPath)
-  let layoutPathExists = await promisedFs::helpers.exists(layoutPath)
-  t.ok(indexPathExists)
-  t.ok(aboutPathExists)
-  t.notOk(layoutPathExists)
+  let [index, about, layout] = await Promise.all(
+    ['index', 'about', 'layout'].map(name => (
+      promisedFs::helpers.exists(
+        path.join(publicPath, `${name}.html`)
+      )
+    ))
+  )
+  t.ok(index)
+  t.ok(about)
+  t.notOk(layout)
 })
 
 test('locals', async (t) => {

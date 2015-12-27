@@ -35,3 +35,9 @@ test('locals', (t) => {
     t.is(fs.readFileSync(indexPath, 'utf8'), 'bar')
   })
 })
+
+test('css', (t) => {
+  return helpers.compileFixture(t, 'css').then((res, publicPath) => {
+    console.log(res)
+  })
+})

@@ -1,4 +1,3 @@
-import 'babel-core/register'
 import test from 'ava'
 import Roots from '..'
 

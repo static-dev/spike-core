@@ -3,3 +3,5 @@ node_modules
 public
 *.log
 test/fixtures/*/public
+coverage
+.nyc_output

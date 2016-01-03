@@ -10,7 +10,7 @@
     "parser": "babel-eslint"
   },
   "dependencies": {
-    "autoprefixer": "^6.1.2",
+    "autoprefixer": "^6.2.3",
     "glob": "^6.0.1",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",

@@ -15,7 +15,33 @@ The thinking behind this experiment is explained in [this article](https://mediu
 
 ### Usage
 
-To run the tests, `npm test` from the command line. This project is developed exclusively through tests.
+Roots can operate through either a javascript API or a CLI interface. At the moment, only the JS API is being developed, the CLI will come later on once the project is closer to complete.
+
+The Roots module exposes a single class through which all functionality operates. An instance of the class should be created for each project being compiled with Roots.
+
+```js
+import Roots from 'roots'
+
+let project = new Roots({ root: 'path/to/project/root' })
+```
+
+The above shows a minimal instantiation, but the constructor accepts a wide variety of options, listed below.
+
+##### Roots Constructor Options
+
+- **root**: An absolute path to the root of your project.
+- **matchers**: An object with `jade`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Defaults are `**/*.jade`, `**/*.css`, and `**/*.js`. Be very careful if you are trying to change this.
+- **postCssPlugins**: An array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing.
+- **babelConfig**: A [configuration object for Babel](http://babeljs.io/docs/usage/options/) for JS processing.
+
+Roots exposes a simpler and more straightforward configuration interface than if you were to set up the webpack configuration yourself. However, if you'd like to directly edit the webpack config, you can still do this after the project has been instantiated through the `config` property on each instance.
+
+```js
+let project = new Roots({ root: 'path/to/project/root' })
+console.log(project.config) // echoes bare webpack config object, can be edited
+```
+
+If you decide to edit the webpack config object directly, *be careful*. It is easy to break the way roots works without knowing exactly what you are doing here. If there's something you are looking to customize that is not part of roots' options, it's better to open an issue and ask for it to be made customizable, then we'll get you a much cleaner way to do it!
 
 ### The Stack
 

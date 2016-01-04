@@ -6,15 +6,14 @@
   "bugs": {
     "url": "https://github.com/carrot/roots-mini/issues"
   },
-  "standard": {
-    "parser": "babel-eslint"
-  },
   "dependencies": {
     "autoprefixer": "^6.1.2",
+    "babel-loader": "^6.2.0",
     "glob": "^6.0.1",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
-    "minimatch": "^3.0.0",
+    "joi": "^7.1.0",
+    "micromatch": "^2.3.7",
     "postcss": "^5.0.12",
     "postcss-import": "^7.1.3",
     "postcss-loader": "^0.8.0",
@@ -22,15 +21,20 @@
     "webpack": "^1.12.9"
   },
   "devDependencies": {
-    "ava": "sindresorhus/ava",
+    "ava": "sindresorhus/ava#65ae07c",
     "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.6",
     "babel-preset-es2015-node5": "^1.1.1",
     "babel-preset-stage-0": "^6.3.13",
     "husky": "^0.10.2",
+    "nyc": "^5.0.1",
     "rimraf": "^2.4.5",
     "snazzy": "^2.0.1",
     "standard": "^5.4.1"
+  },
+  "engines": {
+    "node": ">=5.0.0",
+    "npm": ">=3.0.0"
   },
   "homepage": "https://github.com/carrot/roots-mini",
   "keywords": [
@@ -45,10 +49,13 @@
     "url": "git://github.com/carrot/roots-mini.git"
   },
   "scripts": {
-    "precommit": "npm run lint -s",
-    "start": "webpack",
+    "coverage": "./node_modules/.bin/nyc --reporter=html ./node_modules/.bin/ava && open coverage/index.html",
     "lint": "standard --verbose | snazzy",
+    "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
-    "test": "ava"
+    "test": "ava --require babel-core/register"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

@@ -33,6 +33,8 @@ The above shows a minimal instantiation, but the constructor accepts a wide vari
 - **matchers**: An object with `jade`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Defaults are `**/*.jade`, `**/*.css`, and `**/*.js`. Be very careful if you are trying to change this.
 - **postCssPlugins**: An array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing.
 - **babelConfig**: A [configuration object for Babel](http://babeljs.io/docs/usage/options/) for JS processing.
+- **bundleName**: The name of your resulting js bundle from webpack. Defaults to `bundle.js`.
+- **dumpDirs**: An array of directories which, if direct children of the project root, will dump their contents to the root on compile. Defaults to `['views', 'assets']`.
 
 Roots exposes a simpler and more straightforward configuration interface than if you were to set up the webpack configuration yourself. However, if you'd like to directly edit the webpack config, you can still do this after the project has been instantiated through the `config` property on each instance.
 

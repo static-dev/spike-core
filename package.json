@@ -9,6 +9,8 @@
   "dependencies": {
     "autoprefixer": "^6.1.2",
     "babel-loader": "^6.2.0",
+    "css-loader": "^0.23.1",
+    "eval": "^0.1.1",
     "glob": "^6.0.1",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
@@ -21,7 +23,7 @@
     "webpack": "^1.12.9"
   },
   "devDependencies": {
-    "ava": "sindresorhus/ava#65ae07c",
+    "ava": "^0.9.1",
     "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.6",
     "babel-preset-es2015-node5": "^1.1.1",
@@ -53,7 +55,7 @@
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
-    "test": "ava --require babel-core/register"
+    "test": "./node_modules/.bin/ava --require babel-core/register"
   },
   "standard": {
     "parser": "babel-eslint"

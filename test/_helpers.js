@@ -40,7 +40,16 @@ export async function compileFixture (t, name) {
   let testPath = path.join(fixtures_path, name)
   let project = new Roots({ root: testPath })
   let publicPath = path.join(testPath, 'public')
-  let res = await project.compile()
+  let res
+
+  try {
+    console.log('trying to compile')
+    res = await project.compile()
+  } catch (err) {
+    console.log('we good yet?')
+    throw err
+  }
+
   return { res, publicPath }
 }
 

@@ -40,6 +40,7 @@ export async function compileFixture (t, name) {
   let testPath = path.join(fixtures_path, name)
   let project = new Roots({ root: testPath })
   let publicPath = path.join(testPath, 'public')
+
   let res = await project.compile()
   return { res, publicPath }
 }

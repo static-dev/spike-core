@@ -56,7 +56,7 @@
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
-    "test": "ava --require babel-core/register"
+    "test": "ava --require babel-core/register --verbose"
   },
   "standard": {
     "parser": "babel-eslint"

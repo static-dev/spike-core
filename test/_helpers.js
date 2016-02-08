@@ -23,6 +23,6 @@ export function compileFixture (t, name) {
   let project = new Roots({ root: testPath })
   let publicPath = path.join(testPath, 'public')
 
-  return When(project.compile()).then(res => { return {res, publicPath} })
+  return When(project.compile()).then((res) => { return {res, publicPath} })
 }
 

@@ -2,21 +2,15 @@ import {
   test,
   compileFixture,
   fs,
-  path,
-  exists,
-  map
+  path
 } from './_helpers'
 
-test('does not compile ignored files', async (t) => {
-  let { publicPath } = await compileFixture(t, 'ignores')
-  let [
-    index,
-    about,
-    layout
-  ] = await Promise::map(['index', 'about', 'layout'], name => {
-    return fs::exists(path.join(publicPath, `${name}.html`))
+test('does not compile ignored files', (t) => {
+  return compileFixture(t, 'ignores').tap(({publicPath}) => {
+    return fs.access(path.join(publicPath, 'index.html'))
+  }).tap(({publicPath}) => {
+    return fs.access(path.join(publicPath, 'about.html'))
+  }).tap(({publicPath}) => {
+    return t.throws(fs.access(path.join(publicPath, 'layout.html')))
   })
-  t.ok(index)
-  t.ok(about)
-  t.notOk(layout)
 })

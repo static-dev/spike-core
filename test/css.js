@@ -2,13 +2,11 @@ import {
   test,
   compileFixture,
   fs,
-  path,
-  exists
+  path
 } from './_helpers'
 
-test('css plugin works', async (t) => {
-  let { publicPath } = await compileFixture(t, 'css')
-  let main = path.join(publicPath, 'main.css')
-  let fileExists = await fs::exists(main)
-  t.ok(fileExists)
+test('css plugin works', (t) => {
+  return compileFixture(t, 'css').then(({publicPath}) => {
+    return fs.stat(path.join(publicPath, 'main.css'))
+  }).then(t.ok.bind(t))
 })

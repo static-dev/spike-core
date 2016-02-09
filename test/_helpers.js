@@ -18,11 +18,10 @@ export const path = node_path
  * @return {Promise} - a promise for the compiled fixture and the path to
  *                     it's `public/` directory
  */
-export function compileFixture (t, name) {
+export function compileFixture (t, name, options = {}) {
   let testPath = path.join(fixtures_path, name)
-  let project = new Roots({ root: testPath })
+  let project = new Roots(Object.assign(options, { root: testPath }))
   let publicPath = path.join(testPath, 'public')
 
   return When(project.compile()).then((res) => { return {res, publicPath} })
 }
-

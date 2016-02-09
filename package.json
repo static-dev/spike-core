@@ -7,6 +7,7 @@
     "url": "https://github.com/carrot/roots-mini/issues"
   },
   "dependencies": {
+    "argparse": "^1.0.6",
     "autoprefixer": "^6.1.2",
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.0",

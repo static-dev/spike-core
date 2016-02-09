@@ -3,7 +3,7 @@ import Roots from '..'
 
 test('config errors', (t) => {
   t.throws(() => { new Roots() }, // eslint-disable-line
-    'ValidationError: child "root" fails because ["root" is required]')
+    'a "root" is required')
   t.throws(() => { new Roots({ root: 'foo', matchers: 'wow' }) }, // eslint-disable-line
     'ValidationError: child "matchers" fails because ["matchers" must be an object]')
   t.throws(() => { new Roots({ root: 'foo', matchers: { css: [1] } }) }, // eslint-disable-line

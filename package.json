@@ -6,6 +6,21 @@
   "bugs": {
     "url": "https://github.com/carrot/roots-mini/issues"
   },
+  "homepage": "https://github.com/carrot/roots-mini",
+  "keywords": [
+    "roots",
+    "static",
+    "webpack"
+  ],
+  "license": "MIT",
+  "main": "lib",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/carrot/roots-mini.git"
+  },
+  "bin": {
+    "rootsmini": "./bin/roots"
+  },
   "dependencies": {
     "argparse": "^1.0.6",
     "autoprefixer": "^6.1.2",
@@ -40,18 +55,6 @@
   "engines": {
     "node": ">=5.0.0",
     "npm": ">=3.0.0"
-  },
-  "homepage": "https://github.com/carrot/roots-mini",
-  "keywords": [
-    "roots",
-    "static",
-    "webpack"
-  ],
-  "license": "MIT",
-  "main": "lib",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/carrot/roots-mini.git"
   },
   "scripts": {
     "coverage": "nyc --reporter=html ava && open coverage/index.html",

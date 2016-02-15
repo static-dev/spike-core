@@ -32,7 +32,7 @@
     "husky": "^0.10.2",
     "nyc": "^5.0.1",
     "rimraf": "^2.4.5",
-    "snazzy": "^2.0.1",
+    "snazzy": "^3.0.0",
     "standard": "^6.0.4"
   },
   "engines": {

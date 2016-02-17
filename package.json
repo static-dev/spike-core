@@ -29,7 +29,7 @@
   "devDependencies": {
     "ava": "^0.11.0",
     "babel-eslint": "^4.1.6",
-    "husky": "^0.10.2",
+    "husky": "^0.11.1",
     "nyc": "^5.0.1",
     "rimraf": "^2.4.5",
     "snazzy": "^2.0.1",

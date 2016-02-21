@@ -6,7 +6,8 @@ require('babel-core/register')
 var CLI = require('../lib/cli').default
 var cli = new CLI()
 
-cli.run(process.argv.slice(2))
+cli.on('error', function (err) { console.error(err.stack) })
+cli.on('warning', function (warn) { console.warn(warn.stack) })
+cli.on('compile', console.log)
 
-cli.on('data', console.log)
-cli.on('error', console.error)
+cli.run(process.argv.slice(2))

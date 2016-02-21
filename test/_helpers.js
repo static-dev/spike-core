@@ -23,5 +23,10 @@ export function compileFixture (t, name, options = {}) {
   let project = new Roots(Object.assign(options, { root: testPath }))
   let publicPath = path.join(testPath, 'public')
 
-  return When(project.compile()).then((res) => { return {res, publicPath} })
+  return When.promise(function (resolve, reject) {
+    project.on('error', reject)
+    project.on('compile', function (res) { resolve({res, publicPath}) })
+
+    project.compile()
+  })
 }

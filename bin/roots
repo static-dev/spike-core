@@ -18,8 +18,8 @@ cli.on('warning', function (warn) {
 })
 
 cli.on('compile', function (res) {
-  console.log(chalk.green('compiled!'))
-  console.log(res)
+  var compileTime = (res.stats.endTime - res.stats.startTime) / 1000
+  console.log(chalk.green('compiled') + ' ' + chalk.gray('(' + compileTime + 's)'))
 })
 
 cli.run(process.argv.slice(2))

@@ -3,11 +3,23 @@
 // TODO: remove this before shipping
 require('babel-core/register')
 
+var chalk = require('chalk')
 var CLI = require('../lib/cli').default
 var cli = new CLI()
 
-cli.on('error', function (err) { console.error(err.stack) })
-cli.on('warning', function (warn) { console.warn(warn.stack) })
-cli.on('compile', console.log)
+cli.on('error', function (err) {
+  console.error(chalk.red('ERROR'))
+  console.error(err.stack)
+})
+
+cli.on('warning', function (warn) {
+  console.warn(chalk.yellow('WARNING'))
+  console.warn(warn.stack)
+})
+
+cli.on('compile', function (res) {
+  console.log(chalk.green('compiled!'))
+  console.log(res)
+})
 
 cli.run(process.argv.slice(2))

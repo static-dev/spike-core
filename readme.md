@@ -37,7 +37,10 @@ The above shows a minimal instantiation, but the constructor accepts a wide vari
 - **bundleName**: The name of your resulting js bundle from webpack. Defaults to `bundle.js`.
 - **dumpDirs**: An array of directories which, if direct children of the project root, will dump their contents to the root on compile. Defaults to `['views', 'assets']`.
 - **locals**: An object containing locals to be passed to jade views. This can be used for values, functions, any sort of view helper you need.
-- **ignore**: An array of regexes, each one defining a file pattern to be ignored from compilation.
+- **ignore**: An array of [micromatch](https://github.com/jonschlinkert/micromatch) strings, each one defining a file pattern to be ignored from compilation.
+- **outputDir**: The name or path of the folder your project will be compiled into, on top of the project's root. Defaults to `'public'`.
+
+> **Note:** Not familiar with minimatch or micromatch? Check out the [minimatch cheat sheet](https://github.com/motemen/minimatch-cheat-sheet) and test your patterns with [globtester](http://www.globtester.com). Trust us, it's a much cleaner and easier way to write regexes for the file system : )
 
 Roots exposes a simpler and more straightforward configuration interface than if you were to set up the webpack configuration yourself. However, if you'd like to directly edit the webpack config, you can still do this after the project has been instantiated through the `config` property on each instance.
 

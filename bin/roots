@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+// TODO: remove this before shipping
+require('babel-core/register')
+
+var CLI = require('../lib/cli').default
+var cli = new CLI()
+
+cli.run(process.argv.slice(2))
+
+cli.on('data', console.log)
+cli.on('error', console.error)

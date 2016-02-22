@@ -3,23 +3,11 @@
   "description": "a little roots-y experiment",
   "version": "0.0.0",
   "author": "Jeff Escalante",
-  "bugs": {
-    "url": "https://github.com/carrot/roots-mini/issues"
-  },
-  "homepage": "https://github.com/carrot/roots-mini",
-  "keywords": [
-    "roots",
-    "static",
-    "webpack"
-  ],
-  "license": "MIT",
-  "main": "lib",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/carrot/roots-mini.git"
-  },
   "bin": {
     "rootsmini": "./bin/roots"
+  },
+  "bugs": {
+    "url": "https://github.com/carrot/roots-mini/issues"
   },
   "dependencies": {
     "argparse": "^1.0.6",
@@ -57,13 +45,25 @@
     "node": ">=5.0.0",
     "npm": ">=3.0.0"
   },
+  "homepage": "https://github.com/carrot/roots-mini",
+  "keywords": [
+    "roots",
+    "static",
+    "webpack"
+  ],
+  "license": "MIT",
+  "main": "lib",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/carrot/roots-mini.git"
+  },
   "scripts": {
+    "build": "mv lib src && babel src --out-dir lib",
     "coverage": "nyc --reporter=html ava && open coverage/index.html",
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
     "test": "ava --require babel-core/register --verbose --serial",
-    "build": "mv lib src && babel src --out-dir lib",
     "unbuild": "rm -rf lib && mv src lib"
   },
   "standard": {

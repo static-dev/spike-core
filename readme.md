@@ -34,11 +34,14 @@ The above shows a minimal instantiation, but the constructor accepts a wide vari
 - **matchers**: An object with `jade`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Defaults are `**/*.jade`, `**/*.css`, and `**/*.js`. Be very careful if you are trying to change this.
 - **postCssPlugins**: An array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing.
 - **babelConfig**: A [configuration object for Babel](http://babeljs.io/docs/usage/options/) for JS processing.
-- **bundleName**: The name of your resulting js bundle from webpack. Defaults to `bundle.js`.
 - **dumpDirs**: An array of directories which, if direct children of the project root, will dump their contents to the root on compile. Defaults to `['views', 'assets']`.
 - **locals**: An object containing locals to be passed to jade views. This can be used for values, functions, any sort of view helper you need.
 - **ignore**: An array of [micromatch](https://github.com/jonschlinkert/micromatch) strings, each one defining a file pattern to be ignored from compilation.
 - **outputDir**: The name or path of the folder your project will be compiled into, on top of the project's root. Defaults to `'public'`.
+- **entry**: Webpack entry object duplicate. Can be used for code splitting and/or to use multiple bundles. Defaults to `{ 'js/main': ['./assets/js/index.js'] }`.
+- **modulesDirectories**: Webpack modulesDirectories array option, to select where modules can be loaded from. Defaults to `['node_modules', 'bower_components']`.
+- **jadeTemplates**: Boolean, if set to true, all jade templates will have a javascript template rendered alongside them in the output with the same name and `.js` appended to the end. Defaults to `false`.
+- **cssTemplates**: Boolean, if set to true, all css files will have a javascript template rendered alongside them in the output with the same name and `.js` appended to the end. Defaults to `false`.
 
 > **Note:** Not familiar with minimatch or micromatch? Check out the [minimatch cheat sheet](https://github.com/motemen/minimatch-cheat-sheet) and test your patterns with [globtester](http://www.globtester.com). Trust us, it's a much cleaner and easier way to write regexes for the file system : )
 

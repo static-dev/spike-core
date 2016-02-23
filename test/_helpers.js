@@ -6,7 +6,7 @@ import node from 'when/node'
 import Roots from '..'
 
 // export references to required modules and/or paths
-export const fixtures_path = node_path.join(__dirname, 'fixtures')
+export const fixturesPath = node_path.join(__dirname, 'fixtures')
 export const fs = node.liftAll(node_fs)
 export const test = ava
 export const path = node_path
@@ -19,9 +19,9 @@ export const path = node_path
  *                     it's `public/` directory
  */
 export function compileFixture (t, name, options = {}) {
-  let testPath = path.join(fixtures_path, name)
-  let project = new Roots(Object.assign(options, { root: testPath }))
-  let publicPath = path.join(testPath, 'public')
+  const testPath = path.join(fixturesPath, name)
+  const project = new Roots(Object.assign(options, { root: testPath }))
+  const publicPath = path.join(testPath, 'public')
 
   return When.promise(function (resolve, reject) {
     project.on('error', reject)

@@ -16,7 +16,9 @@ The thinking behind this experiment is explained in [this article](https://mediu
 
 ### Usage
 
-Roots can operate through either a javascript API or a CLI interface. At the moment, only the JS API is being developed, the CLI will come later on once the project is closer to complete.
+Roots can operate through either a javascript API or a CLI interface. We'll break them both down below.
+
+#### Javacript API
 
 The Roots module exposes a single class through which all functionality operates. An instance of the class should be created for each project being compiled with Roots.
 
@@ -53,6 +55,24 @@ console.log(project.config) // echoes bare webpack config object, can be edited
 ```
 
 If you decide to edit the webpack config object directly, *be careful*. It is easy to break the way roots works without knowing exactly what you are doing here. If there's something you are looking to customize that is not part of roots' options, it's better to open an issue and ask for it to be made customizable, then we'll get you a much cleaner way to do it!
+
+Note that each project is an event emitter, and all feedback on what the project is doing will come back through events on the `project` instance. Currently the following events are supported:
+
+- `compile`: the project has finished compiling
+- `warning`: the project has emitted a warning - not fatal but should be checked out
+- `error`: the project has errored and will not complete compilation
+
+To compile an instantiated project, you can run `project.compile()`. This method will synchronously return a unique id, which can be used to track events related to this particular compile if necessary. You must be listening for the events you are interested in **before** calling `compile` if you want to ensure that you will get all feedback.
+
+#### Command Line Interface
+
+Roots mini can be accessed through the command line if installed globally through npm (`npm i roots-mini -g`). It exposes a binary by the name of `rootsmini`.
+
+Currently there is only one possible command, `compile`. Call `rootsmini compile` in a roots-mini project directory and it will compile the project, emitting any errors or success events via stdout.
+
+You can find roots-mini's [standard starter template here](https://github.com/carrot/roots-mini-base), and it can be installed through [sprout](https://github.com/carrot/sprout). Eventually the template tool will be a part of the CLI, but for now you'll have to do it the hard way.
+
+More CLI commands coming soon!
 
 ### The Stack
 

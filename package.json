@@ -35,6 +35,7 @@
     "ava": "^0.11.0",
     "babel-cli": "^6.5.1",
     "babel-eslint": "^4.1.6",
+    "babel-plugin-rewire": "1.0.0-beta-5",
     "husky": "^0.10.2",
     "nyc": "^5.0.1",
     "rimraf": "^2.4.5",
@@ -59,11 +60,11 @@
   },
   "scripts": {
     "build": "mv lib src && babel src --out-dir lib",
-    "coverage": "nyc --reporter=html ava --require babel-core/register --verbose --serial && open coverage/index.html",
+    "coverage": "NODE_ENV=test nyc --reporter=html ava --require babel-core/register --verbose --serial && open coverage/index.html",
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
-    "test": "ava --require babel-core/register --verbose --serial",
+    "test": "NODE_ENV=test ava --require babel-core/register --verbose --serial",
     "unbuild": "rm -rf lib && mv src lib"
   },
   "standard": {

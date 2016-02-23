@@ -23,3 +23,7 @@ test.cb('emits compile warnings correctly', (t) => {
 
   project.compile()
 })
+
+test.skip('emits webpack warnings correctly', (t) => {
+  console.log('need to be able to generate a webpack warning for this test')
+})

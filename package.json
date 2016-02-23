@@ -59,7 +59,7 @@
   },
   "scripts": {
     "build": "mv lib src && babel src --out-dir lib",
-    "coverage": "nyc --reporter=html ava && open coverage/index.html",
+    "coverage": "nyc --reporter=html ava --require babel-core/register --verbose --serial && open coverage/index.html",
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",

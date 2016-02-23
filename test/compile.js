@@ -1,0 +1,25 @@
+import Roots from '..'
+import {
+  test,
+  compileFixture,
+  fixturesPath,
+  path
+} from './_helpers'
+
+test('emits compile errors correctly', (t) => {
+  return compileFixture(t, 'compile_error').catch((err) => {
+    t.ok(err.message.toString().match(/no closing bracket found/))
+  })
+})
+
+test.cb('emits compile warnings correctly', (t) => {
+  const project = new Roots({ root: path.join(fixturesPath, 'css') })
+
+  project.on('error', t.end)
+  project.on('warning', (msg) => {
+    t.ok(msg.toString().match(/Cannot resolve 'file' or 'directory' \.\/assets\/js\/index\.js/))
+    t.end()
+  })
+
+  project.compile()
+})

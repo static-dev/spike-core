@@ -20,3 +20,7 @@ test('API config overrides app.js config', (t) => {
     return t.is(contents, 'double override')
   })
 })
+
+test('Throws error for invalid app.js syntax', (t) => {
+  return t.throws(() => compileFixture(t, 'app_config_error'), 'SyntaxError: /Users/jeff/Sites/roots-mini/test/fixtures/app_config_error/app.js: Unexpected token (1:4)')
+})

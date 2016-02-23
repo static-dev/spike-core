@@ -12,6 +12,6 @@ test('config errors', (t) => {
     'ValidationError: child "postCssPlugins" fails because ["postCssPlugins" must be an array]')
   t.throws(() => { new Roots({ root: 'foo', babelConfig: 'wow' }) }, // eslint-disable-line
     'ValidationError: child "babelConfig" fails because ["babelConfig" must be an object]')
-  t.throws(() => { new Roots({ root: 'foo', bundleName: ['foo', 'bar'] }) }, // eslint-disable-line
-    'ValidationError: child "bundleName" fails because ["bundleName" must be a string]')
+  t.throws(() => { new Roots({ root: 'foo', entry: ['foo', 'bar'] }) }, // eslint-disable-line
+    'ValidationError: child "entry" fails because ["entry" must be an object]')
 })

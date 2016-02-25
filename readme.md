@@ -68,11 +68,12 @@ To compile an instantiated project, you can run `project.compile()`. This method
 
 Roots mini can be accessed through the command line if installed globally through npm (`npm i roots-mini -g`). It exposes a binary by the name of `rootsmini`.
 
-Currently there is only one possible command, `compile`. Call `rootsmini compile` in a roots-mini project directory and it will compile the project, emitting any errors or success events via stdout.
+##### Commands
+
+- `compile`: compiles a roots project once
+- `watch`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved
 
 You can find roots-mini's [standard starter template here](https://github.com/carrot/roots-mini-base), and it can be installed through [sprout](https://github.com/carrot/sprout). Eventually the template tool will be a part of the CLI, but for now you'll have to do it the hard way.
-
-More CLI commands coming soon!
 
 ### The Stack
 

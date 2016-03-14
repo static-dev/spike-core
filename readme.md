@@ -14,6 +14,12 @@ The thinking behind this experiment is explained in [this article](https://mediu
 - Make sure you are familiar with [ES6](https://medium.com/sons-of-javascript/javascript-an-introduction-to-es6-1819d0d89a0f)
 - Make sure you are familiar with [test-driven development](https://www.wikiwand.com/en/Test-driven_development)
 
+### Installation
+
+- `npm install sprout-cli -g`
+- `sprout add roots-mini-base git@github.com:carrot/roots-mini-base.git`
+- `sprout new roots-mini-base myproject`
+
 ### Usage
 
 Roots can operate through either a javascript API or a CLI interface. We'll break them both down below.

@@ -34,7 +34,7 @@ The above shows a minimal instantiation, but the constructor accepts a wide vari
 
 - **root**: An absolute path to the root of your project.
 - **matchers**: An object with `jade`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Defaults are `**/*.jade`, `**/*.css`, and `**/*.js`. Be very careful if you are trying to change this.
-- **postCssPlugins**: An array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing.
+- **postcss**: An object that can contain a `plugins` key, which is an array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing, and/or a `options` key, which takes [any of the postcss-loader options](https://github.com/postcss/postcss-loader#custom-syntaxes).
 - **babelConfig**: A [configuration object for Babel](http://babeljs.io/docs/usage/options/) for JS processing.
 - **dumpDirs**: An array of directories which, if direct children of the project root, will dump their contents to the root on compile. Defaults to `['views', 'assets']`.
 - **locals**: An object containing locals to be passed to jade views. This can be used for values, functions, any sort of view helper you need.

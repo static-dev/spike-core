@@ -21,7 +21,7 @@
     "css-loader": "^0.23.1",
     "glob": "^6.0.1",
     "jade": "^1.11.0",
-    "jade-loader": "^0.8.0",
+    "jade-loader": "git:github.com/carrot/jade-loader",
     "joi": "^8.0.1",
     "lodash.union": "^4.2.0",
     "micromatch": "^2.3.7",

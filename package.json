@@ -32,6 +32,7 @@
     "postcss-import": "^8.0.2",
     "postcss-loader": "^0.8.0",
     "require-from-string": "^1.1.0",
+    "rimraf": "^2.5.2",
     "webpack": "^1.12.10",
     "when": "^3.7.7"
   },

@@ -22,4 +22,8 @@ cli.on('compile', function (res) {
   console.log(chalk.green('compiled') + ' ' + chalk.gray('(' + compileTime + 's)'))
 })
 
+cli.on('remove', function (msg) {
+  console.log(chalk.green(msg))
+})
+
 cli.run(process.argv.slice(2))

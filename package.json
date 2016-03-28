@@ -31,7 +31,7 @@
     "micromatch": "^2.3.7",
     "postcss": "^5.0.12",
     "postcss-import": "^8.0.2",
-    "postcss-loader": "^0.8.0",
+    "postcss-loader": "jenius/postcss-loader",
     "require-from-string": "^1.1.0",
     "rimraf": "^2.5.2",
     "webpack": "^1.12.10",

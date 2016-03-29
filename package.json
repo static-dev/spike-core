@@ -65,7 +65,7 @@
     "url": "git://github.com/carrot/roots-mini.git"
   },
   "scripts": {
-    "build": "mv lib src && babel src --out-dir lib",
+    "build": "mv lib src && babel src --out-dir lib --source-maps false",
     "coverage": "NODE_ENV=test nyc --reporter=html ava --require babel-core/register --verbose --serial && open coverage/index.html",
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",

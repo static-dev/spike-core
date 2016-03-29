@@ -24,11 +24,13 @@
     "file-loader": "carrot/file-loader",
     "glob": "^6.0.1",
     "image-extensions": "^1.1.0",
+    "inquirer": "^0.12.0",
     "jade": "^1.11.0",
     "jade-loader": "carrot/jade-loader",
     "joi": "^8.0.1",
     "lodash.union": "^4.2.0",
     "micromatch": "^2.3.7",
+    "mkdirp": "^0.5.1",
     "postcss": "^5.0.12",
     "postcss-import": "^8.0.2",
     "postcss-loader": "jenius/postcss-loader",
@@ -71,10 +73,17 @@
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
-    "test": "NODE_ENV=test ava --require babel-core/register --verbose --serial",
+    "test": "NODE_ENV=test ava ",
     "unbuild": "rm -rf lib && mv src lib"
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "ava": {
+    "require": [
+      "babel-core/register"
+    ],
+    "verbose": "true",
+    "serial": "true"
   }
 }

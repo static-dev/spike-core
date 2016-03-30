@@ -1,21 +1,26 @@
 import test from 'ava'
 import Roots from '..'
 import path from 'path'
-import node from 'when/node'
 import rimraf from 'rimraf'
+import {EventEmitter} from 'events'
 import { fixturesPath } from './_helpers'
 
-test('creates a new roots project', (t) => {
+test.cb('creates a new roots project', (t) => {
   const testPath = path.join(fixturesPath, 'new_test')
-  return Roots.new({ root: testPath,
+  const emitter = new EventEmitter()
+
+  emitter.on('info', console.log) // just because this test takes forever
+  emitter.on('error', t.fail)
+  emitter.on('done', (project) => {
+    t.is(project.config.context, testPath)
+    rimraf(testPath, t.end)
+  })
+
+  Roots.new({ root: testPath, emitter: emitter,
     locals: {
       name: 'test',
       description: 'test',
       github_username: 'test'
     }
-  }).then((instance) => {
-    t.is(instance.config.context, testPath)
-  }).finally(() => {
-    return node.call(rimraf, testPath)
   })
 })

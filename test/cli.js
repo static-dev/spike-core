@@ -1,6 +1,6 @@
 import CLI from '../lib/cli'
 import {EventEmitter} from 'events'
-import { test } from './_helpers'
+import {test} from './_helpers'
 
 let cli
 

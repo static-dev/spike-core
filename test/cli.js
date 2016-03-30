@@ -9,6 +9,8 @@ class RootsMock extends EventEmitter {
   constructor (opts) {
     super()
     this.opts = opts
+    this.config = {}
+    this.config.context = 'test'
   }
 
   compile () {
@@ -17,6 +19,10 @@ class RootsMock extends EventEmitter {
 
   watch () {
     this.emit('compile', 'watch mock')
+  }
+
+  static new (opts) {
+    opts.emitter.emit('done', new this())
   }
 }
 
@@ -36,6 +42,19 @@ test.cb('compile', (t) => {
   })
 
   cli.run('compile')
+})
+
+test.cb('new', (t) => {
+  t.ok(cli)
+
+  cli.on('error', t.end)
+  cli.on('warning', t.end)
+  cli.on('success', (res) => {
+    t.ok(res.match(/project created at.*test/))
+    t.end()
+  })
+
+  cli.run('new test')
 })
 
 test.skip('watch', (t) => {

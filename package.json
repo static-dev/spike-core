@@ -42,7 +42,7 @@
     "when": "^3.7.7"
   },
   "devDependencies": {
-    "ava": "^0.11.0",
+    "ava": "^0.13.0",
     "babel-cli": "^6.5.1",
     "babel-eslint": "^4.1.6",
     "babel-plugin-rewire": "1.0.0-beta-5",

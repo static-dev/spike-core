@@ -1,11 +1,11 @@
-import TestPlugin from './plugin.js'
-
 export default {
-  locals: {
-    foo: 'bar'
+  ignore: ['app.js', 'fooLoader.js'],
+  resolve: {
+    alias: {
+      fooLoader: './fooLoader.js'
+    }
   },
-  ignore: ['app.js', 'plugin.js'],
-  plugins: [
-    new TestPlugin()
-  ]
+  module: {
+    loaders: [{ test: /\.foo$/, loader: 'fooLoader' }]
+  }
 }

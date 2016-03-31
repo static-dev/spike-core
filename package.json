@@ -48,7 +48,6 @@
     "babel-plugin-rewire": "1.0.0-beta-5",
     "husky": "^0.10.2",
     "nyc": "^5.0.1",
-    "rimraf": "^2.4.5",
     "snazzy": "^2.0.1",
     "standard": "^6.0.4"
   },

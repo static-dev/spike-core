@@ -1,5 +1,8 @@
 # Roots Mini
 
+[![tests](https://img.shields.io/npm/v/roots-mini.svg?style=flat)](https://www.npmjs.com/package/roots-mini)
+[![tests](http://img.shields.io/travis/carrot/roots-mini/develop.svg?style=flat)](https://travis-ci.org/carrot/roots-mini-base)
+
 Experimenting with a new [webpack](http://webpack.github.io) core for roots.
 
 ## Why should you care?

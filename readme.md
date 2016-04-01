@@ -19,13 +19,25 @@ The thinking behind this experiment is explained in [this article](https://mediu
 
 ## Installation
 
-- `npm install sprout-cli -g`
-- `sprout add roots-mini-base git@github.com:carrot/roots-mini-base.git`
-- `sprout new roots-mini-base myproject`
+- `npm install roots-mini -g`
+- `rootsmini new projectname`
 
 ## Usage
 
 Roots can operate through either a javascript API or a CLI interface. We'll break them both down below.
+
+### Command Line Interface
+
+Roots mini can be accessed through the command line if installed globally through npm (`npm i roots-mini -g`). It exposes a binary by the name of `rootsmini`.
+
+#### Commands
+
+- `rootsmini watch`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved
+- `rootsmini compile`: compiles a roots project once
+- `rootsmini new <projectname>`: creates a new roots-mini project
+- `rootsmini clean`: removes your project's output directory
+
+You can find roots-mini's [standard starter template here](https://github.com/carrot/roots-mini-base), and it can be installed through [sprout](https://github.com/carrot/sprout). Eventually the template tool will be a part of the CLI, but for now you'll have to do it the hard way.
 
 ### Javacript API
 
@@ -76,18 +88,6 @@ Note that each project is an event emitter, and all feedback on what the project
 - `remove`: roots-mini has removed a particular path
 
 To compile an instantiated project, you can run `project.compile()`. This method will synchronously return a unique id, which can be used to track events related to this particular compile if necessary. You must be listening for the events you are interested in **before** calling `compile` if you want to ensure that you will get all feedback.
-
-### Command Line Interface
-
-Roots mini can be accessed through the command line if installed globally through npm (`npm i roots-mini -g`). It exposes a binary by the name of `rootsmini`.
-
-#### Commands
-
-- `compile`: compiles a roots project once
-- `watch`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved
-- `clean`: removes your project's output directory
-
-You can find roots-mini's [standard starter template here](https://github.com/carrot/roots-mini-base), and it can be installed through [sprout](https://github.com/carrot/sprout). Eventually the template tool will be a part of the CLI, but for now you'll have to do it the hard way.
 
 ## The Stack
 

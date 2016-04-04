@@ -6,7 +6,9 @@ import {
 } from './_helpers'
 
 test('css plugin works', (t) => {
-  return compileFixture(t, 'css').then(({publicPath}) => {
-    return fs.stat(path.join(publicPath, 'main.css'))
-  }).then(t.ok.bind(t))
+  return compileFixture(t, 'css')
+    .then(({publicPath}) => { return path.join(publicPath, 'main.css') })
+    .tap((index) => { return fs.stat(index).tap(t.ok.bind(t)) })
+    .then((index) => { return fs.readFile(index, 'utf8') })
+    .then((contents) => { return t.regex(contents, /background: blue/) })
 })

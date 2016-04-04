@@ -37,7 +37,7 @@ Roots mini can be accessed through the command line if installed globally throug
 - `rootsmini new <projectname>`: creates a new roots-mini project
 - `rootsmini clean`: removes your project's output directory
 
-You can find roots-mini's [standard starter template here](https://github.com/carrot/roots-mini-base), and it can be installed through [sprout](https://github.com/carrot/sprout). Eventually the template tool will be a part of the CLI, but for now you'll have to do it the hard way.
+You can find roots-mini's [standard starter template here](https://github.com/carrot/roots-mini-base), and it can be installed through [sprout](https://github.com/carrot/sprout).
 
 ### Javacript API
 

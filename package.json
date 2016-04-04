@@ -49,7 +49,8 @@
     "husky": "^0.10.2",
     "nyc": "^5.0.1",
     "snazzy": "^2.0.1",
-    "standard": "^6.0.4"
+    "standard": "^6.0.4",
+    "sugarss": "^0.1.2"
   },
   "engines": {
     "node": ">=5.0.0",

@@ -36,7 +36,7 @@
     "postcss-loader": "jenius/postcss-loader",
     "require-from-string": "^1.1.0",
     "rimraf": "^2.5.2",
-    "roots-jade-loader": "0.0.2",
+    "roots-jade-loader": "0.0.3",
     "sprout": "^1.0.0",
     "webpack": "^1.12.10",
     "when": "^3.7.7"

@@ -1,7 +1,7 @@
 {
   "name": "roots-mini",
   "description": "a little roots-y experiment",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "author": "Jeff Escalante",
   "bin": {
     "rootsmini": "./bin/roots"

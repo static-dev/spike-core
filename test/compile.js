@@ -8,7 +8,7 @@ import {
 
 test('emits compile errors correctly', (t) => {
   return compileFixture(t, 'compile_error').catch((err) => {
-    t.ok(err.message.toString().match(/no closing bracket found/))
+    t.truthy(err.message.toString().match(/no closing bracket found/))
   })
 })
 
@@ -17,7 +17,7 @@ test.cb('emits compile warnings correctly', (t) => {
 
   project.on('error', t.end)
   project.on('warning', (msg) => {
-    t.ok(msg.toString().match(/Cannot resolve 'file' or 'directory' \.\/assets\/js\/index\.js/))
+    t.truthy(msg.toString().match(/Cannot resolve 'file' or 'directory' \.\/assets\/js\/index\.js/))
     t.end()
   })
 

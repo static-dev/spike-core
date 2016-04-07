@@ -3,6 +3,13 @@
   "description": "a little roots-y experiment",
   "version": "0.0.15",
   "author": "Jeff Escalante",
+  "ava": {
+    "require": [
+      "babel-core/register"
+    ],
+    "verbose": "true",
+    "serial": "true"
+  },
   "bin": {
     "rootsmini": "./bin/roots"
   },
@@ -27,6 +34,7 @@
     "image-extensions": "^1.1.0",
     "inquirer": "^0.12.0",
     "jade": "^1.11.0",
+    "jade-static-loader": "0.0.1",
     "joi": "^8.0.1",
     "lodash.union": "^4.2.0",
     "micromatch": "^2.3.7",
@@ -37,7 +45,6 @@
     "postcss-loader": "jenius/postcss-loader",
     "require-from-string": "^1.1.0",
     "rimraf": "^2.5.2",
-    "roots-jade-loader": "0.0.3",
     "sprout": "^1.0.0",
     "webpack": "^1.12.10",
     "when": "^3.7.7"
@@ -80,12 +87,5 @@
   },
   "standard": {
     "parser": "babel-eslint"
-  },
-  "ava": {
-    "require": [
-      "babel-core/register"
-    ],
-    "verbose": "true",
-    "serial": "true"
   }
 }

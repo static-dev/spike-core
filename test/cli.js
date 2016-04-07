@@ -32,7 +32,7 @@ test.before((t) => {
 })
 
 test.cb('compile', (t) => {
-  t.ok(cli)
+  t.truthy(cli)
 
   cli.on('error', t.end)
   cli.on('warning', t.end)
@@ -45,12 +45,12 @@ test.cb('compile', (t) => {
 })
 
 test.cb('new', (t) => {
-  t.ok(cli)
+  t.truthy(cli)
 
   cli.on('error', t.end)
   cli.on('warning', t.end)
   cli.on('success', (res) => {
-    t.ok(res.match(/project created at.*test/))
+    t.truthy(res.match(/project created at.*test/))
     t.end()
   })
 
@@ -58,7 +58,7 @@ test.cb('new', (t) => {
 })
 
 test.skip('watch', (t) => {
-  t.ok(cli)
+  t.truthy(cli)
 
   cli.on('error', t.end)
   cli.on('warning', t.end)

@@ -15,15 +15,14 @@ test.cb('watches the project, reloads on modification', (t) => {
   })
   let i = 0
 
-  // right now it compiles twice on the first shot for some reason
   project.on('compile', (res) => {
     i++
-    if (i > 1) {
+    if (i === 1) {
       const file = path.join(fixturesPath, 'watch/index.jade')
       fs.appendFileSync(file, ' ')
       fs.writeFileSync(file, fs.readFileSync(file, 'utf8').trim())
     }
-    if (i > 2) {
+    if (i === 2) {
       watcher.close()
       t.end()
     }

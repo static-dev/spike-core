@@ -30,5 +30,5 @@ test.cb('watches the project, reloads on modification', (t) => {
   })
 
   const watcher = project.watch()
-  t.ok((typeof watcher.startTime) === 'number')
+  t.truthy((typeof watcher.startTime) === 'number')
 })

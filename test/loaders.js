@@ -14,7 +14,7 @@ test.cb.beforeEach((t) => {
 test('compiles a project with a custom loader', (t) => {
   return compileFixture(t, 'loaders')
     .then(({publicPath}) => { return path.join(publicPath, 'js/main.js') })
-    .tap((index) => { return fs.stat(index).tap(t.ok.bind(t)) })
+    .tap((index) => { return fs.stat(index).tap(t.truthy.bind(t)) })
     .then((index) => { return fs.readFile(index, 'utf8') })
     .then((contents) => { return t.regex(contents, /overwritten from local loader/) })
 })

@@ -19,8 +19,10 @@ test.cb('watches the project, reloads on modification', (t) => {
     i++
     if (i === 1) {
       const file = path.join(fixturesPath, 'watch/index.jade')
-      fs.appendFileSync(file, ' ')
-      fs.writeFileSync(file, fs.readFileSync(file, 'utf8').trim())
+      setTimeout(() => {
+        fs.appendFileSync(file, ' ')
+        fs.writeFileSync(file, fs.readFileSync(file, 'utf8').trim())
+      }, 100)
     }
     if (i === 2) {
       watcher.close()

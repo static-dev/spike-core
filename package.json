@@ -1,7 +1,7 @@
 {
   "name": "roots-mini",
   "description": "a little roots-y experiment",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "author": "Jeff Escalante",
   "ava": {
     "require": [

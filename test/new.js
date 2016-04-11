@@ -3,7 +3,7 @@ import Roots from '..'
 import path from 'path'
 import rimraf from 'rimraf'
 import {EventEmitter} from 'events'
-import { fixturesPath } from './_helpers'
+import {fixturesPath} from './_helpers'
 
 test.cb('creates a new roots project', (t) => {
   const testPath = path.join(fixturesPath, 'new_test')
@@ -15,7 +15,6 @@ test.cb('creates a new roots project', (t) => {
     t.is(project.config.context, testPath)
     rimraf(testPath, t.end)
   })
-
   Roots.new({ root: testPath, emitter: emitter,
     locals: {
       name: 'test',

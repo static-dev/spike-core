@@ -53,6 +53,7 @@
     "babel-eslint": "^6.0.2",
     "babel-plugin-rewire": "1.0.0-rc-2",
     "husky": "^0.11.4",
+    "md5-file": "^2.0.4",
     "nyc": "^6.2.1",
     "snazzy": "^3.0.0",
     "standard": "^6.0.4",

@@ -31,8 +31,8 @@ Roots mini can be accessed through the command line if installed globally throug
 
 #### Commands
 
-- `rootsmini watch`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved
-- `rootsmini compile`: compiles a roots project once
+- `rootsmini watch [--env]`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved
+- `rootsmini compile [--env]`: compiles a roots project once,
 - `rootsmini new <projectname>`: creates a new roots-mini project
 - `rootsmini clean`: removes your project's output directory
 
@@ -87,6 +87,35 @@ Note that each project is an event emitter, and all feedback on what the project
 - `remove`: roots-mini has removed a particular path
 
 To compile an instantiated project, you can run `project.compile()`. This method will synchronously return a unique id, which can be used to track events related to this particular compile if necessary. You must be listening for the events you are interested in **before** calling `compile` if you want to ensure that you will get all feedback.
+
+## Environments
+
+If you have different environments you intend to deploy to that need different settings, this is **[no probalo](http://www.hrwiki.org/w/images/8/85/Senor_Cardgage_shirt_close.PNG)**. Just make a second `app.js` file, but stick the name of your environment between the `app` and the `js`, like this: `app.production.js`. Now, when you initialize roots with the `production` environment, it will merge your production config (with priority) into your normal app config.
+
+So let's say you have an app config that looks like this:
+
+```js
+export default {
+  ignores: [...],
+  locals: {
+    apiUrl: 'http://localhost:3000/api/v1'
+  }
+}
+```
+
+If you wanted to update that API url to a real one for production, you could set up an `app.production.js` file that looks like this:
+
+```js
+export default {
+  locals: {
+    apiUrl: 'http://real-website.com/api/v1'
+  }
+}
+```
+
+Since the two configuration files are _merged_, you don't lose all your other settings from the `app.js` file, it just merges in any new ones from `app.production.js`. Very amaze!
+
+To change the environment, from javascript, just pass an `env` option to the roots contructor. From the CLI, just pass `--env name` or `-e name` as an argument to the `compile` or `watch` commands.
 
 ## The Stack
 

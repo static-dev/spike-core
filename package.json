@@ -34,6 +34,7 @@
     "jade": "^1.11.0",
     "jade-static-loader": "0.0.1",
     "joi": "^8.0.5",
+    "lodash.merge": "^4.3.5",
     "lodash.union": "^4.2.0",
     "micromatch": "^2.3.7",
     "mkdirp": "^0.5.1",

@@ -32,7 +32,7 @@ Roots mini can be accessed through the command line if installed globally throug
 #### Commands
 
 - `rootsmini watch [--env]`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved
-- `rootsmini compile [--env]`: compiles a roots project once,
+- `rootsmini compile [--env]`: compiles a roots project once
 - `rootsmini new <projectname>`: creates a new roots-mini project
 - `rootsmini clean`: removes your project's output directory
 
@@ -59,6 +59,7 @@ Option                 | Description                                            
 **jade**               | A [configuration object for jade](http://jade-lang.com/api/).                                                                                                                                                                                                                                                                       |
 **dumpDirs**           | An array of directories which, if direct children of the project root, will dump their contents to the root on compile. Defaults to                                                                                                                                                                                                 | `['views', 'assets']`.
 **locals**             | An object containing locals to be passed to jade views. This can be used for values, functions, any sort of view helper you need.                                                                                                                                                                                                   |
+**env**                | The environment you would like to use when compiling. See [environments](#environments) for more information about this option.                                                                                                                                                                                            |
 **ignore**             | An array of [micromatch](https://github.com/jonschlinkert/micromatch) strings, each one defining a file pattern to be ignored from compilation.                                                                                                                                                                                     |
 **outputDir**          | The name or path of the folder your project will be compiled into, on top of the project's root.                                                                                                                                                                                                                                    | `'public'`
 **cleanUrls**          | Remove `.html` from your paths during `roots.watch`.                                                                                                                                                                                                                                                                                | `true`

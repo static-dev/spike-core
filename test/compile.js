@@ -1,10 +1,7 @@
-import Roots from '..'
-import {
-  test,
-  compileFixture,
-  fixturesPath,
-  path
-} from './_helpers'
+const Roots = require('..')
+const test = require('ava')
+const path = require('path')
+const {fixturesPath, compileFixture} = require('./_helpers')
 
 test('emits compile errors correctly', (t) => {
   return compileFixture(t, 'compile_error').catch((err) => {

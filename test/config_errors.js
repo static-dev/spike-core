@@ -1,5 +1,5 @@
-import test from 'ava'
-import Roots from '..'
+const test = require('ava')
+const Roots = require('..')
 
 test('config errors', (t) => {
   t.throws(() => { new Roots() }, // eslint-disable-line

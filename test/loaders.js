@@ -1,11 +1,7 @@
-import {
-  test,
-  compileFixture,
-  fixturesPath,
-  fs,
-  path,
-  rimraf
-} from './_helpers'
+const test = require('ava')
+const path = require('path')
+const rimraf = require('rimraf')
+const {compileFixture, fixturesPath, fs} = require('./_helpers')
 
 test.cb.beforeEach((t) => {
   rimraf(path.join(fixturesPath, 'loaders', 'public'), () => { t.end() })

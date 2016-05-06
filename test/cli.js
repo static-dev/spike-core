@@ -1,6 +1,7 @@
-import CLI from '../lib/cli'
-import {EventEmitter} from 'events'
-import {test} from './_helpers'
+const rewire = require('rewire')
+const {EventEmitter} = require('events')
+const test = require('ava')
+const CLI = rewire('../lib/cli')
 
 let cli
 let mock

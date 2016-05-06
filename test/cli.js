@@ -1,7 +1,7 @@
 const rewire = require('rewire')
 const {EventEmitter} = require('events')
 const test = require('ava')
-const CLI = rewire('../lib/cli')
+let CLI = rewire('../lib/cli')
 
 let cli
 let mock
@@ -30,7 +30,7 @@ class RootsMock extends EventEmitter {
 }
 
 test.beforeEach((t) => {
-  CLI.__Rewire__('Roots', RootsMock)
+  CLI.__set__('Roots', RootsMock)
   cli = new CLI()
 })
 

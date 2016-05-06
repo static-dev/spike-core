@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const {test, compileFixture} = require('./_helpers')
+const test = require('ava')
+const {compileFixture} = require('./_helpers')
 
 test('environment config parsed correctly', (t) => {
   return compileFixture(t, 'environments', { env: 'doge' }).then(({publicPath}) => {

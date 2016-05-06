@@ -1,9 +1,6 @@
-import {
-  test,
-  compileFixture,
-  fs,
-  path
-} from './_helpers'
+const test = require('ava')
+const path = require('path')
+const {fs, compileFixture} = require('./_helpers')
 
 test('uses app.js configuration', (t) => {
   return compileFixture(t, 'app_config').then(({publicPath}) => {

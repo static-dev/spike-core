@@ -1,7 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-import md5File from 'md5-file'
-import { test, compileFixture, fixturesPath } from './_helpers'
+const test = require('ava')
+const path = require('path')
+const fs = require('fs')
+const md5File = require('md5-file')
+const {compileFixture, fixturesPath} = require('./_helpers')
 
 test('static plugin copies over file with correct content', (t) => {
   return compileFixture(t, 'static').then(({publicPath}) => {

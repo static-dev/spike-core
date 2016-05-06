@@ -1,9 +1,9 @@
-import test from 'ava'
-import Roots from '..'
-import path from 'path'
-import rimraf from 'rimraf'
-import {EventEmitter} from 'events'
-import {fixturesPath} from './_helpers'
+const test = require('ava')
+const Roots = require('..')
+const path = require('path')
+const rimraf = require('rimraf')
+const {EventEmitter} = require('events')
+const {fixturesPath} = require('./_helpers')
 
 test.cb('creates a new roots project', (t) => {
   const testPath = path.join(fixturesPath, 'new_test')

@@ -1,7 +1,5 @@
-src
 test
 contributing.md
-.babelrc
 .editorconfig
 .travis.yml
 .doclets.yml

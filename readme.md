@@ -11,7 +11,7 @@ The thinking behind this experiment is explained in [this article](https://mediu
 
 ## Setup
 
-- Make sure you are running [node.js >= v4](https://nodejs.org/en/).
+- Make sure you are running [node.js >= v6](https://nodejs.org/en/).
 - Make sure you have an [editorconfig plugin](http://editorconfig.org/#download) installed for your text editor
 - Make sure you have a [standard js linter](http://standardjs.com/index.html#usage) installed, tests will not pass if linting fails
 - Make sure you are familiar with [ES6](https://medium.com/sons-of-javascript/javascript-an-introduction-to-es6-1819d0d89a0f)

@@ -1,9 +1,6 @@
-import {
-  test,
-  compileFixture,
-  fs,
-  path
-} from './_helpers'
+const test = require('ava')
+const path = require('path')
+const {compileFixture, fs} = require('./_helpers')
 
 test('discards directories, but keeps the directory\'s files', (t) => {
   return compileFixture(t, 'dump_dirs')

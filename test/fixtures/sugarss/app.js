@@ -1,6 +1,6 @@
-import sugarss from 'sugarss'
+const sugarss = require('sugarss')
 
-export default {
+module.exports = {
   ignore: ['**/_*'],
   postcss: {
     parser: sugarss

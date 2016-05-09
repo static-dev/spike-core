@@ -1,9 +1,6 @@
-import {
-  test,
-  compileFixture,
-  fs,
-  path
-} from './_helpers'
+const test = require('ava')
+const path = require('path')
+const {compileFixture, fs} = require('./_helpers')
 
 test('css plugin works with .css', (t) => {
   return compileFixture(t, 'css')

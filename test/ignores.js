@@ -1,9 +1,6 @@
-import {
-  test,
-  compileFixture,
-  fs,
-  path
-} from './_helpers'
+const test = require('ava')
+const path = require('path')
+const {compileFixture, fs} = require('./_helpers')
 
 test('does not compile ignored files', (t) => {
   return compileFixture(t, 'ignores', { ignore: ['**/layout.jade'] }).tap(({publicPath}) => {

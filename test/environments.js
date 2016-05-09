@@ -1,6 +1,7 @@
-import fs from 'fs'
-import path from 'path'
-import { test, compileFixture } from './_helpers'
+const fs = require('fs')
+const path = require('path')
+const test = require('ava')
+const {compileFixture} = require('./_helpers')
 
 test('environment config parsed correctly', (t) => {
   return compileFixture(t, 'environments', { env: 'doge' }).then(({publicPath}) => {

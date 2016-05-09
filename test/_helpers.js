@@ -1,17 +1,12 @@
-import node_fs from 'fs'
-import node_path from 'path'
-import ava from 'ava'
-import When from 'when'
-import node from 'when/node'
-import Roots from '..'
-import rimrafLib from 'rimraf'
+const nodeFs = require('fs')
+const path = require('path')
+const When = require('when')
+const node = require('when/node')
+const Roots = require('..')
 
 // export references to required modules and/or paths
-export const fixturesPath = node_path.join(__dirname, 'fixtures')
-export const fs = node.liftAll(node_fs)
-export const test = ava
-export const path = node_path
-export const rimraf = rimrafLib
+const fixturesPath = exports.fixturesPath = path.join(__dirname, 'fixtures')
+exports.fs = node.liftAll(nodeFs)
 
 /**
  * compiles a fixture into it's `public/` directory
@@ -20,7 +15,7 @@ export const rimraf = rimrafLib
  * @return {Promise} - a promise for the compiled fixture and the path to
  *                     it's `public/` directory
  */
-export function compileFixture (t, name, options = {}) {
+exports.compileFixture = function compileFixture (t, name, options = {}) {
   const testPath = path.join(fixturesPath, name)
   const project = new Roots(Object.assign(options, { root: testPath }))
   const publicPath = path.join(testPath, 'public')

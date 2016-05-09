@@ -1,9 +1,6 @@
-import {
-  test,
-  compileFixture,
-  fs,
-  path
-} from './_helpers'
+const test = require('ava')
+const path = require('path')
+const {compileFixture, fs} = require('./_helpers')
 
 test('injects template locals', (t) => {
   return compileFixture(t, 'locals', { locals: { foo: () => 'bar' } }).then(({publicPath}) => {

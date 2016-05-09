@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   ignore: ['app.js', 'fooLoader.js'],
   resolve: {
     alias: {

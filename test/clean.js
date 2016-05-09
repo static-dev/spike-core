@@ -1,11 +1,7 @@
-import Roots from '..'
-import {
-  test,
-  compileFixture,
-  fixturesPath,
-  fs,
-  path
-} from './_helpers'
+const Roots = require('..')
+const path = require('path')
+const test = require('ava')
+const {fs, compileFixture, fixturesPath} = require('./_helpers')
 
 test.before((t) => {
   return compileFixture(t, 'clean')

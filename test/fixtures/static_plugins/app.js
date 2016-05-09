@@ -1,6 +1,6 @@
-import GladePlugin from './plugin.js'
+const GladePlugin = require('./plugin.js')
 
-export default {
+module.exports = {
   locals: { foo: 'bar' },
   ignore: ['plugin.js'],
   plugins: [new GladePlugin()]

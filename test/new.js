@@ -5,7 +5,7 @@ const rimraf = require('rimraf')
 const {EventEmitter} = require('events')
 const {fixturesPath} = require('./_helpers')
 
-test.cb.skip('creates a new roots project', (t) => {
+test.cb('creates a new roots project', (t) => {
   const testPath = path.join(fixturesPath, 'new_test')
   const emitter = new EventEmitter()
 

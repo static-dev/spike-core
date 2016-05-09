@@ -1,6 +1,7 @@
 # Roots Mini
 
-[![tests](https://img.shields.io/npm/v/roots-mini.svg?style=flat)](https://www.npmjs.com/package/roots-mini) [![tests](http://img.shields.io/travis/carrot/roots-mini/master.svg?style=flat)](https://travis-ci.org/carrot/roots-mini) [![dependencies](http://img.shields.io/gemnasium/carrot/roots-mini.svg?style=flat)](https://gemnasium.com/carrot/roots-mini)
+[![version](https://img.shields.io/npm/v/roots-mini.svg?style=flat)](https://www.npmjs.com/package/roots-mini) [![tests](http://img.shields.io/travis/carrot/roots-mini/master.svg?style=flat)](https://travis-ci.org/carrot/roots-mini) [![dependencies](http://img.shields.io/gemnasium/carrot/roots-mini.svg?style=flat)](https://gemnasium.com/carrot/roots-mini)
+[![coverage](https://img.shields.io/coveralls/carrot/roots-mini.svg?style=flat)](https://coveralls.io/github/carrot/roots-mini?branch=master)
 
 Experimenting with a new [webpack](http://webpack.github.io) core for roots.
 

@@ -19,5 +19,5 @@ test('API config overrides app.js config', (t) => {
 })
 
 test('Throws error for invalid app.js syntax', (t) => {
-  return t.throws(() => compileFixture(t, 'app_config_error'), /test\/fixtures\/app_config_error\/app\.js: Unexpected token \(1:4\)/)
+  return t.throws(() => compileFixture(t, 'app_config_error'), /SyntaxError: Unexpected token :/)
 })

@@ -5,3 +5,5 @@ sudo: false
 before_script:
   - git config --global user.email "dev@carrotcreative.com"
   - git config --global user.name "Carrot Creative"
+after_script:
+  - npm run coveralls

@@ -49,6 +49,7 @@
   "devDependencies": {
     "ava": "^0.14.0",
     "babel-eslint": "^6.0.4",
+    "coveralls": "^2.11.9",
     "husky": "^0.11.4",
     "md5-file": "^2.0.4",
     "nyc": "^6.4.4",
@@ -71,7 +72,8 @@
   "main": "lib",
   "repository": "carrot/roots-mini",
   "scripts": {
-    "coverage": "NODE_ENV=test nyc --reporter=html ava --verbose --serial && open coverage/index.html",
+    "coverage": "nyc --reporter=html ava --verbose --serial && open coverage/index.html",
+    "coveralls": "nyc --reporter=lcov ava --verbose --serial && cat ./coverage/lcov.info | coveralls",
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",

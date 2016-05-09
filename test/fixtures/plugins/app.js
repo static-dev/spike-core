@@ -1,11 +1,7 @@
-import TestPlugin from './plugin.js'
+const TestPlugin = require('./plugin.js')
 
-export default {
-  locals: {
-    foo: 'bar'
-  },
+module.exports = {
+  locals: { foo: 'bar' },
   ignore: ['app.js', 'plugin.js'],
-  plugins: [
-    new TestPlugin()
-  ]
+  plugins: [new TestPlugin()]
 }

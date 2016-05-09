@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
-// TODO: remove before ship
-require('babel-core/register')
-
 var chalk = require('chalk')
-var CLI = require('../lib/cli').default
+var CLI = require('../lib/cli')
 var cli = new CLI()
 
 cli.on('error', function (err) {

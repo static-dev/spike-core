@@ -1,10 +1,8 @@
-import Roots from '..'
-import fs from 'fs'
-import {
-  test,
-  fixturesPath,
-  path
-} from './_helpers'
+const test = require('ava')
+const path = require('path')
+const fs = require('fs')
+const Roots = require('..')
+const {fixturesPath} = require('./_helpers')
 
 test.cb('watches the project, reloads on modification', (t) => {
   const project = new Roots({

@@ -1,4 +1,4 @@
-export default class GladePlugin {
+module.exports = class GladePlugin {
   constructor (opts) {
     this.opts = opts
   }

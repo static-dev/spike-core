@@ -4,9 +4,6 @@
   "version": "0.0.23",
   "author": "Jeff Escalante",
   "ava": {
-    "require": [
-      "babel-core/register"
-    ],
     "verbose": "true",
     "serial": "true"
   },

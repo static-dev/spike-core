@@ -5,7 +5,7 @@ module.exports = class GladePlugin {
 
   apply (compiler) {
     compiler.plugin('emit', function (compilation, done) {
-      const staticFiles = compiler.options.roots.files.static
+      const staticFiles = compiler.options.spike.files.static
       const gladeFiles = staticFiles.filter((f) => f.match(/\.glade$/))
       gladeFiles.forEach((f) => {
         const dep = compilation.modules.find((el) => {

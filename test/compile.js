@@ -1,4 +1,4 @@
-const Roots = require('..')
+const Spike = require('..')
 const test = require('ava')
 const path = require('path')
 const {fixturesPath, compileFixture} = require('./_helpers')
@@ -10,7 +10,7 @@ test('emits compile errors correctly', (t) => {
 })
 
 test.cb('emits compile warnings correctly', (t) => {
-  const project = new Roots({ root: path.join(fixturesPath, 'css') })
+  const project = new Spike({ root: path.join(fixturesPath, 'css') })
 
   project.on('error', t.end)
   project.on('warning', (msg) => {

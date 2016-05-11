@@ -6,8 +6,8 @@ let CLI = rewire('../lib/cli')
 let cli
 let mock
 
-// mock so that this only tests the CLI interface, not the roots tasks
-class RootsMock extends EventEmitter {
+// mock so that this only tests the CLI interface, not the spike tasks
+class SpikeMock extends EventEmitter {
   constructor (opts) {
     super()
     this.opts = opts
@@ -30,7 +30,7 @@ class RootsMock extends EventEmitter {
 }
 
 test.beforeEach((t) => {
-  CLI.__set__('Roots', RootsMock)
+  CLI.__set__('Spike', SpikeMock)
   cli = new CLI()
 })
 

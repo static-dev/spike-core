@@ -2,7 +2,7 @@ const nodeFs = require('fs')
 const path = require('path')
 const When = require('when')
 const node = require('when/node')
-const Roots = require('..')
+const Spike = require('..')
 
 // export references to required modules and/or paths
 const fixturesPath = exports.fixturesPath = path.join(__dirname, 'fixtures')
@@ -17,7 +17,7 @@ exports.fs = node.liftAll(nodeFs)
  */
 exports.compileFixture = function compileFixture (t, name, options = {}) {
   const testPath = path.join(fixturesPath, name)
-  const project = new Roots(Object.assign(options, { root: testPath }))
+  const project = new Spike(Object.assign(options, { root: testPath }))
   const publicPath = path.join(testPath, 'public')
 
   return When.promise(function (resolve, reject) {

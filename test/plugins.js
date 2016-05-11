@@ -10,4 +10,4 @@ test('compiles a project with a custom plugin', (t) => {
     .then((contents) => { return t.is(contents, 'doge') })
 })
 
-test.todo('plugin utilities available through opts.roots work correctly')
+test.todo('plugin utilities available through opts.spike work correctly')

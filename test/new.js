@@ -1,11 +1,11 @@
 const test = require('ava')
-const Roots = require('..')
+const Spike = require('..')
 const path = require('path')
 const rimraf = require('rimraf')
 const {EventEmitter} = require('events')
 const {fixturesPath} = require('./_helpers')
 
-test.cb('creates a new roots project', (t) => {
+test.skip.cb('creates a new spike project', (t) => {
   const testPath = path.join(fixturesPath, 'new_test')
   const emitter = new EventEmitter()
 
@@ -15,7 +15,7 @@ test.cb('creates a new roots project', (t) => {
     t.is(project.config.context, testPath)
     rimraf(testPath, t.end)
   })
-  Roots.new({ root: testPath, emitter: emitter,
+  Spike.new({ root: testPath, emitter: emitter,
     locals: {
       name: 'test',
       description: 'test',

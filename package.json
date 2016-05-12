@@ -1,6 +1,6 @@
 {
-  "name": "roots-mini",
-  "description": "a little roots-y experiment",
+  "name": "spike",
+  "description": "an opinionated static build tool, powered by webpack",
   "version": "0.0.24",
   "author": "Jeff Escalante",
   "ava": {
@@ -8,9 +8,9 @@
     "serial": "true"
   },
   "bin": {
-    "rootsmini": "./bin/roots"
+    "spike": "./bin/spike"
   },
-  "bugs": "https://github.com/carrot/roots-mini/issues",
+  "bugs": "https://github.com/static-dev/spike/issues",
   "dependencies": {
     "argparse": "^1.0.6",
     "babel-core": "^6.8.0",
@@ -22,7 +22,7 @@
     "chalk": "^1.1.3",
     "cheerio": "^0.20.0",
     "css-loader": "^0.23.1",
-    "file-loader": "carrot/file-loader",
+    "file-loader": "static-dev/file-loader",
     "glob": "^7.0.3",
     "hygienist-middleware": "^0.1.1",
     "inquirer": "^1.0.0",
@@ -35,7 +35,7 @@
     "mkdirp": "^0.5.1",
     "postcss": "^5.0.21",
     "postcss-import": "^8.1.2",
-    "postcss-loader": "jenius/postcss-loader",
+    "postcss-loader": "^0.9.1",
     "require-from-string": "^1.2.0",
     "rimraf": "^2.5.2",
     "sprout": "^1.0.0",
@@ -58,15 +58,15 @@
     "node": ">=6.0.0",
     "npm": ">=3.8.0"
   },
-  "homepage": "https://github.com/carrot/roots-mini",
+  "homepage": "https://github.com/static-dev/spike",
   "keywords": [
-    "roots",
+    "spike",
     "static",
     "webpack"
   ],
   "license": "MIT",
   "main": "lib",
-  "repository": "carrot/roots-mini",
+  "repository": "static-dev/spike",
   "scripts": {
     "coverage": "nyc --reporter=html ava --verbose --serial && open coverage/index.html",
     "coveralls": "nyc --reporter=lcov ava --verbose --serial && cat ./coverage/lcov.info | coveralls",

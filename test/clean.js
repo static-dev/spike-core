@@ -1,4 +1,4 @@
-const Roots = require('..')
+const Spike = require('..')
 const path = require('path')
 const test = require('ava')
 const {fs, compileFixture, fixturesPath} = require('./_helpers')
@@ -12,7 +12,7 @@ test.before((t) => {
 })
 
 test.cb('emits clean message correctly', (t) => {
-  const project = new Roots({ root: path.join(fixturesPath, 'clean') })
+  const project = new Spike({ root: path.join(fixturesPath, 'clean') })
 
   project.on('error', t.end)
   project.on('remove', (msg) => {

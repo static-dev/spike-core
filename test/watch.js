@@ -1,11 +1,11 @@
 const test = require('ava')
 const path = require('path')
 const fs = require('fs')
-const Roots = require('..')
+const Spike = require('..')
 const {fixturesPath} = require('./_helpers')
 
 test.cb('watches the project, reloads on modification', (t) => {
-  const project = new Roots({
+  const project = new Spike({
     root: path.join(fixturesPath, 'watch'),
     server: { open: false }
   })
@@ -30,7 +30,7 @@ test.cb('watches the project, reloads on modification', (t) => {
 })
 
 test.cb('incorporates new file when added while watching', (t) => {
-  const project = new Roots({
+  const project = new Spike({
     root: path.join(fixturesPath, 'watch'),
     server: { open: false }
   })

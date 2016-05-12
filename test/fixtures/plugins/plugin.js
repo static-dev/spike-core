@@ -6,7 +6,7 @@ module.exports = class JadeWebpackPlugin {
   apply (compiler) {
     compiler.plugin('run', function (compilation, done) {
       setTimeout(function () {
-        compiler.options.locals.foo = 'doge'
+        compiler.options.spike.locals.foo = 'doge'
         done()
       }, 300)
     })

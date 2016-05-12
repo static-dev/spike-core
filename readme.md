@@ -1,6 +1,6 @@
 # Spike
 
-[![version](https://img.shields.io/npm/v/spike.svg?style=flat)](https://www.npmjs.com/package/spike) [![tests](http://img.shields.io/travis/static-dev/spike/master.svg?style=flat)](https://travis-ci.org/static-dev/spike) [![dependencies](http://img.shields.io/gemnasium/static-dev/spike.svg?style=flat)](https://gemnasium.com/static-dev/spike)
+[![version](https://img.shields.io/npm/v/spike.svg?style=flat)](https://www.npmjs.com/package/spike) [![tests](http://img.shields.io/travis/static-dev/spike/master.svg?style=flat)](https://travis-ci.org/static-dev/spike) [![dependencies](http://img.shields.io/david/static-dev/spike.svg?style=flat)](https://david-dm.org/static-dev/spike)
 [![coverage](https://img.shields.io/coveralls/static-dev/spike.svg?style=flat)](https://coveralls.io/github/static-dev/spike?branch=master)
 
 An opinionated static build tool, powered by [webpack](http://webpack.github.io)

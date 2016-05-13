@@ -19,14 +19,6 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 - [postcss](https://github.com/postcss/postcss) for CSS transforms
 - [webpack](http://webpack.github.io) as the core compiler
 
-## Setup for Contributing
-
-- Make sure you are running [node.js >= v6](https://nodejs.org/en/).
-- Make sure you have an [editorconfig plugin](http://editorconfig.org/#download) installed for your text editor
-- Make sure you have a [standard js linter](http://standardjs.com/index.html#usage) installed, tests will not pass if linting fails
-- Make sure you are familiar with [ES6](https://medium.com/sons-of-javascript/javascript-an-introduction-to-es6-1819d0d89a0f)
-- Make sure you are familiar with [test-driven development](https://www.wikiwand.com/en/Test-driven_development)
-
 ## Installation
 
 - `npm install spike -g`
@@ -128,3 +120,11 @@ export default {
 Since the two configuration files are _merged_, you don't lose all your other settings from the `app.js` file, it just merges in any new ones from `app.production.js`. Very amaze!
 
 To change the environment, from javascript, just pass an `env` option to the spike constructor. From the CLI, just pass `--env name` or `-e name` as an argument to the `compile` or `watch` commands.
+
+## Setup for Contributing
+
+- Make sure you are running [node.js >= v6](https://nodejs.org/en/).
+- Make sure you have an [editorconfig plugin](http://editorconfig.org/#download) installed for your text editor
+- Make sure you have a [standard js linter](http://standardjs.com/index.html#usage) installed, tests will not pass if linting fails
+- Make sure you are familiar with [ES6](https://medium.com/sons-of-javascript/javascript-an-introduction-to-es6-1819d0d89a0f)
+- Make sure you are familiar with [test-driven development](https://www.wikiwand.com/en/Test-driven_development)

@@ -9,6 +9,15 @@ An opinionated static build tool, powered by [webpack](http://webpack.github.io)
 
 The thinking behind this experiment is explained in [this article](https://medium.com/@jescalan/eaa10c75eb22). Please feel free to comment and contribute.
 
+### The Stack
+
+Spike is fairly strict in enforcing a default stack. However, the stack allows for quite a large amount of flexibility as both the css and js parsers are able to accept plugins. The inflexibility with regards to the stack means faster compiles and more stability. We will be using...
+
+- [jade](http://jade-lang.com/) for markup
+- [babel](https://babeljs.io/) for JS and JS transforms
+- [postcss](https://github.com/postcss/postcss) for CSS transforms
+- [webpack](http://webpack.github.io) as the core compiler
+
 ## Setup
 
 - Make sure you are running [node.js >= v6](https://nodejs.org/en/).
@@ -20,7 +29,7 @@ The thinking behind this experiment is explained in [this article](https://mediu
 ## Installation
 
 - `npm install spike -g`
-- `spike new projectname`
+- `spike new <projectname>`
 
 ## Usage
 
@@ -117,13 +126,4 @@ export default {
 
 Since the two configuration files are _merged_, you don't lose all your other settings from the `app.js` file, it just merges in any new ones from `app.production.js`. Very amaze!
 
-To change the environment, from javascript, just pass an `env` option to the spike contructor. From the CLI, just pass `--env name` or `-e name` as an argument to the `compile` or `watch` commands.
-
-## The Stack
-
-Spike is fairly strict in enforcing a default stack. However, the stack allows for quite a large amount of flexibility as both the css and js parsers are able to accept plugins. The inflexibility with regards to the stack means faster compiles and more stability. We will be using...
-
-- [jade](http://jade-lang.com/) for markup
-- [babel](https://babeljs.io/) for JS and JS transforms
-- [postcss](https://github.com/postcss/postcss) for CSS transforms
-- [webpack](http://webpack.github.io) as the core compiler
+To change the environment, from javascript, just pass an `env` option to the spike constructor. From the CLI, just pass `--env name` or `-e name` as an argument to the `compile` or `watch` commands.

@@ -117,7 +117,7 @@ If you have different environments you intend to deploy to that need different s
 So let's say you have an app config that looks like this:
 
 ```js
-export default {
+module.exports = {
   ignores: [...],
   locals: {
     apiUrl: 'http://localhost:3000/api/v1'
@@ -128,7 +128,7 @@ export default {
 If you wanted to update that API url to a real one for production, you could set up an `app.production.js` file that looks like this:
 
 ```js
-export default {
+module.exports = {
   locals: {
     apiUrl: 'http://real-website.com/api/v1'
   }

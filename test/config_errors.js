@@ -3,7 +3,7 @@ const Spike = require('..')
 
 test('config errors', (t) => {
   t.throws(() => { new Spike() }, // eslint-disable-line
-    'a "root" is required')
+    '[spike constructor] option "root" is required')
   t.throws(() => { new Spike({ root: 'foo', matchers: 'wow' }) }, // eslint-disable-line
     'ValidationError: child "matchers" fails because ["matchers" must be an object]')
   t.throws(() => { new Spike({ root: 'foo', matchers: { css: [1] } }) }, // eslint-disable-line

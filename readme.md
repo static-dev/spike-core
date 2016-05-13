@@ -1,8 +1,8 @@
-# Spike
+# Spike Core
 
-[![version](https://img.shields.io/npm/v/spike.svg?style=flat)](https://www.npmjs.com/package/spike) [![tests](http://img.shields.io/travis/static-dev/spike/master.svg?style=flat)](https://travis-ci.org/static-dev/spike) [![dependencies](http://img.shields.io/david/static-dev/spike.svg?style=flat)](https://david-dm.org/static-dev/spike)
-[![coverage](https://img.shields.io/coveralls/static-dev/spike.svg?style=flat)](https://coveralls.io/github/static-dev/spike?branch=master)
-[![chat](https://img.shields.io/gitter/room/static-dev/spike.svg)](http://gitter.im/static-dev/spike)
+[![version](https://img.shields.io/npm/v/spike-core.svg?style=flat)](https://www.npmjs.com/package/spike-core) [![tests](http://img.shields.io/travis/static-dev/spike-core/master.svg?style=flat)](https://travis-ci.org/static-dev/spike-core) [![dependencies](http://img.shields.io/david/static-dev/spike-core.svg?style=flat)](https://david-dm.org/static-dev/spike-core)
+[![coverage](https://img.shields.io/coveralls/static-dev/spike-core.svg?style=flat)](https://coveralls.io/github/static-dev/spike-core?branch=master)
+[![chat](https://img.shields.io/gitter/room/static-dev/spike-core.svg)](http://gitter.im/static-dev/spike-core)
 
 An opinionated static build tool, powered by [webpack](http://webpack.github.io)
 
@@ -39,32 +39,18 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 
 ## Installation
 
-- `npm install spike -g`
-- `spike new <projectname>`
+- `npm install spike-core -g`
 
 ## Usage
 
-Spike can operate through either a javascript API or a CLI interface. We'll break them both down below.
-
-### Command Line Interface
-
-Spike can be accessed through the command line if installed globally through npm (`npm i spike -g`). It exposes a binary by the name of `spike`.
-
-#### Commands
-
-- `spike new <projectname>`: creates a new spike project
-- `spike watch [--env]`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved, powered by [browsersync](https://browsersync.io/)
-- `spike compile [--env]`: compiles a spike project once
-- `spike clean`: removes your project's output directory
-
-You can find spike's [standard starter template here](https://github.com/static-dev/spike-base), and it can be installed through [sprout](https://github.com/carrot/sprout).
+Spike operates through a carefully crafted javascript interface. If you are looking to use spike through its command line interface, check out [spike](/static-dev/spike). This project is just the core javascript api.
 
 ### Javacript API
 
 The Spike module exposes a single class through which all functionality operates. An instance of the class should be created for each project being compiled with Spike.
 
 ```js
-import Spike from 'spike'
+import Spike from 'spike-core'
 
 let project = new Spike({ root: 'path/to/project/root' })
 ```
@@ -137,12 +123,4 @@ module.exports = {
 
 Since the two configuration files are _merged_, you don't lose all your other settings from the `app.js` file, it just merges in any new ones from `app.production.js`. Very amaze!
 
-To change the environment, from javascript, just pass an `env` option to the spike constructor. From the CLI, just pass `--env name` or `-e name` as an argument to the `compile` or `watch` commands.
-
-## Setup for Contributing
-
-- Make sure you are running [node.js >= v6](https://nodejs.org/en/).
-- Make sure you have an [editorconfig plugin](http://editorconfig.org/#download) installed for your text editor
-- Make sure you have a [standard js linter](http://standardjs.com/index.html#usage) installed, tests will not pass if linting fails
-- Make sure you are familiar with [ES6](https://medium.com/sons-of-javascript/javascript-an-introduction-to-es6-1819d0d89a0f)
-- Make sure you are familiar with [test-driven development](https://www.wikiwand.com/en/Test-driven_development)
+To change the environment, from javascript, just pass an `env` option to the spike constructor.

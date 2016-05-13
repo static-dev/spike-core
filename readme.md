@@ -18,7 +18,7 @@ Spike certainly is not the only [static site generator](https://www.staticgen.co
 
 ### The Stack
 
-Spike is fairly strict in enforcing a default stack. However, the stack allows for quite a large amount of flexibility as both the css and js parsers are able to accept plugins. The inflexibility with regards to the stack means faster compiles and more stability. We will be using...
+Spike is fairly strict in enforcing a default stack. However, the stack allows for quite a large amount of flexibility as both the css and js parsers are able to accept plugins. The inflexibility with regards to the stack means faster compiles and more stability. We use...
 
 - [jade](http://jade-lang.com/) for markup
 - [babel](https://babeljs.io/) for JS and JS transforms

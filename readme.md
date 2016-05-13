@@ -41,9 +41,9 @@ Spike can be accessed through the command line if installed globally through npm
 
 #### Commands
 
+- `spike new <projectname>`: creates a new spike project
 - `spike watch [--env]`: watches your project, opens up a local server, recompiles and refreshes your browser when a file is changed and saved, powered by [browsersync](https://browsersync.io/)
 - `spike compile [--env]`: compiles a spike project once
-- `spike new <projectname>`: creates a new spike project
 - `spike clean`: removes your project's output directory
 
 You can find spike's [standard starter template here](https://github.com/static-dev/spike-base), and it can be installed through [sprout](https://github.com/carrot/sprout).

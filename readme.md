@@ -25,6 +25,18 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 - [postcss](https://github.com/postcss/postcss) for CSS transforms
 - [webpack](http://webpack.github.io) as the core compiler
 
+### Features
+
+- Easy configuration via the `app.js` file
+- Integration with [Webpack's](https://github.com/webpack/webpack) massive plugin/loader ecosystem
+- Support for ES6 in your site's JS via Babel
+- Breezy local development powered by [Browsersync](https://browsersync.io/)
+- Turn-key isomorphism (no refresh page loads)
+- Selective compile in `watch` mode :zap:
+- Support for [multiple environments](#environments)
+- Project Starters via [sprout](https://github.com/carrot/sprout)
+- [Spike Plugins](https://www.npmjs.com/browse/keyword/spikeplugin) for common integrations
+
 ## Installation
 
 - `npm install spike -g`

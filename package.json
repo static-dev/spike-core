@@ -60,8 +60,8 @@
   "main": "lib",
   "repository": "static-dev/spike",
   "scripts": {
-    "coverage": "nyc --reporter=html ava --verbose --serial && open coverage/index.html",
-    "coveralls": "nyc --reporter=lcov ava --verbose --serial && cat ./coverage/lcov.info | coveralls",
+    "coverage": "nyc --reporter=html ava && open coverage/index.html",
+    "coveralls": "nyc --reporter=lcov ava && cat ./coverage/lcov.info | coveralls",
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",

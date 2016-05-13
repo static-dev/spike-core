@@ -21,6 +21,7 @@
     "file-loader": "static-dev/file-loader",
     "glob": "^7.0.3",
     "hygienist-middleware": "^0.1.1",
+    "inquirer": "^1.0.2",
     "jade": "^1.11.0",
     "jade-static-loader": "0.0.1",
     "joi": "^8.1.0",
@@ -44,7 +45,6 @@
     "husky": "^0.11.4",
     "md5-file": "^2.0.4",
     "nyc": "^6.4.4",
-    "rewire": "^2.5.1",
     "snazzy": "^4.0.0",
     "standard": "^7.0.1",
     "sugarss": "^0.1.2"

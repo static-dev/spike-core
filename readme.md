@@ -34,7 +34,7 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 - Turn-key isomorphism (no refresh page loads)
 - Selective compile in `watch` mode :zap:
 - Support for [multiple environments](#environments)
-- Project Starters via [sprout](https://github.com/carrot/sprout)
+- Interactive Project Starters via [sprout](https://github.com/carrot/sprout)
 - [Spike Plugins](https://www.npmjs.com/browse/keyword/spikeplugin) for common integrations
 
 ## Installation

@@ -39,11 +39,11 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 
 ## Installation
 
-- `npm install spike-core -g`
+- `npm install spike-core`
 
 ## Usage
 
-Spike operates through a carefully crafted javascript interface. If you are looking to use spike through its command line interface, check out [spike](/static-dev/spike). This project is just the core javascript api.
+Spike operates through a carefully crafted javascript interface. If you are looking to use spike through its command line interface, check out [spike](https://github.com/static-dev/spike). This project is just the core javascript api.
 
 ### Javacript API
 

@@ -16,7 +16,7 @@ test.cb('creates a new spike project', (t) => {
     rimraf(testPath, t.end)
   })
   Spike.new({ root: testPath, emitter: emitter,
-    locals: {
+    overrides: {
       name: 'test',
       description: 'test',
       github_username: 'test'

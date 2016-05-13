@@ -8,8 +8,10 @@ test('static plugin copies over file with correct content', (t) => {
   return compileFixture(t, 'static').then(({publicPath}) => {
     const f1 = fs.readFileSync(path.join(publicPath, 'foo.wow'), 'utf8')
     const f2 = fs.readFileSync(path.join(publicPath, 'snargle/test.json'), 'utf8')
+    const f3 = fs.readFileSync(path.join(publicPath, 'empty.f'), 'utf8')
     t.is(f1.trim(), 'hello there!', 'plain text not copied correctly')
     t.is(JSON.parse(f2).foo, 'bar', 'json not copied correctly')
+    t.is(f3, '')
 
     const imgIn = md5File(path.join(fixturesPath, 'static/doge.png'))
     const imgOut = md5File(path.join(publicPath, 'doge.png'))

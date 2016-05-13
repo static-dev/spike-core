@@ -9,5 +9,3 @@ test('compiles a project with a custom plugin', (t) => {
     .then((index) => { return fs.readFile(index, 'utf8') })
     .then((contents) => { return t.is(contents, 'doge') })
 })
-
-test.todo('plugin utilities available through opts.spike work correctly')

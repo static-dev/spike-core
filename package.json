@@ -15,8 +15,6 @@
     "argparse": "^1.0.6",
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-2": "^6.3.13",
     "browser-sync": "^2.11.1",
     "browser-sync-webpack-plugin": "^1.0.1",
     "chalk": "^1.1.3",

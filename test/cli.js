@@ -25,6 +25,7 @@ class SpikeMock extends EventEmitter {
   }
 
   static new (opts) {
+    opts.emitter.emit('info', opts)
     opts.emitter.emit('done', new this())
   }
 }
@@ -59,14 +60,21 @@ test.cb('compile with env option', (t) => {
 })
 
 test.cb('new', (t) => {
+  t.plan(4)
+
   cli.on('error', t.end)
   cli.on('warning', t.end)
+  cli.on('info', (opts) => {
+    t.truthy(opts.root)
+    t.truthy(opts.emitter)
+    t.truthy(opts.overrides)
+  })
   cli.on('success', (res) => {
     t.truthy(res.match(/project created at.*test/))
     t.end()
   })
 
-  cli.run('new test')
+  cli.run('new test -o foo:bar')
 })
 
 test.cb('watch', (t) => {

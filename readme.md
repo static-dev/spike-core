@@ -96,6 +96,38 @@ Note that each project is an event emitter, and all feedback on what the project
 
 To compile an instantiated project, you can run `project.compile()`. This method will synchronously return a unique id, which can be used to track events related to this particular compile if necessary. You must be listening for the events you are interested in **before** calling `compile` if you want to ensure that you will get all feedback.
 
+## Creating a New Project
+
+If you want to create a new project from a template, you can use the `Spike.new` static method. This method utilizes [sprout](https://github.com/carrot/sprout) to create a new project template.
+
+Option                 | Description                                                                                                                                                                                                                                                                                                                         | Default
+:--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------
+**root**               | **[required]** An absolute path to the root of your project.                                                                                                                                                                                                                                                                        |
+**template**           | Name of the template you want to use to initialize your project. At the moment this is not configurable, but it will be in the future.                                                                                                                                                                                                                                                                       | `base`
+**src**                | Must be provided if you pass a custom `template` - a url that can be `git clone`-d in order to pull down your template.                                                                                                                                                                                                                                                                        | `https://github.com/static-dev/spike-base.git`
+**locals**             | If your template [accepts options](https://github.com/carrot/sprout#initjs), you can pass them in here.                                                                                                                                                                                                                                                                         |
+**emitter**            | In order to get feedback from the method on how it is progressing through the new template creation progress, pass in an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) instance here and it will emit `info`, `error`, and `done` events where appropriate.                                                                                                                                                                                                                                                                         |
+**inquirer**           | If you want to collect locals from the user via CLI, you can pass in an instance of [inquirer.prompt](https://github.com/SBoudrias/Inquirer.js#installation) here.                                                                                                                                                                                                                                                                          |
+
+Utilizing `Spike.new` is fairly straightforward, here's a brief example of how it could be used to collect template locals from the command line using inquirer:
+
+```js
+const Spike = require('spike-core')
+const inquirer = require('inquirer')
+const {EventEmitter} = require('events')
+const emitter = new EventEmitter()
+
+emitter.on('info', console.log)
+emitter.on('error', console.error)
+emitter.on('done', (p) => console.log(`project created at ${p.config.context}`))
+
+Spike.new({
+  root: 'path/to/future/project',
+  emitter: emitter,
+  inquirer: inquirer.prompt.bind(inquirer)
+})
+```
+
 ## Environments
 
 If you have different environments you intend to deploy to that need different settings, this is **[no probalo](http://www.hrwiki.org/w/images/8/85/Senor_Cardgage_shirt_close.PNG)**. Just make a second `app.js` file, but stick the name of your environment between the `app` and the `js`, like this: `app.production.js`. Now, when you initialize spike with the `production` environment, it will merge your production config (with priority) into your normal app config.

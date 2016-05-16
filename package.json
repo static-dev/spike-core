@@ -19,7 +19,7 @@
     "glob": "^7.0.3",
     "hygienist-middleware": "^0.1.1",
     "jade": "^1.11.0",
-    "jade-static-loader": "0.0.1",
+    "jade-static-loader": "^0.1.0",
     "joi": "^8.1.0",
     "lodash.merge": "^4.3.5",
     "lodash.union": "^4.2.0",
@@ -30,7 +30,7 @@
     "postcss-loader": "^0.9.1",
     "require-from-string": "^1.2.0",
     "rimraf": "^2.5.2",
-    "sprout": "^1.0.0",
+    "sprout": "^1.2.0",
     "webpack": "^1.12.10",
     "when": "^3.7.7"
   },

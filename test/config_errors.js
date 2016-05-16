@@ -10,8 +10,8 @@ test('config errors', (t) => {
     'ValidationError: child "matchers" fails because [child "css" fails because ["css" must be a string]]')
   t.throws(() => { new Spike({ root: 'foo', postcss: function () {} }) }, // eslint-disable-line
     'ValidationError: child "postcss" fails because ["postcss" must be an object]')
-  t.throws(() => { new Spike({ root: 'foo', babelConfig: 'wow' }) }, // eslint-disable-line
-    'ValidationError: child "babelConfig" fails because ["babelConfig" must be an object]')
+  t.throws(() => { new Spike({ root: 'foo', babel: 'wow' }) }, // eslint-disable-line
+    'ValidationError: child "babel" fails because ["babel" must be an object]')
   t.throws(() => { new Spike({ root: 'foo', entry: ['foo', 'bar'] }) }, // eslint-disable-line
     'ValidationError: child "entry" fails because ["entry" must be an object]')
 })

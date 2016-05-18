@@ -13,7 +13,6 @@ test.cb('emits compile warnings correctly', (t) => {
   const project = new Spike({ root: path.join(fixturesPath, 'css') })
 
   project.on('error', t.end)
-  // project.on('compile', console.log)
   project.on('warning', (msg) => {
     t.truthy(msg.toString().match(/Cannot resolve 'file' or 'directory' \.\/assets\/js\/index\.js/))
     t.end()

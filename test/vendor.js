@@ -11,6 +11,6 @@ test('properly vendors specified files', (t) => {
   return compileFixture(t, 'vendor').then(({publicPath}) => {
     return fs.readFile(path.join(publicPath, 'keep/file.js'), 'utf8')
   }).then((contents) => {
-    return t.is(contents, 'vendored')
+    return t.regex(contents, /vendored/)
   })
 })

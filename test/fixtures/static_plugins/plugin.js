@@ -11,9 +11,9 @@ module.exports = class GladePlugin {
         const dep = compilation.modules.find((el) => {
           if (el.userRequest === f) { return el }
         })
-        let src = String(dep.assets['foo.glade']._value)
+        let src = String(dep._src)
         src = src.replace(/glade/, 'Glade Air Freshener™')
-        dep.assets['foo.glade']._value = Buffer(src)
+        dep._src = Buffer(src)
       })
       done()
     })

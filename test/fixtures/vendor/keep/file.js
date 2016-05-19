@@ -1,1 +1,1 @@
-console.log('don\'t bundle me')
+console.log('vendored')

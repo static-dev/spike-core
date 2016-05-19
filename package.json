@@ -9,7 +9,7 @@
   },
   "bugs": "https://github.com/static-dev/spike/issues",
   "dependencies": {
-    "babel-core": "^6.8.0",
+    "babel-core": "^6.9.0",
     "babel-loader": "^6.2.0",
     "browser-sync": "^2.11.1",
     "browser-sync-webpack-plugin": "^1.0.1",
@@ -31,7 +31,7 @@
     "require-from-string": "^1.2.0",
     "rimraf": "^2.5.2",
     "sprout": "^1.2.0",
-    "webpack": "^1.12.10",
+    "webpack": "^1.13.0",
     "when": "^3.7.7"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "md5-file": "^2.0.4",
     "nyc": "^6.4.4",
     "snazzy": "^4.0.0",
-    "standard": "^7.0.1",
+    "standard": "^7.1.0",
     "sugarss": "^0.1.2"
   },
   "engines": {

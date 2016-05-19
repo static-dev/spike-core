@@ -1,8 +1,6 @@
 # Spike Core
 
-[![version](https://img.shields.io/npm/v/spike-core.svg?style=flat)](https://www.npmjs.com/package/spike-core) [![tests](http://img.shields.io/travis/static-dev/spike-core/master.svg?style=flat)](https://travis-ci.org/static-dev/spike-core) [![dependencies](http://img.shields.io/david/static-dev/spike-core.svg?style=flat)](https://david-dm.org/static-dev/spike-core)
-[![coverage](https://img.shields.io/coveralls/static-dev/spike-core.svg?style=flat)](https://coveralls.io/github/static-dev/spike-core?branch=master)
-[![chat](https://img.shields.io/gitter/room/static-dev/spike.svg)](http://gitter.im/static-dev/spike)
+[![version](https://img.shields.io/npm/v/spike-core.svg?style=flat)](https://www.npmjs.com/package/spike-core) [![tests](http://img.shields.io/travis/static-dev/spike-core/master.svg?style=flat)](https://travis-ci.org/static-dev/spike-core) [![dependencies](http://img.shields.io/david/static-dev/spike-core.svg?style=flat)](https://david-dm.org/static-dev/spike-core) [![coverage](https://img.shields.io/coveralls/static-dev/spike-core.svg?style=flat)](https://coveralls.io/github/static-dev/spike-core?branch=master) [![chat](https://img.shields.io/gitter/room/static-dev/spike.svg)](http://gitter.im/static-dev/spike)
 
 An opinionated static build tool, powered by [webpack](http://webpack.github.io)
 
@@ -49,7 +47,7 @@ Spike operates through a carefully crafted javascript interface. If you are look
 
 The Spike module exposes a single class through which all functionality operates. An instance of the class should be created for each project being compiled with Spike.
 
-```js
+```javascript
 import Spike from 'spike-core'
 
 let project = new Spike({ root: 'path/to/project/root' })
@@ -60,18 +58,19 @@ The above shows a minimal instantiation, but the constructor accepts a wide vari
 Option                 | Description                                                                                                                                                                                                                                                                                                                         | Default
 :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------
 **root**               | **[required]** An absolute path to the root of your project.                                                                                                                                                                                                                                                                        |
-**matchers**           | An object with `jade`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Be very careful if you are trying to change this.                                                        | `**/*.jade`, `**/*.css`, and `**/*.js`
+**matchers**           | An object with `jade`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Be very careful if you are trying to change this.                                                                       | `**/*.jade`, `**/*.css`, and `**/*.js`
 **postcss**            | An object that can contain a `plugins` key, which is an array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing, and a `parser`, `stringifier`, and/or `syntax` key, each of which are objects and take [any of the postcss-loader options](https://github.com/postcss/postcss-loader#custom-syntaxes) |
 **babel**              | A [configuration object for Babel](http://babeljs.io/docs/usage/options/) for JS processing.                                                                                                                                                                                                                                        |
 **jade**               | A [configuration object for jade](http://jade-lang.com/api/).                                                                                                                                                                                                                                                                       |
-**dumpDirs**           | An array of directories which, if direct children of the project root, will dump their contents to the root on compile.                                                                                                                                                                                                 | `['views', 'assets']`.
+**dumpDirs**           | An array of directories which, if direct children of the project root, will dump their contents to the root on compile.                                                                                                                                                                                                             | `['views', 'assets']`.
 **locals**             | An object containing locals to be passed to jade views. This can be used for values, functions, any sort of view helper you need.                                                                                                                                                                                                   |
-**env**                | The environment you would like to use when compiling. See [environments](#environments) for more information about this option.                                                                                                                                                                                            |
+**env**                | The environment you would like to use when compiling. See [environments](#environments) for more information about this option.                                                                                                                                                                                                     |
 **ignore**             | An array of [micromatch](https://github.com/jonschlinkert/micromatch) strings, each one defining a file pattern to be ignored from compilation.                                                                                                                                                                                     |
 **outputDir**          | The name or path of the folder your project will be compiled into, on top of the project's root.                                                                                                                                                                                                                                    | `'public'`
 **cleanUrls**          | Remove `.html` from your paths during `spike.watch`.                                                                                                                                                                                                                                                                                | `true`
 **plugins**            | An array of webpack plugins.                                                                                                                                                                                                                                                                                                        |
 **entry**              | Webpack entry object duplicate. Can be used for code splitting and/or to use multiple bundles.                                                                                                                                                                                                                                      | `{ 'js/main': ['./assets/js/index.js'] }`
+**vendor**             | A string or array of glob paths used to indicate which files shouldn't be bundled by webpack, but instead are just copied directly to the output folder                                                                                                                                                                             |
 **modulesDirectories** | Webpack modulesDirectories array option, to select where modules can be loaded from.                                                                                                                                                                                                                                                | `['node_modules', 'bower_components']`
 **module.loaders**     | Allows you to define an array of custom loaders. See [webpack's documentation](https://webpack.github.io/docs/configuration.html#module-loaders) for details                                                                                                                                                                        |
 **resolve.alias**      | Set up loader aliases, like if you wanted to load a local loader. See [webpack's documentation](https://webpack.github.io/docs/configuration.html#resolve-alias) for details                                                                                                                                                        |
@@ -80,7 +79,7 @@ Option                 | Description                                            
 
 Spike exposes a simpler and more straightforward configuration interface than if you were to set up the webpack configuration yourself. However, if you'd like to directly edit the webpack config, you can still do this after the project has been instantiated through the `config` property on each instance.
 
-```js
+```javascript
 let project = new Spike({ root: 'path/to/project/root' })
 console.log(project.config) // echoes bare webpack config object, can be edited
 ```
@@ -100,18 +99,18 @@ To compile an instantiated project, you can run `project.compile()`. This method
 
 If you want to create a new project from a template, you can use the `Spike.new` static method. This method utilizes [sprout](https://github.com/carrot/sprout) to create a new project template.
 
-Option                 | Description                                                                                                                                                                                                                                                                                                                         | Default
-:--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------
-**root**               | **[required]** An absolute path to the root of your project.                                                                                                                                                                                                                                                                        |
-**template**           | Name of the template you want to use to initialize your project. At the moment this is not configurable, but it will be in the future.                                                                                                                                                                                                                                                                       | `base`
-**src**                | Must be provided if you pass a custom `template` - a url that can be `git clone`-d in order to pull down your template.                                                                                                                                                                                                                                                                        | `https://github.com/static-dev/spike-base.git`
-**locals**             | If your template [accepts options](https://github.com/carrot/sprout#initjs), you can pass them in here.                                                                                                                                                                                                                                                                         |
-**emitter**            | In order to get feedback from the method on how it is progressing through the new template creation progress, pass in an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) instance here and it will emit `info`, `error`, and `done` events where appropriate.                                                                                                                                                                                                                                                                         |
-**inquirer**           | If you want to collect locals from the user via CLI, you can pass in an instance of [inquirer.prompt](https://github.com/SBoudrias/Inquirer.js#installation) here.                                                                                                                                                                                                                                                                          |
+Option       | Description                                                                                                                                                                                                                                                                                | Default
+:----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------
+**root**     | **[required]** An absolute path to the root of your project.                                                                                                                                                                                                                               |
+**template** | Name of the template you want to use to initialize your project. At the moment this is not configurable, but it will be in the future.                                                                                                                                                     | `base`
+**src**      | Must be provided if you pass a custom `template` - a url that can be `git clone`-d in order to pull down your template.                                                                                                                                                                    | `https://github.com/static-dev/spike-base.git`
+**locals**   | If your template [accepts options](https://github.com/carrot/sprout#initjs), you can pass them in here.                                                                                                                                                                                    |
+**emitter**  | In order to get feedback from the method on how it is progressing through the new template creation progress, pass in an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) instance here and it will emit `info`, `error`, and `done` events where appropriate. |
+**inquirer** | If you want to collect locals from the user via CLI, you can pass in an instance of [inquirer.prompt](https://github.com/SBoudrias/Inquirer.js#installation) here.                                                                                                                         |
 
 Utilizing `Spike.new` is fairly straightforward, here's a brief example of how it could be used to collect template locals from the command line using inquirer:
 
-```js
+```javascript
 const Spike = require('spike-core')
 const inquirer = require('inquirer')
 const {EventEmitter} = require('events')
@@ -134,7 +133,7 @@ If you have different environments you intend to deploy to that need different s
 
 So let's say you have an app config that looks like this:
 
-```js
+```javascript
 module.exports = {
   ignores: [...],
   locals: {
@@ -145,7 +144,7 @@ module.exports = {
 
 If you wanted to update that API url to a real one for production, you could set up an `app.production.js` file that looks like this:
 
-```js
+```javascript
 module.exports = {
   locals: {
     apiUrl: 'http://real-website.com/api/v1'

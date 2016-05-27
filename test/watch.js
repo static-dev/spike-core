@@ -14,7 +14,7 @@ test.cb('watches the project, reloads on modification', (t) => {
   project.on('compile', (res) => {
     i++
     if (i === 1) {
-      const file = path.join(fixturesPath, 'watch/index.jade')
+      const file = path.join(fixturesPath, 'watch/index.pug')
       fs.appendFileSync(file, ' ')
       fs.writeFileSync(file, fs.readFileSync(file, 'utf8').trim())
     }
@@ -35,7 +35,7 @@ test.cb('incorporates new file when added while watching', (t) => {
     server: { open: false }
   })
   let i = 0
-  const testFile = path.join(fixturesPath, 'watch/test.jade')
+  const testFile = path.join(fixturesPath, 'watch/test.pug')
   const testResultFile = path.join(fixturesPath, 'watch/public/test.html')
 
   project.on('compile', (res) => {

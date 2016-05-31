@@ -15,6 +15,7 @@
     "browser-sync-webpack-plugin": "^1.0.1",
     "cheerio": "^0.20.0",
     "css-loader": "^0.23.1",
+    "filewrap": "^0.1.0",
     "glob": "^7.0.3",
     "hygienist-middleware": "^0.1.1",
     "jade": "^1.11.0",
@@ -30,7 +31,7 @@
     "require-from-string": "^1.2.0",
     "rimraf": "^2.5.2",
     "source-loader": "^0.1.0",
-    "spike-util": "0.0.1",
+    "spike-util": "^0.1.0",
     "sprout": "^1.2.0",
     "webpack": "^1.13.0",
     "when": "^3.7.7"

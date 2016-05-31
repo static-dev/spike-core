@@ -13,8 +13,8 @@ test('static plugin copies over file with correct content', (t) => {
     t.is(JSON.parse(f2).foo, 'bar', 'json not copied correctly')
     t.is(f3, '')
 
-    const imgIn = md5File(path.join(fixturesPath, 'static/doge.png'))
-    const imgOut = md5File(path.join(publicPath, 'doge.png'))
+    const imgIn = md5File.sync(path.join(fixturesPath, 'static/doge.png'))
+    const imgOut = md5File.sync(path.join(publicPath, 'doge.png'))
     t.is(imgIn, imgOut, 'image not copied correctly')
   })
 })

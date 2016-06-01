@@ -7,7 +7,7 @@ const {fixturesPath} = require('./_helpers')
 const Spike = require('..')
 
 test.before((t) => { Spike.template.reset() })
-test.after((t) => { Spike.template.reset() })
+test.afterEach((t) => { Spike.template.reset() })
 
 test.cb('template.add adds a template', (t) => {
   const emitter = new EventEmitter()
@@ -86,4 +86,20 @@ test.cb('template.default sets the default template', (t) => {
     src: 'https://github.com/jescalan/sprout-test-template',
     emitter: e1
   })
+})
+
+test.cb('template.default errors if template has not been added', (t) => {
+  const emitter = new EventEmitter()
+
+  emitter.on('error', (res) => {
+    t.truthy(res === 'template "test" doesn\'t exist')
+    t.end()
+  })
+
+  Spike.template.default({ name: 'test', emitter: emitter })
+})
+
+test('default function works without an emitter', (t) => {
+  const res = Spike.template.default({ name: 'test' })
+  t.truthy(res === 'template "test" doesn\'t exist')
 })

@@ -18,6 +18,20 @@ test('API config overrides app.js config', (t) => {
   })
 })
 
-test('Throws error for invalid app.js syntax', (t) => {
+test('throws error for invalid app.js syntax', (t) => {
   return t.throws(() => compileFixture(t, 'app_config_error'), /SyntaxError: Unexpected token :/)
+})
+
+test('adds custom options to the webpack config object', (t) => {
+  return compileFixture(t, 'app_config', { customOption: 'wow!' })
+    .then(({res}) => {
+      t.truthy(res.stats.compilation.options.customOption === 'wow!')
+    })
+})
+
+test('does not allow certain options to be configured', (t) => {
+  return compileFixture(t, 'app_config', { context: 'override!' })
+    .then(({res}) => {
+      t.truthy(res.stats.compilation.options.context !== 'override!')
+    })
 })

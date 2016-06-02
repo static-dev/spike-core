@@ -64,3 +64,18 @@ test.cb('creates a new project with a custom template', (t) => {
     emitter: e1
   })
 })
+
+test.cb('errors if trying to create a project with nonexistant template', (t) => {
+  const emitter = new EventEmitter()
+
+  emitter.on('error', (msg) => {
+    t.truthy(msg === 'template "doge" has not been added to spike')
+    t.end()
+  })
+
+  Spike.new({
+    root: testPath,
+    emitter: emitter,
+    template: 'doge'
+  })
+})

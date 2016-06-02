@@ -127,6 +127,88 @@ Spike.new({
 })
 ```
 
+## Templates
+
+You can use a variety of different templates when creating new spike projects, and these templates can be controlled through a couple of functions in the `Spike.template` namespace. Any async function in this namespace utilizes a user-provided event emitter in place of a promise or callback, as some functions can take a while to run and provide information about their progress along the way.
+
+To add a new template, you can use `Spike.template.add`, as such:
+
+```js
+const EventEmitter = require('events')
+const emitter = new EventEmitter()
+
+emitter.on('info', console.log)
+emitter.on('error', console.error)
+emitter.on('done', console.log)
+
+Spike.template.add({
+  name: 'test',
+  src: 'https://github.com/test/test',
+  emitter: emitter
+})
+```
+
+All templates are handled by [sprout](https://github.com/carrot/sprout), so you can read the [writing your own templates](https://github.com/carrot/sprout#writing-your-own-templates) section for direction on how to create one. It's a pretty simple process!
+
+To remove an existing template, you can use `Spike.template.remove`, as such:
+
+```js
+const EventEmitter = require('events')
+const emitter = new EventEmitter()
+
+emitter.on('info', console.log)
+emitter.on('done', console.log)
+
+Spike.template.remove({ name: 'test' emitter: emitter })
+```
+
+It will return a message as a string stating whether the template was successfully added or not.
+
+To make a template the default for new projects, you can use `Spike.template.default`, as such:
+
+```js
+const EventEmitter = require('events')
+const emitter = new EventEmitter()
+
+emitter.on('info', console.log)
+emitter.on('error', console.log)
+emitter.on('done', console.log)
+
+Spike.template.default({ name: 'test' emitter: emitter })
+```
+
+It will return a message as a string stating whether the template was successfully made the default or not.
+
+Since this is a synchronous function, it will also return its value directly if you don't want to use an event emitter:
+
+```js
+const result = Spike.template.default({ name: 'test' emitter: emitter })
+console.log(result)
+```
+
+If you'd like to see a list of all the templates that have been added to Spike, you can use `Spike.template.list`, as such:
+
+```js
+const EventEmitter = require('events')
+const emitter = new EventEmitter()
+
+emitter.on('info', console.log)
+emitter.on('done', console.log)
+
+Spike.template.list({ emitter: emitter })
+```
+
+It will return an array of all existing templates.
+
+This is also a sync function and will return its results directly if you don't want to use an event emitter:
+
+```js
+const result = Spike.template.list()
+console.log(result)
+```
+
+Finally, if you really screwed up with the templates and would like to wipe the slate clean, you can run `Spike.template.reset()`. This will synchronously remove all the global template configuration and bring it back to a default state, as it is when Spike is first installed.
+
 ## Environments
 
 If you have different environments you intend to deploy to that need different settings, this is **[no probalo](http://www.hrwiki.org/w/images/8/85/Senor_Cardgage_shirt_close.PNG)**. Just make a second `app.js` file, but stick the name of your environment between the `app` and the `js`, like this: `app.production.js`. Now, when you initialize spike with the `production` environment, it will merge your production config (with priority) into your normal app config.

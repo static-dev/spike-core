@@ -20,9 +20,9 @@ exports.compileFixture = function compileFixture (t, name, options = {}) {
   const project = new Spike(Object.assign(options, { root: testPath }))
   const publicPath = path.join(testPath, 'public')
 
-  return When.promise(function (resolve, reject) {
+  return When.promise((resolve, reject) => {
     project.on('error', reject)
-    project.on('compile', function (res) { resolve({res, publicPath}) })
+    project.on('compile', (res) => { resolve({res, publicPath}) })
 
     project.compile()
   })

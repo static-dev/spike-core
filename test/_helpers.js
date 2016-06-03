@@ -2,6 +2,7 @@ const nodeFs = require('fs')
 const path = require('path')
 const When = require('when')
 const node = require('when/node')
+const chalk = require('chalk')
 const Spike = require('..')
 
 // export references to required modules and/or paths
@@ -27,3 +28,5 @@ exports.compileFixture = function compileFixture (t, name, options = {}) {
     project.compile()
   })
 }
+
+exports.debug = (msg) => console.log(chalk.gray('  ▸ ' + msg))

@@ -3,7 +3,7 @@ const EventEmitter = require('events')
 const path = require('path')
 const fs = require('fs')
 const rimraf = require('rimraf')
-const {fixturesPath} = require('./_helpers')
+const {fixturesPath, debug} = require('./_helpers')
 const Spike = require('..')
 
 test.before((t) => { Spike.template.reset() })
@@ -12,9 +12,9 @@ test.afterEach((t) => { Spike.template.reset() })
 test.cb('template.add adds a template', (t) => {
   const emitter = new EventEmitter()
 
-  emitter.on('info', console.log)
+  emitter.on('info', debug)
 
-  emitter.on('done', (res) => {
+  emitter.on('success', (res) => {
     t.truthy(res === 'template "test" added')
     t.truthy(Object.keys(Spike.template.list()).indexOf('test') > -1)
     t.end()
@@ -31,14 +31,14 @@ test.cb('template.remove gets rid of a template', (t) => {
   const e1 = new EventEmitter()
   const e2 = new EventEmitter()
 
-  e1.on('info', console.log)
-  e2.on('info', console.log)
+  e1.on('info', debug)
+  e2.on('info', debug)
 
-  e1.on('done', (res) => {
+  e1.on('success', (res) => {
     Spike.template.remove({ name: 'test', emitter: e2 })
   })
 
-  e2.on('done', (res) => {
+  e2.on('success', (res) => {
     t.truthy(res === 'template "test" removed')
     t.falsy(Object.keys(Spike.template.list()).indexOf('test') > -1)
     t.end()
@@ -57,15 +57,15 @@ test.cb('template.default sets the default template', (t) => {
   const e3 = new EventEmitter()
   const testPath = path.join(fixturesPath, 'new_test')
 
-  e1.on('info', console.log)
-  e2.on('info', console.log)
-  e3.on('info', console.log)
+  e1.on('info', debug)
+  e2.on('info', debug)
+  e3.on('info', debug)
 
-  e1.on('done', (res) => {
+  e1.on('success', (res) => {
     Spike.template.default({ name: 'test', emitter: e2 })
   })
 
-  e2.on('done', (res) => {
+  e2.on('success', (res) => {
     t.truthy(res === 'template "test" is now the default')
     Spike.new({
       root: testPath,

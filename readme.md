@@ -139,7 +139,7 @@ const emitter = new EventEmitter()
 
 emitter.on('info', console.log)
 emitter.on('error', console.error)
-emitter.on('done', console.log)
+emitter.on('success', console.log)
 
 Spike.template.add({
   name: 'test',
@@ -157,7 +157,7 @@ const EventEmitter = require('events')
 const emitter = new EventEmitter()
 
 emitter.on('info', console.log)
-emitter.on('done', console.log)
+emitter.on('success', console.log)
 
 Spike.template.remove({ name: 'test' emitter: emitter })
 ```
@@ -172,7 +172,7 @@ const emitter = new EventEmitter()
 
 emitter.on('info', console.log)
 emitter.on('error', console.log)
-emitter.on('done', console.log)
+emitter.on('success', console.log)
 
 Spike.template.default({ name: 'test' emitter: emitter })
 ```
@@ -193,7 +193,7 @@ const EventEmitter = require('events')
 const emitter = new EventEmitter()
 
 emitter.on('info', console.log)
-emitter.on('done', console.log)
+emitter.on('success', console.log)
 
 Spike.template.list({ emitter: emitter })
 ```

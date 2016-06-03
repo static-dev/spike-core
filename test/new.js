@@ -37,7 +37,7 @@ test.cb('creates a new project with a custom template', (t) => {
   const e2 = new EventEmitter()
 
   e1.on('info', debug)
-  e1.on('done', (res) => {
+  e1.on('success', (res) => {
     Spike.new({
       root: testPath,
       emitter: e2,

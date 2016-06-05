@@ -1,8 +1,8 @@
 const test = require('ava')
 const {compileFixture} = require('./_helpers')
 
-test('tracks jade front-end dependencies', (t) => {
-  return compileFixture(t, 'jade_dependencies').then(({res}) => {
+test('tracks pug front-end dependencies', (t) => {
+  return compileFixture(t, 'pug_dependencies').then(({res}) => {
     const fd = res.stats.compilation.fileDependencies.map((d) => {
       return d.replace(`${res.stats.compilation.options.context}/`, '')
     })

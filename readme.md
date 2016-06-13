@@ -276,3 +276,53 @@ module.exports = {
 Since the two configuration files are _merged_, you don't lose all your other settings from the `app.js` file, it just merges in any new ones from `app.production.js`. Very amaze!
 
 To change the environment, from javascript, just pass an `env` option to the spike constructor.
+
+## Custom Loaders
+
+One of the great advantages of using Spike is that, since it uses Webpack as its core compiler, there is already a great diverse array of loaders and plugins available for use. You can add a loader to spike in exactly the same way as you'd add it to a normal webpack config file:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  module: {
+    loaders: [
+      { test: /\.foo$/, loader: 'foo-loader' }
+    ]
+  }
+}
+```
+
+In this example, we have a hypothetical example of a "foo loader" which does some sort of processing on files with a `.foo` extension. In this case, the foo loader would do it's processing, then pass the results to spike's internal static asset pipeline, which would write the file's contents to the correct location.
+
+There are two things to note about this process. First, Spike does not require you to `require` a file from somewhere in order for it to be emitted, and this holds for any custom loaders. Also note that if the loader "emits" the file, this will be suppressed, instead spike will handle the file writing and output.
+
+If you wish to include a loader in the pure webpack manner, this is possible using the `skipSpikeProcessing` flag. In this case the file must be `require`'d in order to be included in the bundle, and if the file needs to be written somewhere, the loader handles the emission. This is best suited for files which are simple required into client-side javascript and do not need to be written to the output folder. Usage example follows:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  module: {
+    loaders: [
+      { test: /\.foo$/, loader: 'foo-loader', skipSpikeProcessing: true }
+    ]
+  }
+}
+```
+
+Note that Spike's core loaders will pull in any files with `.jade`, `.sss`, and `.js` extensions for processing. If you add a loader that uses one of these extensions, it will run _before_ Spike's core loaders. If you use the `skipSpikeProcessing` flag, it will entirely skip spike's internal loaders, and you will need to process these files entirely on your own. This is not recommended -- if you find yourself needing to do this, Spike might not be the right tool for you.
+
+## Vendor Scripts
+
+If you have any type of file that you'd like to be copied directly through to the output and not processed at all by webpack, like a third party javascript library, jquery, or something like this, you can simply use the `vendor` key along with one or more glob matchers. For example, let's say I made an `assets/vendor` folder and put some third-party css and js files in there that I needed for my site. In order to have them copied over without being touched, I'd add this to my `app.js` file:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  vendor: 'assets/vendor/**'
+}
+```
+
+...and that's it! They will be copied over like any other static file.

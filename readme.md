@@ -295,9 +295,25 @@ module.exports = {
 
 In this example, we have a hypothetical example of a "foo loader" which does some sort of processing on files with a `.foo` extension. In this case, the foo loader would do it's processing, then pass the results to spike's internal static asset pipeline, which would write the file's contents to the correct location.
 
-There are two things to note about this process. First, Spike does not require you to `require` a file from somewhere in order for it to be emitted, and this holds for any custom loaders. Also note that if the loader "emits" the file, this will be suppressed, instead spike will handle the file writing and output.
+There are a few things to note about this process. First, Spike does not require you to `require` a file from somewhere in order for it to be processed and written, and this holds for any custom loaders. Also note that if the loader "emits" the file, this will be suppressed, instead spike will handle the file writing and output.
 
-If you wish to include a loader in the pure webpack manner, this is possible using the `skipSpikeProcessing` flag. In this case the file must be `require`'d in order to be included in the bundle, and if the file needs to be written somewhere, the loader handles the emission. This is best suited for files which are simple required into client-side javascript and do not need to be written to the output folder. Usage example follows:
+Note that Spike's core loaders will pull in any files with `.jade`, `.sss`, and `.js` extensions for processing. If you add a loader that uses one of these extensions, your custom loader will overwrite spike's core loaders for that file. So if you want to use a loader on a `.js` file, then have it processed with babel as spike normally does, you need to add the babel-loader to the loader chain yourself like this:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  module: {
+    loaders: [
+      { test: /\.foo$/, loader: 'babel-loader!foo-loader' }
+    ]
+  }
+}
+```
+
+If you want to exactly emulate spike's internal loader config (it's a little bit more complicated for css files), check `lib/config.js` in the source.
+
+If you wish to include a loader in the pure webpack manner without any influence from spike whatsoever, this is possible using the `skipSpikeProcessing` flag. In this case the file must be `require`'d in order to be included in the bundle, and if the file needs to be written somewhere, the loader handles the emission using `emitFile`. This is best suited for files which are simply required into client-side javascript and do not need to be written to the output folder. For example:
 
 ```js
 // app.js
@@ -311,7 +327,9 @@ module.exports = {
 }
 ```
 
-Note that Spike's core loaders will pull in any files with `.jade`, `.sss`, and `.js` extensions for processing. If you add a loader that uses one of these extensions, it will run _before_ Spike's core loaders. If you use the `skipSpikeProcessing` flag, it will entirely skip spike's internal loaders, and you will need to process these files entirely on your own. This is not recommended -- if you find yourself needing to do this, Spike might not be the right tool for you.
+Note that if you use the `skipSpikeProcessing` flag on a `.js`, `.sss`, and/or `.jade` file, it will entirely skip spike's internal loaders, and you will need to process and write these files entirely on your own. This is not recommended.
+
+Finally, note that if you are using spike as a global module and using a locally-installed loader, you might have issues resolving the loader correctly. If you do, you can use webpack's [resolveLoader config option](https://webpack.github.io/docs/configuration.html#resolveloader) to ensure that it is able to resolve your loader from wherever you are trying to load it.
 
 ## Vendor Scripts
 

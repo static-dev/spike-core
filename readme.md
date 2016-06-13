@@ -89,10 +89,16 @@ If you decide to edit the webpack config object directly, _be careful_. It is ea
 
 Note that each project is an event emitter, and all feedback on what the project is doing will come back through events on the `project` instance. Currently the following events are supported:
 
-- `compile`: the project has finished compiling
 - `warning`: the project has emitted a warning - not fatal but should be checked out
-- `error`: the project has errored and will not complete compilation
+- `error`: there was an error and the task will not complete correctly
+- `info`: there is some information about the progress of a task
+
+And these events, which are a little more specific to certain tasks:
+
+- `compile`: the project has finished compiling one time
 - `remove`: spike has removed a particular path
+- `done`: spike has successfully completed a task (returns some sort of object to be analyzed with javascript)
+- `success`: spike has successfully completed a task (returns a string describing the status)
 
 To compile an instantiated project, you can run `project.compile()`. This method will synchronously return a unique id, which can be used to track events related to this particular compile if necessary. You must be listening for the events you are interested in **before** calling `compile` if you want to ensure that you will get all feedback.
 
@@ -127,6 +133,38 @@ Spike.new({
   inquirer: inquirer.prompt.bind(inquirer)
 })
 ```
+
+## Compiling & Watching a Project
+
+To compile a Spike project, just create a new instance and give it a root, then call the `compile` method as such:
+
+```js
+const Spike = require('spike')
+const project = new Spike({ root: 'path/to/project' })
+
+project.on('error', console.error)
+project.on('warning', console.error)
+project.on('compile', console.log)
+
+const [id, compiler] = project.compile()
+```
+
+The `compile` function returns an array containing a UUID for the compile in question, and the instance of webpack being used to run the compile. The `compile` event will return an object containing the `id` of the compile and a `stats` object as returned from webpack.
+
+To watch a project, just use the `watch` method instead:
+
+```js
+const Spike = require('spike')
+const project = new Spike({ root: 'path/to/project' })
+
+project.on('error', console.error)
+project.on('warning', console.error)
+project.on('compile', console.log)
+
+const watcher = project.watch()
+```
+
+The only difference is that `watch()` returns an instance of webpack's watcher, and no `id`.
 
 ## Templates
 

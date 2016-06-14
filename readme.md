@@ -89,10 +89,16 @@ If you decide to edit the webpack config object directly, _be careful_. It is ea
 
 Note that each project is an event emitter, and all feedback on what the project is doing will come back through events on the `project` instance. Currently the following events are supported:
 
-- `compile`: the project has finished compiling
 - `warning`: the project has emitted a warning - not fatal but should be checked out
-- `error`: the project has errored and will not complete compilation
+- `error`: there was an error and the task will not complete correctly
+- `info`: there is some information about the progress of a task
+
+And these events, which are a little more specific to certain tasks:
+
+- `compile`: the project has finished compiling one time
 - `remove`: spike has removed a particular path
+- `done`: spike has successfully completed a task (returns some sort of object to be analyzed with javascript)
+- `success`: spike has successfully completed a task (returns a string describing the status)
 
 To compile an instantiated project, you can run `project.compile()`. This method will synchronously return a unique id, which can be used to track events related to this particular compile if necessary. You must be listening for the events you are interested in **before** calling `compile` if you want to ensure that you will get all feedback.
 
@@ -127,6 +133,38 @@ Spike.new({
   inquirer: inquirer.prompt.bind(inquirer)
 })
 ```
+
+## Compiling & Watching a Project
+
+To compile a Spike project, just create a new instance and give it a root, then call the `compile` method as such:
+
+```js
+const Spike = require('spike')
+const project = new Spike({ root: 'path/to/project' })
+
+project.on('error', console.error)
+project.on('warning', console.error)
+project.on('compile', console.log)
+
+const [id, compiler] = project.compile()
+```
+
+The `compile` function returns an array containing a UUID for the compile in question, and the instance of webpack being used to run the compile. The `compile` event will return an object containing the `id` of the compile and a `stats` object as returned from webpack.
+
+To watch a project, just use the `watch` method instead:
+
+```js
+const Spike = require('spike')
+const project = new Spike({ root: 'path/to/project' })
+
+project.on('error', console.error)
+project.on('warning', console.error)
+project.on('compile', console.log)
+
+const watcher = project.watch()
+```
+
+The only difference is that `watch()` returns an instance of webpack's watcher, and no `id`.
 
 ## Templates
 
@@ -238,3 +276,71 @@ module.exports = {
 Since the two configuration files are _merged_, you don't lose all your other settings from the `app.js` file, it just merges in any new ones from `app.production.js`. Very amaze!
 
 To change the environment, from javascript, just pass an `env` option to the spike constructor.
+
+## Custom Loaders
+
+One of the great advantages of using Spike is that, since it uses Webpack as its core compiler, there is already a great diverse array of loaders and plugins available for use. You can add a loader to spike in exactly the same way as you'd add it to a normal webpack config file:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  module: {
+    loaders: [
+      { test: /\.foo$/, loader: 'foo-loader' }
+    ]
+  }
+}
+```
+
+In this example, we have a hypothetical example of a "foo loader" which does some sort of processing on files with a `.foo` extension. In this case, the foo loader would do it's processing, then pass the results to spike's internal static asset pipeline, which would write the file's contents to the correct location.
+
+There are a few things to note about this process. First, Spike does not require you to `require` a file from somewhere in order for it to be processed and written, and this holds for any custom loaders. Also note that if the loader "emits" the file, this will be suppressed, instead spike will handle the file writing and output.
+
+Note that Spike's core loaders will pull in any files with `.jade`, `.sss`, and `.js` extensions for processing. If you add a loader that uses one of these extensions, your custom loader will overwrite spike's core loaders for that file. So if you want to use a loader on a `.js` file, then have it processed with babel as spike normally does, you need to add the babel-loader to the loader chain yourself like this:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  module: {
+    loaders: [
+      { test: /\.foo$/, loader: 'babel-loader!foo-loader' }
+    ]
+  }
+}
+```
+
+If you want to exactly emulate spike's internal loader config (it's a little bit more complicated for css files), check `lib/config.js` in the source.
+
+If you wish to include a loader in the pure webpack manner without any influence from spike whatsoever, this is possible using the `skipSpikeProcessing` flag. In this case the file must be `require`'d in order to be included in the bundle, and if the file needs to be written somewhere, the loader handles the emission using `emitFile`. This is best suited for files which are simply required into client-side javascript and do not need to be written to the output folder. For example:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  module: {
+    loaders: [
+      { test: /\.foo$/, loader: 'foo-loader', skipSpikeProcessing: true }
+    ]
+  }
+}
+```
+
+Note that if you use the `skipSpikeProcessing` flag on a `.js`, `.sss`, and/or `.jade` file, it will entirely skip spike's internal loaders, and you will need to process and write these files entirely on your own. This is not recommended.
+
+Finally, note that if you are using spike as a global module and using a locally-installed loader, you might have issues resolving the loader correctly. If you do, you can use webpack's [resolveLoader config option](https://webpack.github.io/docs/configuration.html#resolveloader) to ensure that it is able to resolve your loader from wherever you are trying to load it.
+
+## Vendor Scripts
+
+If you have any type of file that you'd like to be copied directly through to the output and not processed at all by webpack, like a third party javascript library, jquery, or something like this, you can simply use the `vendor` key along with one or more glob matchers. For example, let's say I made an `assets/vendor` folder and put some third-party css and js files in there that I needed for my site. In order to have them copied over without being touched, I'd add this to my `app.js` file:
+
+```js
+// app.js
+module.exports = {
+  // ...
+  vendor: 'assets/vendor/**'
+}
+```
+
+...and that's it! They will be copied over like any other static file.

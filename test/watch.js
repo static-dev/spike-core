@@ -24,7 +24,7 @@ test.cb('watches the project, reloads on modification', (t) => {
     }
   })
 
-  const watcher = project.watch()
+  const {watcher} = project.watch()
   // make sure the watcher is returned
   t.truthy((typeof watcher.startTime) === 'number')
 })
@@ -53,5 +53,5 @@ test.cb('incorporates new file when added while watching', (t) => {
     }
   })
 
-  const watcher = project.watch()
+  const {watcher} = project.watch()
 })

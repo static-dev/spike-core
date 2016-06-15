@@ -2,7 +2,6 @@ const sugarss = require('sugarss')
 
 module.exports = {
   ignore: ['**/_*'],
-  postcss: {
-    parser: sugarss
-  }
+  matchers: { css: '**/*.sss' },
+  postcss: { parser: sugarss }
 }

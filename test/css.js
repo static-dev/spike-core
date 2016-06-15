@@ -3,7 +3,7 @@ const path = require('path')
 const colorGray = require('postcss-color-gray')
 const {compileFixture, fs} = require('./_helpers')
 
-test('.css files are compiled correctly', (t) => {
+test('css files are compiled correctly', (t) => {
   return compileFixture(t, 'css')
     .then(({publicPath}) => { return path.join(publicPath, 'main.css') })
     .tap((base) => { return fs.stat(base).tap(t.truthy.bind(t)) })

@@ -31,7 +31,7 @@ test('does not allow certain options to be configured', (t) => {
     })
 })
 
-test('postcss and css querystring options', (t) => {
+test('postcss querystring options', (t) => {
   return compileFixture(t, 'app_config', {
     postcss: { plugins: ['wow'], foo: 'bar' },
     css: { foo: 'bar' }
@@ -40,6 +40,6 @@ test('postcss and css querystring options', (t) => {
     t.truthy(opts.spike.postcssQuery.foo, 'bar')
     t.truthy(opts.spike.css.foo, 'bar')
     const cssLoaderConfig = opts.module.loaders.find((l) => l._core === 'css')
-    t.truthy(cssLoaderConfig.loader === 'css-loader?foo=bar!postcss-loader?foo=bar')
+    t.truthy(cssLoaderConfig.loader === 'source-loader!postcss-loader?foo=bar')
   })
 })

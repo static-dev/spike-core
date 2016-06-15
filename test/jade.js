@@ -7,7 +7,7 @@ const {compileFixture} = require('./_helpers')
 
 test('works with jade plugin, tracks dependencies', (t) => {
   return compileFixture(t, 'jade', {
-    matchers: { html: '**/*.+(html|jade)' },
+    matchers: { html: '**/*.jade' },
     posthtml: (ctx) => {
       const path = url.parse(ctx.request.split('!').slice(-1)[0]).pathname
       return { defaults: [jadePlugin({ filename: path, pretty: true })] }

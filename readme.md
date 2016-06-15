@@ -27,9 +27,10 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 
 - Easy configuration via the `app.js` file
 - Integration with [Webpack's](https://github.com/webpack/webpack) massive plugin/loader ecosystem
-- Support for ES6 in your site's JS via Babel
+- Support for ES6 in your client-side JS via Babel
+- PostCSS default means extensive flexibility in CSS syntax and tools
+- PostHTML default means the same for your HTML
 - Breezy local development powered by [Browsersync](https://browsersync.io/)
-- Turn-key isomorphism (no refresh page loads)
 - Selective compile in `watch` mode :zap:
 - Support for [multiple environments](#environments)
 - Interactive Project Starters via [sprout](https://github.com/carrot/sprout)
@@ -37,11 +38,11 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 
 ## Installation
 
-- `npm install spike-core`
+- `npm install spike-core -S`
 
 ## Usage
 
-Spike operates through a carefully crafted javascript interface. If you are looking to use spike through its command line interface, check out [spike](https://github.com/static-dev/spike). This project is just the core javascript api.
+Spike operates through a carefully crafted javascript interface. If you are looking to use spike through its command line interface, check out [spike](https://github.com/static-dev/spike). This project is just the core javascript API.
 
 ### Javacript API
 
@@ -59,18 +60,17 @@ Option                 | Description                                            
 :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------
 **root**               | **[required]** An absolute path to the root of your project.                                                                                                                                                                                                                                                                        |
 **matchers**           | An object with `html`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Be very careful if you are trying to change this.                                                                       | `**/*.html`, `**/*.css`, and `**/*.js`
-**postcss**            | A function or object with a `plugins` key, each of which return an array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing. A `parser`, `stringifier`, and/or `syntax` key can also be on the object, each of which take [any of the postcss-loader options](https://github.com/postcss/postcss-loader#custom-syntaxes). Any options other than the ones specified above will be passed as querystring options. |
-**css**              | An object which is serialized as a querystring and passed directly to the [css loader](https://github.com/webpack/css-loader).                                                                                                                                                                                                                                        |
+**posthtml**            | A object with a `defaults` key, each of which return an array of [plugins to be passed to PostHTML](http://maltsev.github.io/posthtml-plugins/) for HTML processing. Can also be a function that returns the object. |
+**postcss**            | An object with a `plugins` key, each of which return an array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing. A `parser`, `stringifier`, and/or `syntax` key can also be on the object, each of which take [any of the postcss-loader options](https://github.com/postcss/postcss-loader#custom-syntaxes). Can also be a function that returns the object. Any options other than the ones specified above will be passed as querystring options. |
 **babel**              | A [configuration object for Babel](http://babeljs.io/docs/usage/options/) for JS processing.                                                                                                                                                                                                                                        |
 **dumpDirs**           | An array of directories which, if direct children of the project root, will dump their contents to the root on compile.                                                                                                                                                                                                             | `['views', 'assets']`.
 **env**                | The environment you would like to use when compiling. See [environments](#environments) for more information about this option.                                                                                                                                                                                                     |
 **ignore**             | An array of [micromatch](https://github.com/jonschlinkert/micromatch) strings, each one defining a file pattern to be ignored from compilation.                                                                                                                                                                                     |
 **outputDir**          | The name or path of the folder your project will be compiled into, on top of the project's root.                                                                                                                                                                                                                                    | `'public'`
 **cleanUrls**          | Remove `.html` from your paths during `spike.watch`.                                                                                                                                                                                                                                                                                | `true`
-**plugins**            | An array of webpack plugins.                                                                                                                                                                                                                                                                                                        |
-**entry**              | Webpack entry object duplicate. Can be used for code splitting and/or to use multiple bundles.                                                                                                                                                                                                                                      | `{ 'js/main': ['./assets/js/index.js'] }`
 **vendor**             | A string or array of glob paths used to indicate which files shouldn't be bundled by webpack, but instead are just copied directly to the output folder                                                                                                                                                                             |
-**modulesDirectories** | Webpack modulesDirectories array option, to select where modules can be loaded from.                                                                                                                                                                                                                                                | `['node_modules', 'bower_components']`
+**entry**              | Webpack entry object duplicate. Can be used for code splitting and/or to use multiple bundles. See [webpack's documentation](https://webpack.github.io/docs/configuration.html#entry) for details                                                                                                                                                                                                                                      | `{ 'js/main': ['./assets/js/index.js'] }`
+**plugins**            | An array of webpack plugins.                                                                                                                                                                                                                                                                                                        |
 **module.loaders**     | Allows you to define an array of custom loaders. See [webpack's documentation](https://webpack.github.io/docs/configuration.html#module-loaders) for details                                                                                                                                                                        |
 **resolve.alias**      | Set up loader aliases, like if you wanted to load a local loader. See [webpack's documentation](https://webpack.github.io/docs/configuration.html#resolve-alias) for details                                                                                                                                                        |
 

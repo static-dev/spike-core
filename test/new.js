@@ -27,7 +27,8 @@ test.cb('creates a new spike project', (t) => {
     locals: {
       name: 'test',
       description: 'test',
-      github_username: 'test'
+      github_username: 'test',
+      production: false
     }
   })
 })

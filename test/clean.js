@@ -8,7 +8,7 @@ test.before((t) => {
     .then(({publicPath}) => { return path.join(publicPath, 'index.html') })
     .tap((index) => { return fs.stat(index).tap(t.truthy.bind(t)) })
     .then((index) => { return fs.readFile(index, 'utf8') })
-    .then((contents) => { return t.is(contents, '\n<p>override</p>') })
+    .then((contents) => { return t.is(contents.trim(), '<p>hello</p>') })
 })
 
 test.cb('emits clean message correctly', (t) => {

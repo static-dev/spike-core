@@ -1,20 +1,15 @@
 const test = require('ava')
-const path = require('path')
-const {fs, compileFixture} = require('./_helpers')
+const {compileFixture} = require('./_helpers')
 
 test('uses app.js configuration', (t) => {
-  return compileFixture(t, 'app_config').then(({publicPath}) => {
-    return fs.readFile(path.join(publicPath, 'index.html'), 'utf8')
-  }).then((contents) => {
-    return t.is(contents, 'override')
+  return compileFixture(t, 'app_config').then(({res}) => {
+    t.truthy(res.stats.compilation.options.testing.foo === 'override')
   })
 })
 
 test('API config overrides app.js config', (t) => {
-  return compileFixture(t, 'app_config', { locals: { foo: 'double override' } }).then(({publicPath}) => {
-    return fs.readFile(path.join(publicPath, 'index.html'), 'utf8')
-  }).then((contents) => {
-    return t.is(contents, 'double override')
+  return compileFixture(t, 'app_config', { testing: { foo: 'double override' } }).then(({res}) => {
+    t.truthy(res.stats.compilation.options.testing.foo === 'double override')
   })
 })
 

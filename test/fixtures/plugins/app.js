@@ -1,7 +1,7 @@
 const TestPlugin = require('./plugin.js')
 
 module.exports = {
-  locals: { foo: 'bar' },
+  test: 'foo',
   ignore: ['app.js', 'plugin.js'],
   plugins: [new TestPlugin()]
 }

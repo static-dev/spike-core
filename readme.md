@@ -16,9 +16,9 @@ Spike certainly is not the only [static site generator](https://www.staticgen.co
 
 ### The Stack
 
-Spike is fairly strict in enforcing a default stack. However, the stack allows for quite a large amount of flexibility as both the css and js parsers are able to accept plugins. Also spike's core compiler is [Webpack](https://github.com/webpack/webpack), so you can customize your project with [loaders](https://webpack.github.io/docs/loaders.html) and [plugins](https://webpack.github.io/docs/plugins.html). The inflexibility of the stack means faster compiles and better stability. We use...
+Spike is fairly strict in enforcing a default stack. However, the stack allows for quite a large amount of flexibility as all of the parsers are simply foundations that do nothing by default and accept plugins to transform code. Also spike's core compiler is [Webpack](https://github.com/webpack/webpack), so you can customize your project with [loaders](https://webpack.github.io/docs/loaders.html) and [plugins](https://webpack.github.io/docs/plugins.html). The inflexibility of the stack means faster compiles and better stability. We use...
 
-- [jade](http://jade-lang.com/) for markup
+- [posthtml](https://github.com/posthtml/posthtml) for markup
 - [babel](https://babeljs.io/) for JS and JS transforms
 - [postcss](https://github.com/postcss/postcss) for CSS transforms
 - [webpack](http://webpack.github.io) as the core compiler
@@ -58,13 +58,11 @@ The above shows a minimal instantiation, but the constructor accepts a wide vari
 Option                 | Description                                                                                                                                                                                                                                                                                                                         | Default
 :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------
 **root**               | **[required]** An absolute path to the root of your project.                                                                                                                                                                                                                                                                        |
-**matchers**           | An object with `jade`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Be very careful if you are trying to change this.                                                                       | `**/*.jade`, `**/*.css`, and `**/*.js`
+**matchers**           | An object with `html`, `css`, and `js` keys. Each key is a [micromatch](https://github.com/jonschlinkert/micromatch) string, and represents which files should be pulled into the pipeline to be processed. Be very careful if you are trying to change this.                                                                       | `**/*.html`, `**/*.css`, and `**/*.js`
 **postcss**            | An object that can contain a `plugins` key, which is an array of [plugins to be passed to PostCSS](http://postcss.parts/) for CSS processing, and a `parser`, `stringifier`, and/or `syntax` key, each of which are objects and take [any of the postcss-loader options](https://github.com/postcss/postcss-loader#custom-syntaxes). Any options other than the ones specified above will be passed as querystring options. |
 **css**              | An object which is serialized as a querystring and passed directly to the [css loader](https://github.com/webpack/css-loader).                                                                                                                                                                                                                                        |
 **babel**              | A [configuration object for Babel](http://babeljs.io/docs/usage/options/) for JS processing.                                                                                                                                                                                                                                        |
-**jade**               | A [configuration object for jade](http://jade-lang.com/api/).                                                                                                                                                                                                                                                                       |
 **dumpDirs**           | An array of directories which, if direct children of the project root, will dump their contents to the root on compile.                                                                                                                                                                                                             | `['views', 'assets']`.
-**locals**             | An object containing locals to be passed to jade views. This can be used for values, functions, any sort of view helper you need.                                                                                                                                                                                                   |
 **env**                | The environment you would like to use when compiling. See [environments](#environments) for more information about this option.                                                                                                                                                                                                     |
 **ignore**             | An array of [micromatch](https://github.com/jonschlinkert/micromatch) strings, each one defining a file pattern to be ignored from compilation.                                                                                                                                                                                     |
 **outputDir**          | The name or path of the folder your project will be compiled into, on top of the project's root.                                                                                                                                                                                                                                    | `'public'`
@@ -297,7 +295,7 @@ In this example, we have a hypothetical example of a "foo loader" which does som
 
 There are a few things to note about this process. First, Spike does not require you to `require` a file from somewhere in order for it to be processed and written, and this holds for any custom loaders. Also note that if the loader "emits" the file, this will be suppressed, instead spike will handle the file writing and output.
 
-Note that Spike's core loaders will pull in any files with `.jade`, `.sss`, and `.js` extensions for processing. If you add a loader that uses one of these extensions, your custom loader will overwrite spike's core loaders for that file. So if you want to use a loader on a `.js` file, then have it processed with babel as spike normally does, you need to add the babel-loader to the loader chain yourself like this:
+Note that Spike's core loaders will pull in any files with `.html`, `.css`, and `.js` extensions for processing. If you add a loader that uses one of these extensions, your custom loader will overwrite spike's core loaders for that file. So if you want to use a loader on a `.js` file, then have it processed with babel as spike normally does, you need to add the babel-loader to the loader chain yourself like this:
 
 ```js
 // app.js
@@ -327,7 +325,7 @@ module.exports = {
 }
 ```
 
-Note that if you use the `skipSpikeProcessing` flag on a `.js`, `.sss`, and/or `.jade` file, it will entirely skip spike's internal loaders, and you will need to process and write these files entirely on your own. This is not recommended.
+Note that if you use the `skipSpikeProcessing` flag on a `.js`, `.css`, and/or `.html` file, it will entirely skip spike's internal loaders, and you will need to process and write these files entirely on your own. This is not recommended.
 
 Finally, note that if you are using spike as a global module and using a locally-installed loader, you might have issues resolving the loader correctly. If you do, you can use webpack's [resolveLoader config option](https://webpack.github.io/docs/configuration.html#resolveloader) to ensure that it is able to resolve your loader from wherever you are trying to load it.
 

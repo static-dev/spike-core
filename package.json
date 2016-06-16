@@ -16,7 +16,7 @@
     "cheerio": "^0.20.0",
     "css-loader": "^0.23.1",
     "filewrap": "^0.1.0",
-    "glob": "^7.0.3",
+    "glob": "^7.0.4",
     "hygienist-middleware": "^0.1.1",
     "joi": "^8.4.2",
     "lodash.difference": "^4.3.0",

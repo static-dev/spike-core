@@ -24,7 +24,7 @@ test('static plugin ignores files processed by webpack plugins', (t) => {
     const f1 = fs.readFileSync(path.join(publicPath, 'foo.html'), 'utf8')
     const f2 = fs.readFileSync(path.join(publicPath, 'foo.spade'), 'utf8')
     const f3 = fs.readFileSync(path.join(publicPath, 'foo.glade'), 'utf8')
-    t.is(f1.trim(), '<p>bar</p>')
+    t.is(f1.trim(), '<p>foo</p>')
     t.is(f2.trim(), 'p not processed by spike core')
     t.is(f3.trim(), 'Glade Air Freshener™ is a really cool product')
   })

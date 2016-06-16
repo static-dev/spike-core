@@ -1,3 +1,3 @@
 module.exports = {
-  locals: { v2: true }
+  env2: true
 }

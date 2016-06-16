@@ -1,5 +1,5 @@
 module.exports = {
-  locals: {
+  testing: {
     foo: 'override'
   }
 }

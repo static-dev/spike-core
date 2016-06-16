@@ -28,7 +28,7 @@
     "posthtml-loader": "^0.9.0",
     "rimraf": "^2.5.2",
     "source-loader": "^0.2.0",
-    "spike-util": "0.2.0",
+    "spike-util": "0.2.1",
     "sprout": "^1.2.0",
     "webpack": "^1.13.0",
     "when": "^3.7.7"

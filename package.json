@@ -40,7 +40,7 @@
     "coveralls": "^2.11.9",
     "husky": "^0.11.4",
     "md5-file": "^3.1.1",
-    "nyc": "^6.6.1",
+    "nyc": "^7.0.0",
     "postcss-color-gray": "^3.0.0",
     "postcss-import": "^8.1.2",
     "posthtml-custom-elements": "^1.0.3",

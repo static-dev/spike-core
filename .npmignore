@@ -2,5 +2,6 @@ test
 contributing.md
 .editorconfig
 .travis.yml
+appveyor.yml
 .doclets.yml
 .github

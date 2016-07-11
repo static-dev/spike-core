@@ -18,7 +18,7 @@
     "filewrap": "^0.1.0",
     "glob": "^7.0.4",
     "hygienist-middleware": "^0.1.1",
-    "joi": "^8.4.2",
+    "joi": "^9.0.0",
     "lodash.difference": "^4.3.0",
     "lodash.merge": "^4.3.5",
     "lodash.union": "^4.2.0",

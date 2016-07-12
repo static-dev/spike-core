@@ -1,0 +1,16 @@
+version: v1.5.0
+ignore: {}
+patch:
+  'npm:minimatch:20160620':
+    - hygienist-middleware > minimatch:
+        patched: '2016-07-11T14:12:17.308Z'
+    - browser-sync > resp-modifier > minimatch:
+        patched: '2016-07-11T14:12:17.308Z'
+  'npm:request:20160119':
+    - browser-sync > localtunnel > request:
+        patched: '2016-07-11T14:12:17.308Z'
+  'npm:ws:20160624':
+    - browser-sync > socket.io > engine.io > ws:
+        patched: '2016-07-11T14:12:17.308Z'
+    - browser-sync > socket.io > socket.io-client > engine.io-client > ws:
+        patched: '2016-07-11T14:12:17.308Z'

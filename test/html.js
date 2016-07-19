@@ -15,7 +15,7 @@ test('compiles straight html using posthtml, tracks dependencies', (t) => {
 
 test('can apply posthtml plugins', (t) => {
   return compileFixture(t, 'html', {
-    posthtml: { defaults: [customElements()] }
+    posthtml: { plugins: [customElements()] }
   }).then(({publicPath}) => {
     const index = fs.readFileSync(path.join(publicPath, 'index.html'), 'utf8')
     t.truthy(index.match('div class="custom"'))

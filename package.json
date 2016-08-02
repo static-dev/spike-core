@@ -7,7 +7,7 @@
     "verbose": "true",
     "serial": "true"
   },
-  "bugs": "https://github.com/static-dev/spike/issues",
+  "bugs": "https://github.com/static-dev/spike-core/issues",
   "dependencies": {
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.0",
@@ -53,7 +53,7 @@
     "node": ">=6.0.0",
     "npm": ">=3.8.0"
   },
-  "homepage": "https://github.com/static-dev/spike",
+  "homepage": "https://github.com/static-dev/spike-core",
   "keywords": [
     "spike",
     "static",

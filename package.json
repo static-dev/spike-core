@@ -13,7 +13,6 @@
     "babel-loader": "^6.2.0",
     "browser-sync": "^2.13.0",
     "browser-sync-webpack-plugin": "^1.1.0",
-    "cheerio": "^0.20.0",
     "css-loader": "^0.23.1",
     "filewrap": "^0.1.0",
     "glob": "^7.0.5",

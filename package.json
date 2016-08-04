@@ -24,7 +24,7 @@
     "micromatch": "^2.3.10",
     "mkdirp": "^0.5.1",
     "postcss-loader": "^0.9.1",
-    "posthtml-loader": "^0.10.0",
+    "posthtml-loader": "^0.11.0",
     "rimraf": "^2.5.3",
     "source-loader": "^0.2.0",
     "spike-util": "^0.2.1",

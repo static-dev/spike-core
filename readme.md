@@ -18,7 +18,7 @@ Spike certainly is not the only [static site generator](https://www.staticgen.co
 
 Spike is fairly strict in enforcing a default stack. However, the stack allows for quite a large amount of flexibility as all of the parsers are simply foundations that do nothing by default and accept plugins to transform code. Also spike's core compiler is [Webpack](https://github.com/webpack/webpack), so you can customize your project with [loaders](https://webpack.github.io/docs/loaders.html) and [plugins](https://webpack.github.io/docs/plugins.html). The inflexibility of the stack means faster compiles and better stability. We use...
 
-- [posthtml](https://github.com/posthtml/posthtml) for markup
+- [reshape](https://github.com/reshape/reshape) for markup
 - [babel](https://babeljs.io/) for JS and JS transforms
 - [postcss](https://github.com/postcss/postcss) for CSS transforms
 - [webpack](http://webpack.github.io) as the core compiler
@@ -29,7 +29,7 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 - Integration with [Webpack's](https://github.com/webpack/webpack) massive plugin/loader ecosystem
 - Support for ES6 in your client-side JS via Babel
 - PostCSS default means extensive flexibility in CSS syntax and tools
-- PostHTML default means the same for your HTML
+- Reshape default means the same for your HTML
 - Breezy local development powered by [Browsersync](https://browsersync.io/)
 - Selective compile in `watch` mode :zap:
 - Support for [multiple environments](https://spike.readme.io/docs/environments)

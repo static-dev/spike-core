@@ -14,7 +14,7 @@ test('API config overrides app.js config', (t) => {
 })
 
 test('throws error for invalid app.js syntax', (t) => {
-  return t.throws(() => compileFixture(t, 'app_config_error'), /SyntaxError: Unexpected token :/)
+  return t.throws(() => compileFixture(t, 'app_config_error'), /Error: wow/)
 })
 
 test('adds custom options to the webpack config object', (t) => {

@@ -1,1 +1,1 @@
-foo::bar // eslint-disable-line
+throw new Error('wow')

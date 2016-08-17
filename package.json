@@ -1,7 +1,7 @@
 {
   "name": "spike-core",
   "description": "an opinionated static build tool, powered by webpack",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "author": "Jeff Escalante",
   "ava": {
     "verbose": "true",
@@ -38,11 +38,7 @@
     "coveralls": "^2.11.12",
     "husky": "^0.11.6",
     "md5-file": "^3.1.1",
-<<<<<<< 109dc4c641abb86aad0751bf6d12110d2814e563
-    "nyc": "^8.0.0",
-=======
     "nyc": "^8.1.0",
->>>>>>> update deps, fix an error handling issue with reshape loader
     "postcss-color-gray": "^3.0.0",
     "postcss-import": "^8.1.2",
     "reshape-custom-elements": "^0.1.0",

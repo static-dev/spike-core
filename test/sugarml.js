@@ -6,7 +6,7 @@ const {compileFixture} = require('./_helpers')
 
 test('works with sugarml parser', (t) => {
   return compileFixture(t, 'sugarml', {
-    matchers: { html: '*(**/)*.sml' },
+    matchers: { html: '*(**/)*.sgr' },
     reshape: (ctx) => {
       return { parser: sugarml, filename: ctx.resourcePath, locals: {} }
     }

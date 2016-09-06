@@ -32,3 +32,11 @@ test('custom loader and skipSpikeProcessing option', (t) => {
       t.throws(() => fs.accessSync(fooFile))
     })
 })
+
+test('custom loader with extension option', (t) => {
+  return compileFixture(t, 'loader_custom_ext')
+    .then(({publicPath}) => {
+      const src = fs.readFileSync(path.join(publicPath, 'js/foo.txt'), 'utf8')
+      t.is(src, 'overwritten from local loader')
+    })
+})

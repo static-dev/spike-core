@@ -40,3 +40,11 @@ test('custom loader with extension option', (t) => {
       t.is(src, 'overwritten from local loader')
     })
 })
+
+test('custom loader with incompatible return produces error', (t) => {
+  return compileFixture(t, 'loader_source_error')
+    .then(() => { t.fail('no error produced') })
+    .catch((err) => {
+      t.truthy(err.message.toString().match(/ModuleParseError: Module parse failed/))
+    })
+})

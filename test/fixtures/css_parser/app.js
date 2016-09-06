@@ -3,7 +3,7 @@ const postcssImport = require('postcss-import')
 
 module.exports = {
   ignore: ['**/_*'],
-  matchers: { css: '**/*.sss' },
+  matchers: { css: '*(**/)*.sss' },
   postcss: (wp) => {
     return {
       parser: sugarss,

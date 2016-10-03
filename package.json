@@ -9,7 +9,7 @@
   },
   "bugs": "https://github.com/static-dev/spike-core/issues",
   "dependencies": {
-    "babel-core": "^6.13.2",
+    "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "browser-sync": "^2.14.0",
     "browser-sync-webpack-plugin": "^1.1.2",

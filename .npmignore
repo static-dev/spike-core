@@ -5,3 +5,4 @@ contributing.md
 appveyor.yml
 .doclets.yml
 .github
+yarn.lock

@@ -13,6 +13,13 @@ test('API config overrides app.js config', (t) => {
   })
 })
 
+test('API config merges properly with app.js config', (t) => {
+  return compileFixture(t, 'app_config', { testing: { bar: 'double override' } }).then(({res}) => {
+    t.truthy(res.stats.compilation.options.testing.foo === 'override')
+    t.truthy(res.stats.compilation.options.testing.bar === 'double override')
+  })
+})
+
 test('throws error for invalid app.js syntax', (t) => {
   return t.throws(() => compileFixture(t, 'app_config_error'), /Error: wow/)
 })

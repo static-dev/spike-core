@@ -1,5 +1,7 @@
 module.exports = {
   testing: {
-    foo: 'override'
+    foo: 'override',
+    bar: 'override',
+    baz: 'override'
   }
 }

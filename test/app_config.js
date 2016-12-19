@@ -50,3 +50,10 @@ test('postcss querystring options', (t) => {
     t.truthy(cssLoaderConfig.loader === 'source-loader!postcss-loader?foo=bar')
   })
 })
+
+test('allows typeof string for entry object\'s value', (t) => {
+  return compileFixture(t, 'app_config', {entry: { 'js/main': './js/index.js' }})
+    .then(({res}) => {
+      t.truthy(Array.isArray(res.stats.compilation.options.entry['js/main']))
+    })
+})

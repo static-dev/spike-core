@@ -26,7 +26,7 @@
     "reshape-loader": "^0.3.0",
     "rimraf": "^2.5.4",
     "source-loader": "^0.2.0",
-    "spike-util": "^0.3.0",
+    "spike-util": "^0.4.0",
     "sprout": "^1.2.0",
     "webpack": "^1.13.3",
     "when": "^3.7.7"

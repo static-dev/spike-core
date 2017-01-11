@@ -41,7 +41,7 @@
     "postcss-color-gray": "^3.0.1",
     "postcss-import": "^9.1.0",
     "reshape-custom-elements": "^0.1.0",
-    "snazzy": "^5.0.0",
+    "snazzy": "^6.0.0",
     "standard": "^8.6.0",
     "sugarml": "^0.4.0",
     "sugarss": "^0.2.0"

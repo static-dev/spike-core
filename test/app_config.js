@@ -1,7 +1,7 @@
 const test = require('ava')
 const {compileFixture} = require('./_helpers')
 
-test('uses app.js configuration', (t) => {
+test.only('uses app.js configuration', (t) => {
   return compileFixture(t, 'app_config').then(({res}) => {
     t.truthy(res.stats.compilation.options.testing.foo === 'override')
   })

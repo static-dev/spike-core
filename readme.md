@@ -1,7 +1,5 @@
 # Spike Core
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/static-dev/spike-core.svg)](https://greenkeeper.io/)
-
 [![version](https://img.shields.io/npm/v/spike-core.svg?style=flat)](https://www.npmjs.com/package/spike-core) [![tests](http://img.shields.io/travis/static-dev/spike-core/master.svg?style=flat)](https://travis-ci.org/static-dev/spike-core) [![dependencies](http://img.shields.io/david/static-dev/spike-core.svg?style=flat)](https://david-dm.org/static-dev/spike-core) [![coverage](https://img.shields.io/coveralls/static-dev/spike-core.svg?style=flat)](https://coveralls.io/github/static-dev/spike-core?branch=master) [![chat](https://img.shields.io/gitter/room/static-dev/spike.svg)](http://gitter.im/static-dev/spike)
 
 An opinionated static build tool, powered by [webpack](http://webpack.github.io)

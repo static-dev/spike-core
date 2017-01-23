@@ -1,3 +1,3 @@
 module.exports = {
-  entry: { foo: 'override' }
+  entry: { foo: 'override', bar: 'override', baz: 'override' }
 }

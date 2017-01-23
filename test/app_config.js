@@ -3,7 +3,7 @@ const {compileFixture} = require('./_helpers')
 
 test.only('uses app.js configuration', (t) => {
   return compileFixture(t, 'app_config').then(({res}) => {
-    t.truthy(res.stats.compilation.options.testing.foo === 'override')
+    t.truthy(res.stats.compilation.options.entry.foo[0] === 'override')
   })
 })
 

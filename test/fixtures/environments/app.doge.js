@@ -1,3 +1,3 @@
 module.exports = {
-  env2: true
+  entry: { doge3: 'amaze' }
 }

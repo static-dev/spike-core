@@ -1,4 +1,4 @@
-module.exports = class JadeWebpackPlugin {
+module.exports = class TestWebpackPlugin {
   constructor (opts) {
     this.opts = opts
   }

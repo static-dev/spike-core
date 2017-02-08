@@ -1,11 +1,14 @@
+const SpikeUtil = require('spike-util')
+
 module.exports = class GladePlugin {
   constructor (opts) {
     this.opts = opts
   }
 
   apply (compiler) {
+    const util = new SpikeUtil(compiler.options)
     compiler.plugin('emit', function (compilation, done) {
-      const staticFiles = compiler.options.spike.files.static
+      const staticFiles = util.getSpikeOptions().files.static
       const gladeFiles = staticFiles.filter((f) => f.match(/\.glade$/))
       gladeFiles.forEach((f) => {
         const dep = compilation.modules.find((el) => {

@@ -15,6 +15,6 @@ test('compiles a project with a custom plugin, plugins can change output path', 
     const outputChanged = path.join(publicPath, 'changed_output.html')
     fs.statSync(index)
     fs.statSync(outputChanged)
-    t.truthy(res.stats.compilation.options.test === 'bar')
+    t.truthy(res.stats.compilation.options.entry.test === 'bar')
   })
 })

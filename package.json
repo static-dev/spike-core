@@ -23,10 +23,10 @@
     "micromatch": "^2.3.11",
     "mkdirp": "^0.5.1",
     "postcss-loader": "^1.2.2",
-    "reshape-loader": "^0.4.2",
+    "reshape-loader": "next",
     "rimraf": "^2.5.4",
     "source-loader": "^0.2.0",
-    "spike-util": "^0.4.0",
+    "spike-util": "next",
     "sprout": "^1.2.0",
     "webpack": "beta",
     "when": "^3.7.7"

@@ -2839,22 +2839,13 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-joi@^10.2.0, joi@^10.2.1:
+joi@^10.0.0, joi@^10.2.0, joi@^10.2.1:
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/joi/-/joi-10.2.1.tgz#f3a5f6a492d311735f17b109487646c2194aa92d"
   dependencies:
     hoek "4.x.x"
     isemail "2.x.x"
     items "2.x.x"
-    topo "2.x.x"
-
-joi@^8.1.0:
-  version "8.4.2"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-8.4.2.tgz#bd7774658fe99058d8994ed1d4b9962484ebb859"
-  dependencies:
-    hoek "4.x.x"
-    isemail "2.x.x"
-    moment "2.x.x"
     topo "2.x.x"
 
 js-base64@^2.1.9:
@@ -2869,16 +2860,9 @@ js-tokens@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
 
-js-yaml@3.6.1:
+js-yaml@3.6.1, js-yaml@^3.4.3, js-yaml@^3.4.5, js-yaml@^3.5.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.6.1.tgz#6e5fe67d8b205ce4d22fad05b7781e8dadcc4b30"
-  dependencies:
-    argparse "^1.0.7"
-    esprima "^2.6.0"
-
-js-yaml@^3.4.3, js-yaml@^3.4.5, js-yaml@^3.5.1:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
   dependencies:
     argparse "^1.0.7"
     esprima "^2.6.0"
@@ -3265,10 +3249,6 @@ mkdirp@0.3.0:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
-
-moment@2.x.x:
-  version "2.17.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
 ms@0.7.1:
   version "0.7.1"
@@ -3812,9 +3792,9 @@ postcss-load-plugins@^2.2.0:
     cosmiconfig "^2.1.1"
     object-assign "^4.1.0"
 
-postcss-loader@^1.2.2:
+postcss-loader@jescalan/postcss-loader:
   version "1.2.2"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-1.2.2.tgz#bbf4e19a8cde85597e0c9bfd96015fe775a157ac"
+  resolved "https://codeload.github.com/jescalan/postcss-loader/tar.gz/4591a94c944bbd4f3a0be74a383a2fa2b0da9956"
   dependencies:
     loader-utils "^0.2.16"
     object-assign "^4.1.0"
@@ -4558,14 +4538,14 @@ sprintf-js@^1.0.3, sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
-sprout@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/sprout/-/sprout-1.2.0.tgz#b555f2789b6ce6745d54f97a1cecd0d3ead31516"
+sprout@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/sprout/-/sprout-1.2.1.tgz#e121e7f7ce894aa75cdacf8c047f609770786dbd"
   dependencies:
     argparse "^1.0.2"
     ejs "^2.3.1"
     isbinaryfile "^3.0.0"
-    joi "^8.1.0"
+    joi "^10.0.0"
     js-yaml "^3.4.5"
     lodash "^4.12.0"
     minimatch "^3.0.0"

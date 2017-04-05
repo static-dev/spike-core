@@ -1,11 +1,11 @@
 module.exports = {
   ignore: ['app.js', 'fooLoader.js'],
-  resolve: {
+  resolveLoader: {
     alias: {
       fooLoader: './fooLoader.js'
     }
   },
   module: {
-    loaders: [{ test: /\.foo$/, loader: 'fooLoader' }]
+    rules: [{ test: /\.foo$/, use: [{ loader: 'fooLoader' }] }]
   }
 }

@@ -45,6 +45,6 @@ test('custom loader with incompatible return produces error', (t) => {
   return compileFixture(t, 'loader_source_error')
     .then(() => { t.fail('no error produced') })
     .catch((err) => {
-      t.truthy(err.message.toString().match(/Module parse failed/))
+      t.truthy(err.message.toString().match(/Module build failed/))
     })
 })

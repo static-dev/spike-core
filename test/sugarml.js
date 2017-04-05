@@ -7,8 +7,10 @@ const {compileFixture} = require('./_helpers')
 test('works with sugarml parser', (t) => {
   return compileFixture(t, 'sugarml', {
     matchers: { html: '*(**/)*.sgr' },
-    reshape: (ctx) => {
-      return { parser: sugarml, filename: ctx.resourcePath, locals: {} }
+    reshape: {
+      parser: sugarml,
+      filename: (ctx) => ctx.resourcePath,
+      locals: {}
     }
   }).then(({res, publicPath}) => {
     const index = fs.readFileSync(path.join(publicPath, 'index.html'), 'utf8')

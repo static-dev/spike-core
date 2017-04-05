@@ -1,7 +1,3 @@
 module.exports = {
-  testing: {
-    foo: 'override',
-    bar: 'override',
-    baz: 'override'
-  }
+  entry: { foo: 'override', bar: 'override', baz: 'override', outputPublicPath: 'test' }
 }

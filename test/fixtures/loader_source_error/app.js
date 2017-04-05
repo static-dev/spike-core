@@ -1,11 +1,12 @@
 module.exports = {
-  ignore: ['app.js', 'fooLoader.js'],
-  resolve: {
-    alias: {
-      fooLoader: './fooLoader.js'
-    }
-  },
+  ignore: ['app.js'],
   module: {
-    loaders: [{ test: /\.scss$/, loader: 'postcss', extension: 'css' }]
+    rules: [{
+      test: /\.scss$/,
+      use: [{
+        loader: 'postcss',
+        options: { _spikeExtension: 'css' }
+      }]
+    }]
   }
 }

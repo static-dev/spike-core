@@ -1,11 +1,15 @@
 module.exports = {
   ignore: ['app.js', 'fooLoader.js'],
-  resolve: {
-    alias: {
-      fooLoader: './fooLoader.js'
-    }
+  resolveLoader: {
+    alias: { fooLoader: './fooLoader.js' }
   },
   module: {
-    loaders: [{ test: /\.foo$/, loader: 'fooLoader', skipSpikeProcessing: true }]
+    rules: [{
+      test: /\.foo$/,
+      use: [{
+        loader: 'fooLoader',
+        options: { _skipSpikeProcessing: true }
+      }]
+    }]
   }
 }

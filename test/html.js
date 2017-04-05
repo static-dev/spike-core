@@ -12,9 +12,9 @@ test('compiles straight html using reshape', (t) => {
     })
 })
 
-test('can apply posthtml plugins', (t) => {
+test('can apply reshape plugins', (t) => {
   return compileFixture(t, 'html', {
-    reshape: { plugins: customElements(), locals: {} }
+    reshape: { plugins: [customElements()], locals: {} }
   }).then(({publicPath}) => {
     const src = fs.readFileSync(path.join(publicPath, 'index.html'), 'utf8')
     t.truthy(compress(src) === '<head><title>test</title><link rel="stylesheet" href="style.css"></head><body><div class="custom">hello there</div></body>')

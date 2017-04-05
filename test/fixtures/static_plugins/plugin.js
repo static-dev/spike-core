@@ -16,7 +16,7 @@ module.exports = class GladePlugin {
         })
         let src = String(dep._src)
         src = src.replace(/glade/, 'Glade Air Freshener™')
-        dep._src = Buffer(src)
+        dep._src = Buffer.from(src)
       })
       done()
     })

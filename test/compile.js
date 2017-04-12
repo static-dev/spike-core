@@ -1,11 +1,19 @@
 const Spike = require('..')
 const test = require('ava')
 const path = require('path')
+const sugarml = require('sugarml')
 const {fixturesPath, compileFixture} = require('./_helpers')
 
 test('emits compile errors correctly', (t) => {
-  return compileFixture(t, 'compile_error').catch((err) => {
-    t.truthy(err.message.toString().match(/no closing bracket found/))
+  return compileFixture(t, 'compile_error', {
+    matchers: { html: '*(**/)*.sgr' },
+    reshape: {
+      parser: sugarml,
+      filename: (ctx) => ctx.resourcePath,
+      locals: {}
+    }
+  }).catch((err) => {
+    t.truthy(err.message.toString().match(/Cannot parse character "<"/))
   })
 })
 

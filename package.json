@@ -13,7 +13,7 @@
     "babel-loader": "^7.0.0",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
-    "filewrap": "^0.1.0",
+    "filewrap": "^1.0.0",
     "glob": "^7.0.5",
     "hygienist-middleware": "^0.1.3",
     "joi": "^10.4.1",

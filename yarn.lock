@@ -2050,11 +2050,7 @@ filename-regex@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.0.tgz#996e3e80479b98b9897f15a8a58b3d084e926775"
 
-filewrap@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/filewrap/-/filewrap-0.1.0.tgz#839b91c59e28e8dd73ba354aa26096edce689b1c"
-
-filewrap@^1.0.0:
+filewrap@1.0.0, filewrap@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/filewrap/-/filewrap-1.0.0.tgz#a6e3cb380af3473da2edd9c9fb29afa88780ffe5"
 
@@ -4729,11 +4725,11 @@ spdx-license-ids@^1.0.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-1.2.2.tgz#c9df7a3424594ade6bd11900d596696dc06bac57"
 
-spike-util@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/spike-util/-/spike-util-1.1.0.tgz#a94dee89d3ef4518483d86cfff11864013768e7c"
+spike-util@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/spike-util/-/spike-util-1.2.0.tgz#f23ddb13ebddb642910493744a5ad6f000275b05"
   dependencies:
-    filewrap "0.1.0"
+    filewrap "1.0.0"
     glob "^7.0.4"
     micromatch "^2.3.8"
     when "^3.7.7"
@@ -5241,9 +5237,9 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.4.1.tgz#15a91dbe34966d8a4b99c7d656efd92a2e5a6f6a"
+webpack@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.5.0.tgz#5a17089f8d0e43442e606d6cf9b2a146c8ed9911"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"

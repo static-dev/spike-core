@@ -44,7 +44,7 @@
     "snazzy": "^7.0.0",
     "standard": "^10.0.2",
     "sugarml": "^0.5.0",
-    "sugarss": "^0.2.0"
+    "sugarss": "^1.0.0"
   },
   "engines": {
     "node": ">=6.0.0",

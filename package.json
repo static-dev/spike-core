@@ -20,7 +20,7 @@
     "lodash.difference": "^4.5.0",
     "lodash.merge": "^4.6.0",
     "lodash.union": "^4.6.0",
-    "micromatch": "^2.3.11",
+    "micromatch": "^3.0.0",
     "mkdirp": "^0.5.1",
     "postcss-loader": "^2.0.5",
     "reshape-loader": "^1.0.0",

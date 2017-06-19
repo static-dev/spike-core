@@ -28,7 +28,7 @@
     "source-loader": "^0.2.0",
     "spike-util": "^1.2.0",
     "sprout": "^1.2.1",
-    "webpack": "^2.6.1",
+    "webpack": "^3.0.0",
     "when": "^3.7.8"
   },
   "devDependencies": {

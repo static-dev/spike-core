@@ -7,7 +7,8 @@ const {fixturesPath} = require('./_helpers')
 test.cb('watches the project, reloads on modification', (t) => {
   const project = new Spike({
     root: path.join(fixturesPath, 'watch'),
-    server: { open: false }
+    server: { open: false },
+    entry: { main: './index.js' }
   })
   let i = 0
 
@@ -32,7 +33,8 @@ test.cb('watches the project, reloads on modification', (t) => {
 test.cb('incorporates new file when added while watching', (t) => {
   const project = new Spike({
     root: path.join(fixturesPath, 'watch'),
-    server: { open: false }
+    server: { open: false },
+    entry: { main: './index.js' }
   })
   let i = 0
   const testFile = path.join(fixturesPath, 'watch/test.html')

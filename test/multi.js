@@ -4,13 +4,13 @@ const fs = require('fs')
 const exp = require('reshape-expressions')
 const {compileFixture} = require('./_helpers')
 
-test('emits compile errors correctly', (t) => {
+test('compiles multi output templates correctly', (t) => {
   return compileFixture(t, 'multi', {
     reshape: {
       plugins: [exp()],
       multi: [
-        { locals: { greeting: 'hello' }, name: 'en' },
-        { locals: { greeting: 'hola' }, name: 'es' }
+        { locals: { greeting: 'hello' }, name: 'index.en' },
+        { locals: { greeting: 'hola' }, name: 'index.es.html' }
       ]
     }
   }).then(({res, publicPath}) => {

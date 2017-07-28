@@ -28,6 +28,7 @@ test.cb('creates a new spike project', (t) => {
       name: 'test',
       description: 'test',
       github_username: 'test',
+      sugar: false,
       production: false
     }
   })

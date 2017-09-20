@@ -34,7 +34,7 @@ Spike is fairly strict in enforcing a default stack. However, the stack allows f
 - Selective compile in `watch` mode :zap:
 - Support for [multiple environments](https://spike.readme.io/docs/environments)
 - Interactive Project Starters via [sprout](https://github.com/carrot/sprout)
-- [Spike Plugins](https://npms.io/search?term=spikeplugin) for common integrations
+- [Spike Plugins](https://npms.io/search?q=spikeplugin) for common integrations
 
 ## Installation
 

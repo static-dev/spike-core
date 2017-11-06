@@ -14,4 +14,8 @@ test('config errors', (t) => {
     'ValidationError: child "babel" fails because ["babel" must be an object]')
   t.throws(() => { new Spike({ root: 'foo', entry: ['foo', 'bar'] }) }, // eslint-disable-line
     'ValidationError: child "entry" fails because ["entry" must be an object]')
+  t.throws(() => { new Spike({ root: 'foo', server: {server: false} }) }, // eslint-disable-line
+    'ValidationError: child "server" fails because [child "server" fails because ["server" must be an object]]')
+  t.throws(() => { new Spike({ root: 'foo', server: {server: {}, proxy: 'http://localhost:1234/'} }) }, // eslint-disable-line
+    'ValidationError: child "server" fails because [child "server" fails because ["server" must be one of [false]]]')
 })

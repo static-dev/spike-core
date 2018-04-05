@@ -36,7 +36,7 @@
     "chalk": "^2.3.0",
     "coveralls": "^3.0.0",
     "husky": "^0.14.3",
-    "md5-file": "^3.2.3",
+    "md5-file": "^4.0.0",
     "nyc": "^11.3.0",
     "postcss-color-gray": "^4.0.0",
     "postcss-import": "^11.0.0",

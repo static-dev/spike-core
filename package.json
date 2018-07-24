@@ -44,7 +44,7 @@
     "reshape-expressions": "^0.1.5",
     "snazzy": "^7.0.0",
     "standard": "^11.0.1",
-    "sugarml": "^0.6.0",
+    "sugarml": "^0.7.0",
     "sugarss": "^1.0.1"
   },
   "engines": {

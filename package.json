@@ -11,7 +11,7 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.5",
-    "browser-sync": "^2.24.6",
+    "browser-sync": "^2.26.1",
     "browser-sync-webpack-plugin": "^1.2.0",
     "filewrap": "^1.0.0",
     "glob": "^7.1.2",

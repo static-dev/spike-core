@@ -39,7 +39,7 @@
     "md5-file": "^3.2.3",
     "nyc": "^12.0.2",
     "postcss-color-gray": "^4.0.0",
-    "postcss-import": "^11.0.0",
+    "postcss-import": "^12.0.1",
     "reshape-custom-elements": "^0.1.0",
     "reshape-expressions": "^0.1.5",
     "snazzy": "^7.0.0",

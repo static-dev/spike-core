@@ -38,7 +38,7 @@
     "husky": "^0.14.3",
     "md5-file": "^3.2.3",
     "nyc": "^12.0.2",
-    "postcss-color-gray": "^4.0.0",
+    "postcss-color-gray": "^5.0.0",
     "postcss-import": "^11.0.0",
     "reshape-custom-elements": "^0.1.0",
     "reshape-expressions": "^0.1.5",
